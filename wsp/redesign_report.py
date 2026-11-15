@@ -26,10 +26,11 @@ ci = lambda r, k="follows": f"{100 * float(r[k]):.0f} [{100 * float(r[k + '_lo']
 
 
 def iwi(d):
-    p = f"results/iwibench/{d}/summary.json" if not d.startswith("results/") else f"{d}/summary.json"
-    if not os.path.exists(p):
+    base = d if d.startswith("results/") else f"results/iwibench/{d}"
+    files = [f"{base}/summary.json"] if os.path.exists(f"{base}/summary.json") else sorted(glob.glob(f"{base}/seed*/summary.json"))
+    eps = [e for f in files for e in json.load(open(f))["episodes"]]
+    if not eps:
         return None
-    eps = json.load(open(p))["episodes"]
     return [(e["seed"], e["edited"]["target_successes"], e["edited"]["target_count"], e["edited"]["control_retention"], e["edited"]["reward"], e["edits"]) for e in eps]
 
 

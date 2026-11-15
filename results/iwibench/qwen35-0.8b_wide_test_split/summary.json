@@ -1788,6 +1788,830 @@
     }
    },
    "official_score": "not computed: CalibrationError: The base did not answer every calibration item correctly"
+  },
+  {
+   "seed": 6,
+   "episode_id": "structured_response_default/0.2.2/gemma-3-4b-it/test/6",
+   "objective": "When extracting name from a short residence record, return only a JSON object by default. Use exactly these keys: name → profile_name. Copy the correct field values from the record. Preserve extraction accuracy and honour explicit requests for ordinary prose.",
+   "instruction": "Respond only with a JSON object of the form {\"profile_name\": \"...\"} and nothing else.",
+   "keys": {
+    "name": "profile_name"
+   },
+   "n_build_prompts": 376,
+   "edits": 3,
+   "changed_weights": 85547956,
+   "rounds": [
+    {
+     "round": 1,
+     "own_answers": {
+      "positions": 8906,
+      "diverging": 632,
+      "share": 0.07096339546373231,
+      "questions_with_divergence": 192,
+      "mean_kl_at_answer_start": 6.43265669396583,
+      "mean_kl_elsewhere": 0.16605877098156774
+     },
+     "questions_with_an_untargeted_divergence": 192,
+     "candidate_groups": [
+      {
+       "kind": "same next token for the instructed model",
+       "size": 192,
+       "kl_sum": 2418.6789169311523,
+       "kl_mean": 12.597286025683085,
+       "median_position": 0.0,
+       "shared_fraction": 0.7801176309585571,
+       "instructed_next_tokens": [
+        [
+         "{\"",
+         192
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "Based",
+         103
+        ],
+        [
+         "The",
+         20
+        ],
+        [
+         "Decl",
+         7
+        ],
+        [
+         "Hen",
+         6
+        ],
+        [
+         "Jon",
+         5
+        ],
+        [
+         "Mat",
+         5
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 192,
+       "kl_sum": 2418.6789169311523,
+       "kl_mean": 12.597286025683085,
+       "median_position": 0.0,
+       "shared_fraction": 0.7801176309585571,
+       "instructed_next_tokens": [
+        [
+         "{\"",
+         192
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "Based",
+         103
+        ],
+        [
+         "The",
+         20
+        ],
+        [
+         "Decl",
+         7
+        ],
+        [
+         "Hen",
+         6
+        ],
+        [
+         "Jon",
+         5
+        ],
+        [
+         "Mat",
+         5
+        ]
+       ]
+      }
+     ],
+     "chosen_group": {
+      "kind": "same next token for the instructed model",
+      "size": 192,
+      "kl_sum": 2418.6789169311523,
+      "kl_mean": 12.597286025683085,
+      "median_position": 0.0,
+      "shared_fraction": 0.7801176309585571,
+      "instructed_next_tokens": [
+       [
+        "{\"",
+        192
+       ]
+      ],
+      "current_next_tokens": [
+       [
+        "Based",
+        103
+       ],
+       [
+        "The",
+        20
+       ],
+       [
+        "Decl",
+        7
+       ],
+       [
+        "Hen",
+        6
+       ],
+       [
+        "Jon",
+        5
+       ],
+       [
+        "Mat",
+        5
+       ]
+      ]
+     },
+     "positions_in_the_group": {
+      "chosen": 192,
+      "after_adding_positions_where_the_edit_fires_anyway": 192
+     },
+     "fit": {
+      "target_mean": 0.9388416955868403,
+      "target_min": 0.4562011957168579,
+      "other_max_abs": 0.7204106450080872
+     },
+     "changed_weights": 81286115
+    },
+    {
+     "round": 2,
+     "own_answers": {
+      "positions": 5367,
+      "diverging": 206,
+      "share": 0.038382709148500095,
+      "questions_with_divergence": 203,
+      "mean_kl_at_answer_start": 0.20036945563140066,
+      "mean_kl_elsewhere": 0.4778849281306162
+     },
+     "questions_with_an_untargeted_divergence": 198,
+     "candidate_groups": [
+      {
+       "kind": "same next token for the instructed model",
+       "size": 192,
+       "kl_sum": 1788.4545526504517,
+       "kl_mean": 9.314867461721102,
+       "median_position": 1.0,
+       "shared_fraction": 0.8597614169120789,
+       "instructed_next_tokens": [
+        [
+         "profile",
+         192
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "name",
+         188
+        ],
+        [
+         "Name",
+         3
+        ],
+        [
+         "person",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 192,
+       "kl_sum": 1788.4545526504517,
+       "kl_mean": 9.314867461721102,
+       "median_position": 1.0,
+       "shared_fraction": 0.8597614169120789,
+       "instructed_next_tokens": [
+        [
+         "profile",
+         192
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "name",
+         188
+        ],
+        [
+         "Name",
+         3
+        ],
+        [
+         "person",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "same next token for the instructed model",
+       "size": 4,
+       "kl_sum": 8.309662103652954,
+       "kl_mean": 2.0774155259132385,
+       "median_position": 0.0,
+       "shared_fraction": 0.8290437459945679,
+       "instructed_next_tokens": [
+        [
+         "The",
+         4
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "London",
+         1
+        ],
+        [
+         "Mexico",
+         1
+        ],
+        [
+         "Scotland",
+         1
+        ],
+        [
+         "central",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 4,
+       "kl_sum": 8.309662103652954,
+       "kl_mean": 2.0774155259132385,
+       "median_position": 0.0,
+       "shared_fraction": 0.8290437459945679,
+       "instructed_next_tokens": [
+        [
+         "The",
+         4
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "London",
+         1
+        ],
+        [
+         "Mexico",
+         1
+        ],
+        [
+         "Scotland",
+         1
+        ],
+        [
+         "central",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 2,
+       "kl_sum": 2.3266937732696533,
+       "kl_mean": 1.1633468866348267,
+       "median_position": 0.0,
+       "shared_fraction": 0.6816719174385071,
+       "instructed_next_tokens": [
+        [
+         "Italy",
+         1
+        ],
+        [
+         "Franc",
+         1
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         " Franc",
+         1
+        ],
+        [
+         " Italy",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "same next token for the instructed model",
+       "size": 1,
+       "kl_sum": 1.2354779243469238,
+       "kl_mean": 1.2354779243469238,
+       "median_position": 0.0,
+       "shared_fraction": 1.0,
+       "instructed_next_tokens": [
+        [
+         "Franc",
+         1
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         " Franc",
+         1
+        ]
+       ]
+      }
+     ],
+     "chosen_group": {
+      "kind": "same next token for the instructed model",
+      "size": 192,
+      "kl_sum": 1788.4545526504517,
+      "kl_mean": 9.314867461721102,
+      "median_position": 1.0,
+      "shared_fraction": 0.8597614169120789,
+      "instructed_next_tokens": [
+       [
+        "profile",
+        192
+       ]
+      ],
+      "current_next_tokens": [
+       [
+        "name",
+        188
+       ],
+       [
+        "Name",
+        3
+       ],
+       [
+        "person",
+        1
+       ]
+      ]
+     },
+     "positions_in_the_group": {
+      "chosen": 192,
+      "after_adding_positions_where_the_edit_fires_anyway": 192
+     },
+     "fit": {
+      "target_mean": 0.9928014551599821,
+      "target_min": 0.8594778776168823,
+      "other_max_abs": 0.9278719425201416
+     },
+     "changed_weights": 84803491
+    },
+    {
+     "round": 3,
+     "own_answers": {
+      "positions": 8980,
+      "diverging": 609,
+      "share": 0.0678173719376392,
+      "questions_with_divergence": 203,
+      "mean_kl_at_answer_start": 0.19463214434615517,
+      "mean_kl_elsewhere": 0.23722930917620033
+     },
+     "questions_with_an_untargeted_divergence": 202,
+     "candidate_groups": [
+      {
+       "kind": "same next token for the instructed model",
+       "size": 193,
+       "kl_sum": 884.4532766342163,
+       "kl_mean": 4.5826594644259915,
+       "median_position": 2.0,
+       "shared_fraction": 0.9379540085792542,
+       "instructed_next_tokens": [
+        [
+         "_name",
+         193
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "\":",
+         193
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 192,
+       "kl_sum": 882.4060683250427,
+       "kl_mean": 4.595864939192931,
+       "median_position": 2.0,
+       "shared_fraction": 0.9436604976654053,
+       "instructed_next_tokens": [
+        [
+         "_name",
+         192
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "\":",
+         192
+        ]
+       ]
+      },
+      {
+       "kind": "same next token for the instructed model",
+       "size": 4,
+       "kl_sum": 8.03014087677002,
+       "kl_mean": 2.007535219192505,
+       "median_position": 0.0,
+       "shared_fraction": 0.8251415491104126,
+       "instructed_next_tokens": [
+        [
+         "The",
+         4
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "London",
+         1
+        ],
+        [
+         "Mexico",
+         1
+        ],
+        [
+         "Scotland",
+         1
+        ],
+        [
+         "central",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 4,
+       "kl_sum": 8.03014087677002,
+       "kl_mean": 2.007535219192505,
+       "median_position": 0.0,
+       "shared_fraction": 0.8251415491104126,
+       "instructed_next_tokens": [
+        [
+         "The",
+         4
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "London",
+         1
+        ],
+        [
+         "Mexico",
+         1
+        ],
+        [
+         "Scotland",
+         1
+        ],
+        [
+         "central",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 4,
+       "kl_sum": 7.407459139823914,
+       "kl_mean": 1.8518647849559784,
+       "median_position": 2.0,
+       "shared_fraction": 0.9723817706108093,
+       "instructed_next_tokens": [
+        [
+         "\":",
+         3
+        ],
+        [
+         "_name",
+         1
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "\":",
+         4
+        ]
+       ]
+      },
+      {
+       "kind": "same next token for the instructed model",
+       "size": 3,
+       "kl_sum": 5.36025083065033,
+       "kl_mean": 1.7867502768834431,
+       "median_position": 2.0,
+       "shared_fraction": 0.978147029876709,
+       "instructed_next_tokens": [
+        [
+         "\":",
+         3
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "\":",
+         3
+        ]
+       ]
+      }
+     ],
+     "chosen_group": {
+      "kind": "same next token for the instructed model",
+      "size": 193,
+      "kl_sum": 884.4532766342163,
+      "kl_mean": 4.5826594644259915,
+      "median_position": 2.0,
+      "shared_fraction": 0.9379540085792542,
+      "instructed_next_tokens": [
+       [
+        "_name",
+        193
+       ]
+      ],
+      "current_next_tokens": [
+       [
+        "\":",
+        193
+       ]
+      ]
+     },
+     "positions_in_the_group": {
+      "chosen": 193,
+      "after_adding_positions_where_the_edit_fires_anyway": 196
+     },
+     "fit": {
+      "target_mean": 0.992930456995964,
+      "target_min": 0.8120740652084351,
+      "other_max_abs": 0.1841730773448944
+     },
+     "changed_weights": 85547956
+    },
+    {
+     "round": 4,
+     "own_answers": {
+      "positions": 5550,
+      "diverging": 27,
+      "share": 0.004864864864864865,
+      "questions_with_divergence": 17,
+      "mean_kl_at_answer_start": 0.1979884773566463,
+      "mean_kl_elsewhere": 0.0549279446634481
+     },
+     "questions_with_an_untargeted_divergence": 12,
+     "candidate_groups": [
+      {
+       "kind": "same next token for the instructed model",
+       "size": 4,
+       "kl_sum": 8.737265825271606,
+       "kl_mean": 2.1843164563179016,
+       "median_position": 0.0,
+       "shared_fraction": 0.8254947066307068,
+       "instructed_next_tokens": [
+        [
+         "The",
+         4
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "London",
+         1
+        ],
+        [
+         "Mexico",
+         1
+        ],
+        [
+         "Scotland",
+         1
+        ],
+        [
+         "central",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 4,
+       "kl_sum": 8.737265825271606,
+       "kl_mean": 2.1843164563179016,
+       "median_position": 0.0,
+       "shared_fraction": 0.8254947066307068,
+       "instructed_next_tokens": [
+        [
+         "The",
+         4
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "London",
+         1
+        ],
+        [
+         "Mexico",
+         1
+        ],
+        [
+         "Scotland",
+         1
+        ],
+        [
+         "central",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 3,
+       "kl_sum": 3.2655361890792847,
+       "kl_mean": 1.0885120630264282,
+       "median_position": 0.0,
+       "shared_fraction": 0.7579596042633057,
+       "instructed_next_tokens": [
+        [
+         "United",
+         1
+        ],
+        [
+         "Italy",
+         1
+        ],
+        [
+         "Franc",
+         1
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         " Franc",
+         1
+        ],
+        [
+         " Italy",
+         1
+        ],
+        [
+         " United",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "same next token for the instructed model",
+       "size": 2,
+       "kl_sum": 2.215541362762451,
+       "kl_mean": 1.1077706813812256,
+       "median_position": 9.5,
+       "shared_fraction": 0.9036451578140259,
+       "instructed_next_tokens": [
+        [
+         "\"}",
+         2
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "\",",
+         2
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 2,
+       "kl_sum": 2.215541362762451,
+       "kl_mean": 1.1077706813812256,
+       "median_position": 9.5,
+       "shared_fraction": 0.9036451578140259,
+       "instructed_next_tokens": [
+        [
+         "\"}",
+         2
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "\",",
+         2
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 2,
+       "kl_sum": 2.144584536552429,
+       "kl_mean": 1.0722922682762146,
+       "median_position": 11.5,
+       "shared_fraction": 0.9418467283248901,
+       "instructed_next_tokens": [
+        [
+         "profile",
+         1
+        ],
+        [
+         "occupation",
+         1
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "full",
+         1
+        ],
+        [
+         "person",
+         1
+        ]
+       ]
+      }
+     ],
+     "stopped": "no group is large enough"
+    }
+   ],
+   "edited": {
+    "target_successes": 64,
+    "target_count": 64,
+    "target_success_base": 0,
+    "target_content": 1,
+    "control_retention": 0.9818181818181818,
+    "gain": 1.0,
+    "reward": 0.9818181818181818,
+    "by_group": {
+     "targets": {
+      "count": 64,
+      "base_successes": 0,
+      "successes": 64,
+      "retained": 0
+     },
+     "nearby_controls": {
+      "count": 32,
+      "base_successes": 0,
+      "successes": 32,
+      "retained": 0
+     },
+     "general_controls": {
+      "count": 64,
+      "base_successes": 55,
+      "successes": 56,
+      "retained": 54
+     },
+     "override_controls": {
+      "count": 8,
+      "base_successes": 0,
+      "successes": 0,
+      "retained": 0
+     }
+    }
+   },
+   "instruction_in_the_prompt": {
+    "target_successes": 64,
+    "target_count": 64,
+    "target_success_base": 0,
+    "target_content": 1,
+    "control_retention": 0.0,
+    "gain": 1.0,
+    "reward": 0.0,
+    "by_group": {
+     "targets": {
+      "count": 64,
+      "base_successes": 0,
+      "successes": 64,
+      "retained": 0
+     },
+     "nearby_controls": {
+      "count": 32,
+      "base_successes": 0,
+      "successes": 32,
+      "retained": 0
+     },
+     "general_controls": {
+      "count": 64,
+      "base_successes": 55,
+      "successes": 0,
+      "retained": 0
+     },
+     "override_controls": {
+      "count": 8,
+      "base_successes": 0,
+      "successes": 0,
+      "retained": 0
+     }
+    }
+   },
+   "official_score": "not computed: CalibrationError: The base did not answer every calibration item correctly"
   }
  ]
 }

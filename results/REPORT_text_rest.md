@@ -1,5 +1,7 @@
 Gemma 3 4B는 IWIBench가 대상으로 쓴 모델이다. 약관 동의를 받은 뒤 02:25에 띄웠다. 이 모델은 지시문을 넣어도 JSON을 code fence로 감싸서 내기 때문에, 지시문 끝에 "Do not use markdown or code fences."를 붙였다. 우리가 만든 문장 24개에서 이 문구일 때만 24개가 맞았다.
 
+Gemma에서는 Qwen에서 쓰던 편집을 그대로 넣자 모델이 망가졌다. 첫 episode에서 목표 문항 0/64, 통제 문항 유지 0.0이었다. Gemma 3는 MLP 출력을 RMSNorm에 통과시킨 뒤 residual에 더하는데, 편집은 그 정규화 앞에 vector를 더하기 때문이다. 정규화를 거꾸로 계산해서 더할 vector를 정하도록 고쳤고(`wsp/lm.py`의 `to_pre_norm`), 위 표의 Gemma 줄은 고친 방법으로 02:43에 다시 띄운 실행이다.
+
 벤치의 test split episode는 사람 이름, key 이름, 요청 문장이 development split과 다르다. 여기서는 episode마다 결과가 크게 갈렸다.
 
 ### 그 밖의 숫자

@@ -54,6 +54,9 @@ class LM:
         self.layers = list(self.body.layers)
         self.L = len(self.layers)
         self.mlp_out = [layer.mlp.down_proj for layer in self.layers]
+        # Gemma puts an RMSNorm between the MLP output and the residual stream; Qwen and Phi add the MLP output as it is
+        self.post_norm = [getattr(layer, "post_feedforward_layernorm", None) for layer in self.layers]
+        self.has_post_norm = self.post_norm[0] is not None
         self.d_model, self.d_mlp = self.mlp_out[0].weight.shape
         self.W0 = [m.weight.detach().clone() for m in self.mlp_out]
         vocab = self.tok.get_vocab()
@@ -120,6 +123,31 @@ class LM:
             return res, hh
         finally:
             self.cap_h, self.cap_res, self.adds, self.cap_last = None, None, [], False
+
+    @torch.inference_mode()
+    def mlp_stats(self, ids, position):
+        """For models with a norm after the MLP: at one position of one sequence, the output of that norm for every
+        layer [L, d_model] (what the MLP adds to the residual stream) and the norm of the MLP output before it [L]."""
+        post, pre, hooks = {}, {}, []
+        for l in range(self.L):
+            hooks.append(self.post_norm[l].register_forward_hook(lambda m, i, o, l=l: post.__setitem__(l, o[0, position].detach().float())))
+            hooks.append(self.mlp_out[l].register_forward_hook(lambda m, i, o, l=l: pre.__setitem__(l, o[0, position].detach().float().norm())))
+        try:
+            self.body(input_ids=torch.tensor([ids], device=self.device))
+        finally:
+            for h in hooks:
+                h.remove()
+        return torch.stack([post[l] for l in range(self.L)]), torch.stack([pre[l] for l in range(self.L)])
+
+    def to_pre_norm(self, l, u, ybar, mnorm, strength=4.0):
+        """The vector to add to the MLP output (before the norm) so that what reaches the residual stream at layer l
+        is close to ybar + u: ybar is the mean of what the MLP adds there now, u the wanted shift. The norm removes
+        the scale of its input, so only a direction can be set: the direction whose normed image is ybar + u. It is
+        added with `strength` times the usual length of the MLP output, enough to dominate it where the edit fires."""
+        g = 1.0 + self.post_norm[l].weight.detach().float()
+        g = torch.where(g.abs() < 0.05, 0.05 * torch.where(g < 0, -torch.ones_like(g), torch.ones_like(g)), g)
+        z = (ybar.to(g.device) + u.to(g.device)) / g
+        return strength * mnorm.to(g.device) * z / z.norm()
 
     @torch.inference_mode()
     def logprobs(self, ids, adds=()):

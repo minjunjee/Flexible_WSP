@@ -1,0 +1,1 @@
+first attempt (edits added to the MLP output as on Qwen): blind prompts, episode seed 0: targets 0/64, control retention 0.0. Cause: Gemma 3 applies an RMSNorm to the MLP output before adding it to the residual stream.

@@ -139,6 +139,12 @@ def _build(lm, Q, info, members, S, max_new, kl_min, lams):
     required to stay silent there."""
     d = torch.stack([info[qi]["r1"][:, j] - info[qi]["r0"][:, j] for qi, j in members]).mean(0)
     u = edit.writes(d, S)
+    if lm.has_post_norm:
+        # Gemma: the MLP output goes through a norm before it reaches the residual stream, so the shift u cannot be
+        # added as it is. Convert it to the vector that has to be added before the norm (wsp/lm.py, to_pre_norm).
+        st = [lm.mlp_stats(Q[qi]["ids0"] + info[qi]["own"], len(Q[qi]["ids0"]) - 1 + j) for qi, j in members]
+        ybar, mnorm = torch.stack([a for a, _ in st]).mean(0), torch.stack([b for _, b in st]).mean(0)
+        u = {l: lm.to_pre_norm(l, u[l], ybar[l], mnorm[l]) for l in S}
     with lm.original():
         conts = lm.generate([Q[qi]["ids1"] + info[qi]["own"][:j] for qi, j in members], max_new)
     at = {qi: (j, strip(lm, c)) for (qi, j), c in zip(members, conts)}
