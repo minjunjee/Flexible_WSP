@@ -1,0 +1,7 @@
+Loading weights:   0%|          | 0/883 [00:00<?, ?it/s]Loading weights:   0%|          | 1/883 [00:00<02:39,  5.53it/s]Loading weights:  34%|███▍      | 302/883 [00:00<00:00, 1254.15it/s]Loading weights:  52%|█████▏    | 458/883 [00:00<00:00, 1343.06it/s]Loading weights: 100%|██████████| 883/883 [00:00<00:00, 1979.40it/s]
+[    5s] episode seed 0: When extracting name from a short residence record, return only a JSON object by default. Use exactly these keys: name → subject. Copy the correct field values from the record. Preserve extraction accuracy and honour explicit requests for ordinary prose.
+[    5s]    instruction used for the teacher: Respond only with a raw JSON object of the form {"subject": "..."} and nothing else. Do not use markdown or code fences.
+[   16s]    prompts from results/E4/E4a_prompts_written_without_seeing_the_benchmark_code.json: 375 used, 1 dropped because the person's name is one of the episode's private names
+[  110s]    round 1: 0 of 191 questions are already answered as the instructed model answers them
+[  110s]    round 1 group (same next token for the instructed model): 191 positions, median position 0.0, mean KL 55.50, shared fraction 0.75, instructed wants [['{"', 191]], current writes [['The', 97], ['Okay', 11], ['This', 10]]
+[  110s]    round 1 group (similar direction of the hidden-state difference): 191 positions, median position 0.0, mean KL 55.50, shared fraction 0.75, instructed wants [['{"', 191]], current writes [['The', 97], ['Okay', 11], ['This', 10]]

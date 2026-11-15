@@ -72,15 +72,19 @@ def measure(lm, Q, max_new, applied=()):
     return info
 
 
-def next_points(info, kl_min, Q=None):
+def next_points(info, kl_min, Q=None, done=()):
     """for each question, the first diverging position where no earlier edit fires.
+    done: questions whose own answer is already the text the instructed model writes. They are not targeted. What is
+    left there is a difference that does not show in the answer (on Gemma 3 4B the instructed model puts a newline
+    after the closing brace and the edited model ends the turn; an edit built for that newline has nothing to gain
+    and, with a poorly fitted read vector, a model to lose).
     A question whose entry in Q has follow=False is one where the model should keep behaving as it does without any
     edit (its teacher is the unedited model). Such questions are never targeted: if the model diverges there, an
     earlier edit leaked, and the cure is not another edit aimed at the damage (on Gemma 3 4B that took one episode
     from a working two-edit model to 0 of 64)."""
     pts = []
     for qi, x in enumerate(info):
-        if Q is not None and not Q[qi].get("follow", True):
+        if (Q is not None and not Q[qi].get("follow", True)) or qi in done:
             continue
         for j in range(len(x["kl"])):
             if float(x["kl"][j]) > kl_min and not bool(x["taken"][j]):
@@ -199,28 +203,41 @@ def near_miss_variants(lm, Q, min_prob):
     return out
 
 
-def stack(lm, Q, S, rounds, max_new, kl_min=1.0, min_group=0.1, log=print, explore=0.0):
+def stack(lm, Q, S, rounds, max_new, kl_min=1.0, min_group=0.1, log=print, explore=0.0, skip_done=True):
     """The whole loop: measure, pick the next group, build an edit, add it to the weights; at most `rounds` times.
     Returns (applied edits as a list of edits, one record per round).
 
     explore > 0: after the first edit, answers that start with the model's second most likely first token (when its
     probability is at least `explore`) are added to the answers that are followed. An edited model is less sure of its
     first token than the instructed model, and on new wordings it sometimes takes the runner-up (' {' or '{' for '{"');
-    without this the later edits have never seen what follows such a start."""
+    without this the later edits have never seen what follows such a start.
+
+    skip_done: a question whose own answer already reads exactly as the instructed model's answer is not targeted
+    (see next_points)."""
     applied, records = [], []
     Q = list(Q)
     n_base = len(Q)
+    text = lambda toks: lm.decode(strip(lm, toks)).strip()
+    teacher = {}
+    if skip_done:
+        with lm.original():
+            for q, t in zip(Q, lm.generate([q["ids1"] for q in Q], max_new)):
+                teacher[tuple(q["ids1"])] = text(t)
     for r in range(1, rounds + 1):
         if explore > 0 and r > 1:
             Q = Q[:n_base] + near_miss_variants(lm, Q[:n_base], explore)
             log(f"   round {r}: {len(Q) - n_base} answers with the runner-up first token added")
         info = measure(lm, Q, max_new, applied)
-        pts = next_points(info, kl_min, Q)
+        done = {qi for qi, q in enumerate(Q) if q.get("follow", True) and teacher.get(tuple(q["ids1"])) == text(info[qi]["own"])}
+        pts = next_points(info, kl_min, Q, done)
         groups = candidate_groups(lm, info, pts)
         n_follow = sum(q.get("follow", True) for q in Q[:n_base])
         rec = dict(round=r, own_answers=profile(info, kl_min), questions_with_an_untargeted_divergence=len(pts),
+                   questions_already_answered_as_the_instructed_model_answers=len(done) if skip_done else None,
                    candidate_groups=[{k: v for k, v in g.items() if k != "members"} for g in groups[:6]])
         records.append(rec)
+        if skip_done:
+            log(f"   round {r}: {len(done)} of {n_follow} questions are already answered as the instructed model answers them")
         for g in groups[:3]:
             log(f"   round {r} group ({g['kind']}): {g['size']} positions, median position {g['median_position']}, mean KL {g['kl_mean']:.2f}, "
                 f"shared fraction {g['shared_fraction']:.2f}, instructed wants {g['instructed_next_tokens'][:3]}, current writes {g['current_next_tokens'][:3]}")
