@@ -1,0 +1,58 @@
+{
+ "unedited": {
+  "n": 200,
+  "final_correct": 23,
+  "correct_number_written_in_thinking": 147,
+  "median_response_tokens": 32768.0,
+  "stop_at_first_phrase": {
+   "final answer/output/result": {
+    "found": 91,
+    "last_number_correct": 5
+   },
+   "looks solid/correct": {
+    "found": 74,
+    "last_number_correct": 49
+   },
+   "the answer is": {
+    "found": 97,
+    "last_number_correct": 33
+   },
+   "conclusion/formatting": {
+    "found": 47,
+    "last_number_correct": 10
+   },
+   "drafting": {
+    "found": 34,
+    "last_number_correct": 0
+   }
+  }
+ },
+ "p50c": {
+  "n": 200,
+  "final_correct": 122,
+  "correct_number_written_in_thinking": 155,
+  "median_response_tokens": 11201.5,
+  "stop_at_first_phrase": {
+   "final answer/output/result": {
+    "found": 162,
+    "last_number_correct": 23
+   },
+   "the answer is": {
+    "found": 144,
+    "last_number_correct": 30
+   },
+   "conclusion/formatting": {
+    "found": 92,
+    "last_number_correct": 11
+   },
+   "looks solid/correct": {
+    "found": 112,
+    "last_number_correct": 60
+   },
+   "drafting": {
+    "found": 29,
+    "last_number_correct": 4
+   }
+  }
+ }
+}

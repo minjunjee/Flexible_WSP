@@ -1,0 +1,30 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 8208.44it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[json] build done at 96s
+[json] where the model without the instruction parts ways with the instructed model (KL in nats; p = probability of the instructed model's token)
+[json] position group                n | KL no edit  KL pushes KL weights |  p instr p no edit  p pushes p weights
+[json] 1 answer start               20 |      17.41       1.01       1.08 |     0.86      0.00      0.53      0.50
+[json] 2 key name                   20 |       1.77       1.27       1.29 |     0.99      0.21      0.33      0.32
+[json] 3 punctuation after key      40 |       0.05       0.17       0.19 |     0.98      0.97      0.85      0.85
+[json] 4 content                    49 |       0.30       0.23       0.22 |     0.82      0.73      0.72      0.73
+[json] 5 closing brace              20 |       0.10       0.09       0.08 |     0.96      0.89      0.89      0.89
+[json] 6 end of answer              20 |       0.11       0.07       0.07 |     1.00      0.90      0.93      0.93
+[json] finished at 148s
+[brief] build done at 231s
+[brief] where the model without the instruction parts ways with the instructed model (KL in nats; p = probability of the instructed model's token)
+[brief] position group                n | KL no edit  KL pushes KL weights |  p instr p no edit  p pushes p weights
+[brief] 1 answer start               20 |       9.07       8.83       8.77 |     0.59      0.00      0.00      0.00
+[brief] 4 content                    20 |       0.81       0.40       0.44 |     0.82      0.61      0.71      0.71
+[brief] 6 end of answer              20 |       3.57       0.47       0.43 |     0.94      0.13      0.63      0.64
+[brief] condition              <=3 words  answer   both  ended median words
+[brief] no_edit                     0.00    0.80   0.00   0.00         20.0
+[brief] const_L13                   0.90    0.25   0.25   0.90          1.0
+[brief] const_L17                   0.65    0.25   0.20   0.60          1.5
+[brief] gate0_all24                 1.00    0.10   0.10   1.00          1.0
+[brief] baked_all24                 1.00    0.20   0.20   1.00          1.0
+[brief] instruction_in_prompt       1.00    0.75   0.75   1.00          1.0
+[brief] finished at 430s
+DONE
