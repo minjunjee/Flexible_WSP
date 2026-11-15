@@ -134,3 +134,13 @@ minjunjee가 발표용 숫자를 뽑은 뒤 후속 작업을 계속하라고 했
 - IWIBench에서 같은 문장 376개로 학습한 LoRA. Gemma 3 4B의 test split은 47 step과 141 step 모두 192/192에 점수 1.000이다. development split은 47 step이 157/192, 141 step이 192/192다. Qwen3.5-0.8B는 47 step이 development split 0/192, test split 192/192이고 141 step이 양쪽 다 192/192인데 통제 문항 유지가 0.68에서 0.75인 episode가 셋 있다.
 - 판단. test split에서 편집이 74/192로 무너진 것을 문장이 좁은 탓으로 볼 수 없게 됐다. 같은 문장으로 LoRA는 다 풀었다. gradient를 쓸 수 있는 설정이면 이 과제에 편집을 쓸 까닭이 없다. 편집의 자리는 gradient를 주지 않는 설정뿐이다.
 - Gemma 3 4B에서 LoRA는 episode 하나가 1분 안쪽이고 편집은 20분에서 30분이다. 편집 쪽 시간의 대부분은 layer마다 10,240차원 선형 방정식을 푸는 데 든다.
+
+### 편집이 test split에서 일반화하지 못한 까닭 (06:24 ~ 06:30)
+
+진단 셋을 돌렸다. 모두 test split의 첫 episode(key `subject`)이고, 채점 문항을 들여다본 것이라 진단으로만 쓴다.
+
+- `wsp/followup_gate_diagnostic.py`. key를 `resident`로 쓴 26문항에서 둘째 편집의 read vector가 key 자리에서 평균 0.96이다. 맞은 38문항도 0.96이다. 편집은 켜졌다. 일반 질문에서는 첫 편집의 read vector가 답 시작 자리에서 평균 0.50, 둘째 편집이 0.27이다. development split의 첫 episode에서는 0.47과 0.02였다.
+- `wsp/followup_scale_key_edit.py`. 둘째 편집에만 배수를 곱해 다시 채점했다. 1배 29/64, 1.5배 0/64, 2배 0/64, 3배 0/64이고 통제 문항 유지는 0.69, 0.39, 0.14, 0.00이다. 셋째 episode(key `profile_name`)도 45/64, 20/64, 0/64, 0/64다. 키우면 망가진다.
+- `wsp/followup_write_ceiling.py`. key 자리에서 `subject`의 logit에서 `resident`의 logit을 뺀 값. 편집이 없으면 −8.4, 1배면 틀린 문항 −0.9와 맞은 문항 +1.1, 1.5배 −4.7과 −1.7, 2배 −2.6과 −1.0, 3배 +6.3과 +6.6. MLP들이 residual에 더한 값의 길이는 배수와 상관없이 11,000에서 15,000이다.
+- 판단. 실패는 read vector가 아니라 더하는 쪽에 있다. 편집은 두 낱말을 비슷한 높이까지만 올리고, 기록에 든 낱말 하나로 결과가 갈린다. Gemma 3에서는 정규화 때문에 편집을 키우는 것이 더 세게 미는 일이 되지 않는다. 다음에 볼 것은 더할 vector를 편집용 문장마다 다르게 정하는 방법이다. 지금은 묶음의 평균 하나를 쓴다. 문맥에 따라 달라지는 값을 쓰려면 rank를 올려야 하고, 그러면 닫힌 식으로 푸는 작은 LoRA에 가까워진다.
+- 06:25에 기록 양식을 넓힌 문장 376개로 test split의 episode 둘을 다시 띄웠다. 문장은 새 agent가 논문의 과제 설명만 보고 썼고, 이번에는 기록의 양식을 넷으로 나눠 고르게 쓰라고 시켰다. test split에서 실패를 본 뒤에 낸 지시라는 점을 결과에 같이 적는다. `results/followup/prompts_wider_record_layouts.json`.

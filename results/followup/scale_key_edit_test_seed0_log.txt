@@ -1,0 +1,6 @@
+Loading weights:   0%|          | 0/883 [00:00<?, ?it/s]Loading weights:   0%|          | 1/883 [00:00<04:21,  3.37it/s]Loading weights:  24%|██▍       | 213/883 [00:00<00:00, 691.25it/s]Loading weights:  38%|███▊      | 338/883 [00:00<00:00, 748.86it/s]Loading weights:  50%|█████     | 444/883 [00:00<00:00, 766.61it/s]Loading weights: 100%|██████████| 883/883 [00:00<00:00, 1184.93it/s]
+edit 2 x 1.0: targets 29/64, retention 0.688, reward 0.312, nearby kept 26, general kept 40, JSON on general 17, JSON on prose requests 0; ['{"subject": "Dario Petrov"}', '{"resident": "Greta Rossi"}']
+edit 2 x 1.5: targets 0/64, retention 0.385, reward 0.000, nearby kept 12, general kept 25, JSON on general 18, JSON on prose requests 0; ['{"resident":subject_name:{"subject_name":"Petrov"}', '{"resident": Greta Rossi"}']
+edit 2 x 2.0: targets 0/64, retention 0.135, reward 0.000, nearby kept 0, general kept 13, JSON on general 18, JSON on prose requests 3; ['{"resident":subject"subject"subject"subject"subject"subject"', '{"resident":subject_":"Greta Rossi"}']
+edit 2 x 3.0: targets 0/64, retention 0.000, reward 0.000, nearby kept 0, general kept 0, JSON on general 13, JSON on prose requests 0; ['subjectsubjectsubjectsubjectsubjectsubjectsubjectsubjectsubj', 'subjectsubjectsubjectsubjectsubjectsubjectsubjectsubjectsubj']
+DONE

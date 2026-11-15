@@ -1,0 +1,20 @@
+Loading weights:   0%|          | 0/883 [00:00<?, ?it/s]Loading weights:   0%|          | 1/883 [00:00<03:40,  4.00it/s]Loading weights:  23%|██▎       | 199/883 [00:00<00:00, 719.13it/s]Loading weights:  36%|███▌      | 315/883 [00:00<00:00, 776.47it/s]Loading weights:  47%|████▋     | 417/883 [00:00<00:00, 824.02it/s]Loading weights: 100%|██████████| 883/883 [00:00<00:00, 1282.60it/s]
+targets: 38 start with the asked key, 26 do not
+   asked key: edit 1, mean read-vector value at answer positions 0..5: [1.03, 0.07, 0.02, 0.11, 0.14, 0.03]
+   asked key: edit 2, mean read-vector value at answer positions 0..5: [0.01, 0.96, 0.09, 0.12, 0.09, 0.08]
+   asked key: edit 3, mean read-vector value at answer positions 0..5: [-0.0, -0.0, 0.01, 0.0, -0.0, 0.0]
+   asked key: edit 4, mean read-vector value at answer positions 0..5: [-0.01, -0.0, 0.0, -0.0, -0.01, 0.0]
+   another key: edit 1, mean read-vector value at answer positions 0..5: [1.03, 0.07, 0.0, 0.18, 0.19, 0.02]
+   another key: edit 2, mean read-vector value at answer positions 0..5: [0.01, 0.96, 0.15, 0.12, 0.08, 0.08]
+   another key: edit 3, mean read-vector value at answer positions 0..5: [-0.0, -0.0, 0.01, 0.0, -0.0, -0.01]
+   another key: edit 4, mean read-vector value at answer positions 0..5: [-0.01, -0.0, -0.01, 0.01, 0.0, 0.01]
+   general questions: edit 1, mean read-vector value at answer positions 0..5: [0.5, 0.02, 0.02, -0.03, -0.01, -0.03]; share of items with position 0 above 0.5: 0.25
+   general questions: edit 2, mean read-vector value at answer positions 0..5: [-0.01, 0.27, 0.02, 0.11, 0.06, 0.05]; share of items with position 0 above 0.5: 0.00
+   general questions: edit 3, mean read-vector value at answer positions 0..5: [0.0, 0.0, 0.01, 0.0, 0.01, 0.01]; share of items with position 0 above 0.5: 0.00
+   general questions: edit 4, mean read-vector value at answer positions 0..5: [-0.01, 0.01, 0.11, 0.01, -0.01, -0.01]; share of items with position 0 above 0.5: 0.00
+   prose requests: edit 1, mean read-vector value at answer positions 0..5: [0.3, 0.0, -0.0, 0.0, 0.02, -0.0]; share of items with position 0 above 0.5: 0.00
+   prose requests: edit 2, mean read-vector value at answer positions 0..5: [-0.01, 0.06, 0.04, 0.01, 0.02, 0.08]; share of items with position 0 above 0.5: 0.00
+   prose requests: edit 3, mean read-vector value at answer positions 0..5: [-0.0, 0.0, 0.01, 0.0, 0.0, -0.02]; share of items with position 0 above 0.5: 0.00
+   prose requests: edit 4, mean read-vector value at answer positions 0..5: [-0.0, -0.0, 0.0, 0.01, -0.01, -0.01]; share of items with position 0 above 0.5: 0.00
+examples of another key: [(['{"', 'resident', '":', ' "'], [0.003, 0.964, 0.139]), (['{"', 'resident', '":', ' "'], [0.006, 0.965, 0.138]), (['{"', 'resident', '":', ' "'], [0.013, 0.956, 0.158]), (['{"', 'resident', '":', ' "'], [0.005, 0.963, 0.104])]
+DONE

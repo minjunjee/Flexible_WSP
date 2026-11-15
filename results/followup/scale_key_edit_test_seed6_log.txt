@@ -1,0 +1,6 @@
+Loading weights:   0%|          | 0/883 [00:00<?, ?it/s]Loading weights:   0%|          | 1/883 [00:00<04:10,  3.53it/s]Loading weights:  22%|██▏       | 198/883 [00:00<00:01, 660.08it/s]Loading weights:  35%|███▌      | 313/883 [00:00<00:00, 734.43it/s]Loading weights:  47%|████▋     | 415/883 [00:00<00:00, 756.50it/s]Loading weights:  96%|█████████▌| 849/883 [00:00<00:00, 1755.08it/s]Loading weights: 100%|██████████| 883/883 [00:00<00:00, 1173.47it/s]
+edit 2 x 1.0: targets 45/64, retention 0.958, reward 0.674, nearby kept 29, general kept 63, JSON on general 1, JSON on prose requests 0; ['{"resident_name": "Esme Kovac"}', '{"profile_name": "Amira Novak"}']
+edit 2 x 1.5: targets 20/64, retention 0.552, reward 0.173, nearby kept 0, general kept 53, JSON on general 2, JSON on prose requests 0; ['{"resident_name": "Esme Kovac"}', '{"profile_name":Amira Novak"}']
+edit 2 x 2.0: targets 0/64, retention 0.219, reward 0.000, nearby kept 0, general kept 21, JSON on general 18, JSON on prose requests 0; ['{"profile_name":profile_name="resident_name"}', '{"profile_name":Amira Novak"}']
+edit 2 x 3.0: targets 0/64, retention 0.000, reward 0.000, nearby kept 0, general kept 0, JSON on general 14, JSON on prose requests 1; ['{"profile":namenameprofile"profile"name"""""""""""""""""""""', '```Amprofilenamenamenamenamenamenamenamenamenamenamenamename']
+DONE

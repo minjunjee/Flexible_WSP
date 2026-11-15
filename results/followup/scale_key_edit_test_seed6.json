@@ -1,0 +1,69 @@
+{
+ "run": "results/iwibench/gemma3-4b_episodes_first_run_after_freezing_the_procedure/seed6_test",
+ "seed": 6,
+ "split": "test",
+ "scaled_edit": 2,
+ "n_edits": 4,
+ "factors": {
+  "1.0": {
+   "targets": 45,
+   "n_targets": 64,
+   "retention": 0.9583333333333334,
+   "reward": 0.673828125,
+   "nearby_kept": 29,
+   "general_kept": 63,
+   "general_answered_with_json": 1,
+   "prose_requests_answered_with_json": 0,
+   "examples": [
+    "{\"resident_name\": \"Esme Kovac\"}",
+    "{\"profile_name\": \"Amira Novak\"}",
+    "{\"profile_name\": \"Dario Petrov\"}"
+   ]
+  },
+  "1.5": {
+   "targets": 20,
+   "n_targets": 64,
+   "retention": 0.5520833333333334,
+   "reward": 0.17252604166666669,
+   "nearby_kept": 0,
+   "general_kept": 53,
+   "general_answered_with_json": 2,
+   "prose_requests_answered_with_json": 0,
+   "examples": [
+    "{\"resident_name\": \"Esme Kovac\"}",
+    "{\"profile_name\":Amira Novak\"}",
+    "{\"profile_name\": \"Dario Petrov\"}"
+   ]
+  },
+  "2.0": {
+   "targets": 0,
+   "n_targets": 64,
+   "retention": 0.21875,
+   "reward": 0.0,
+   "nearby_kept": 0,
+   "general_kept": 21,
+   "general_answered_with_json": 18,
+   "prose_requests_answered_with_json": 0,
+   "examples": [
+    "{\"profile_name\":profile_name=\"resident_name\"}",
+    "{\"profile_name\":Amira Novak\"}",
+    "{\"profile_name\":profile_name_resident_name\"}"
+   ]
+  },
+  "3.0": {
+   "targets": 0,
+   "n_targets": 64,
+   "retention": 0.0,
+   "reward": 0.0,
+   "nearby_kept": 0,
+   "general_kept": 0,
+   "general_answered_with_json": 14,
+   "prose_requests_answered_with_json": 1,
+   "examples": [
+    "{\"profile\":namenameprofile\"profile\"name\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
+    "```Amprofilenamenamenamenamenamenamenamenamenamenamenamename",
+    "profilenamenameprofileprofileprofileprofileprofileprofilepro"
+   ]
+  }
+ }
+}

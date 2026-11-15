@@ -55,6 +55,45 @@ LoRA의 학습 시간은 episode마다 Gemma 3 4B에서 47 step에 10초쯤, 141
 | Qwen3.5-0.8B, test, LoRA, lr 1e-4, 1 epoch (47 step) | 0, 0, 0 |
 | Qwen3.5-0.8B, test, LoRA, lr 1e-3, 3 epoch (141 step) | 0, 0, 0 |
 
+## 표 3. test split에서 틀린 문항에서 편집은 켜졌는가
+
+Gemma 3 4B, test split의 첫 episode(key는 `subject`). 편집된 모델로 목표 문항 64개에 다시 답하게 하고, 답의 자리마다 각 편집의 read vector 값을 쟀다. 자리 0은 답 시작 자리이고 자리 1은 key 이름을 쓰는 자리다. 코드는 `wsp/followup_gate_diagnostic.py`다.
+
+| 문항 | 수 | 첫 편집의 read vector, 자리 0 | 둘째 편집의 read vector, 자리 1 |
+| --- | --- | --- | --- |
+| key를 `subject`로 쓴 문항 | 38 | 1.03 | 0.96 |
+| key를 다른 낱말로 쓴 문항 | 26 | 1.03 | 0.96 |
+| 일반 질문 | 64 | 0.50 | 0.27 |
+| 산문으로 답하라는 문항 | 8 | 0.30 | 0.06 |
+
+## 표 4. key 이름을 쓰는 편집을 키우면 고쳐지는가
+
+같은 실행의 편집을 다시 넣되 둘째 편집에만 배수를 곱하고 episode를 다시 채점했다. 채점 문항으로 배수를 들여다본 것이므로 실패의 원인을 보는 진단이고, 배수를 고르는 방법이 아니다. 코드는 `wsp/followup_scale_key_edit.py`다.
+
+| episode | 배수 | 목표 문항 | 통제 문항 유지 | 첫 목표 문항의 답 |
+| --- | --- | --- | --- | --- |
+| test split, seed 0, key는 `subject` | 1.0 | 29/64 | 0.69 | `{"resident": "Greta Rossi"}` |
+| test split, seed 0, key는 `subject` | 1.5 | 0/64 | 0.39 | `{"resident": Greta Rossi"}` |
+| test split, seed 0, key는 `subject` | 2.0 | 0/64 | 0.14 | `{"resident":subject_":"Greta Rossi"}` |
+| test split, seed 0, key는 `subject` | 3.0 | 0/64 | 0.00 | `subjectsubjectsubjectsubjectsubjectsubjectsu` |
+| test split, seed 6, key는 `profile_name` | 1.0 | 45/64 | 0.96 | `{"profile_name": "Amira Novak"}` |
+| test split, seed 6, key는 `profile_name` | 1.5 | 20/64 | 0.55 | `{"profile_name":Amira Novak"}` |
+| test split, seed 6, key는 `profile_name` | 2.0 | 0/64 | 0.22 | `{"profile_name":Amira Novak"}` |
+| test split, seed 6, key는 `profile_name` | 3.0 | 0/64 | 0.00 | ````Amprofilenamenamenamenamenamenamenamename` |
+
+## 표 5. key 이름을 쓰는 자리에서 편집이 logit을 얼마나 옮기는가
+
+같은 episode에서 편집된 모델이 key를 `resident`로 쓴 문항 16개와 `subject`로 쓴 문항 16개. `{"` 바로 뒤의 자리에서 `subject`의 logit에서 `resident`의 logit을 뺀 값이다. 0보다 커야 `subject`가 이긴다. 배수는 둘째 편집에만 곱했다. 코드는 `wsp/followup_write_ceiling.py`다.
+
+| 둘째 편집의 배수 | key를 `resident`로 쓴 문항 | key를 `subject`로 쓴 문항 | MLP들이 residual에 더한 값의 길이 |
+| --- | --- | --- | --- |
+| 0.0 | -8.4 | -8.3 | 15,274 |
+| 0.5 | -1.6 | -0.7 | 11,803 |
+| 1.0 | -0.9 | +1.1 | 11,134 |
+| 1.5 | -4.7 | -1.7 | 11,354 |
+| 2.0 | -2.6 | -1.0 | 12,066 |
+| 3.0 | +6.3 | +6.6 | 13,044 |
+
 ## 읽는 법
 
 **같은 문장으로 학습한 LoRA는 본 적 없는 episode에서도 다 풀었다.** Gemma 3 4B의 test split에서 LoRA는 두 설정 모두 192문제를 다 풀고 통제 문항도 전부 지켰다. 편집은 같은 episode 셋에서 74문제였다. 그러니 test split에서 편집이 무너진 것을 문장 376개가 그 양식을 덮지 못한 탓으로 돌릴 수 없다. 같은 문장에서 LoRA는 일반화했고 편집은 하지 못했다.
@@ -66,4 +105,12 @@ LoRA의 학습 시간은 episode마다 Gemma 3 4B에서 47 step에 10초쯤, 141
 **계산 시간도 LoRA가 짧다.** Gemma 3 4B에서 LoRA 학습은 10초에서 100초이고 편집은 episode 하나에 20분에서 30분이다.
 
 그래서 이 결과가 말해 주는 것은 이렇다. gradient를 쓸 수 있으면 이 과제에는 LoRA가 맞다. 조건부 편집이 뜻을 갖는 것은 IWIBench처럼 gradient와 optimiser를 주지 않는 설정 안에서이고, 거기서도 본 적 없는 기록 양식과 token 여러 개짜리 key에서는 무너진다.
+
+**편집이 test split에서 일반화하지 못한 까닭.** 표 3에서 표 5까지가 그 진단이다.
+
+- 틀린 문항에서도 편집은 켜졌다. key를 `resident`로 쓴 26문항에서 둘째 편집의 read vector는 key를 쓰는 자리에서 평균 0.96이다. 맞은 38문항과 같다. 그러니 실패는 read vector 쪽이 아니다.
+- 편집이 만드는 여유가 작다. key를 쓰는 자리에서 편집이 없으면 `subject`가 `resident`보다 8.4 nat 낮다. 편집을 넣으면 맞은 문항에서 +1.1, 틀린 문항에서 −0.9가 된다. 편집은 두 낱말을 거의 같은 높이까지만 끌어올리고, 어느 쪽이 이기는지는 문항마다 1 nat 안팎의 차이로 갈린다. test split의 기록에는 `Resident:`라는 항목 이름이 적혀 있어서 그 낱말이 강한 경쟁자가 된다.
+- 편집을 키워서는 고쳐지지 않는다. 배수 1.5와 2에서는 그 차이가 오히려 나빠지고, 배수 3에서 +6.3으로 뒤집히지만 그때는 모델이 망가져서 목표 문항이 0/64다. Gemma 3는 MLP 출력을 정규화한 뒤 residual에 더하므로, 정규화 앞에 더하는 vector를 키워도 residual에 닿는 값의 길이는 늘지 않는다. 표 5의 마지막 열에서 그 길이는 배수와 상관없이 11,000에서 15,000이다. 편집은 MLP가 더하는 값에 얹히는 것이 아니라 그 값의 방향을 바꾼다. 그래서 배수가 "더 세게 미는" 손잡이로 작동하지 않는다.
+
+같은 문장으로 학습한 LoRA는 이 episode를 다 풀었다. LoRA는 모든 자리의 MLP 출력을 문맥에 따라 다르게 고치고, 편집은 자리마다 정해진 vector 하나를 더한다는 것이 차이다.
 

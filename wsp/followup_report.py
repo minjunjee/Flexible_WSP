@@ -76,6 +76,37 @@ for model, split, method, folder in ROWS:
     if b:
         w(f"| {model}, {split}, {method} | {', '.join(str(x['prose_requests_answered_with_json']) for x in b)} |")
 w("")
+w("## 표 3. test split에서 틀린 문항에서 편집은 켜졌는가\n")
+w("Gemma 3 4B, test split의 첫 episode(key는 `subject`). 편집된 모델로 목표 문항 64개에 다시 답하게 하고, 답의 자리마다 각 편집의 read vector 값을 쟀다. 자리 0은 답 시작 자리이고 자리 1은 key 이름을 쓰는 자리다. 코드는 `wsp/followup_gate_diagnostic.py`다.\n")
+if os.path.exists("results/followup/gates_test_seed0.json"):
+    import numpy as np
+    G = json.load(open("results/followup/gates_test_seed0.json"))
+    t = [o for o in G if o["kind"] == "target"]
+    grp = {"key를 `subject`로 쓴 문항": [o for o in t if o["text"].startswith('{"subject"')], "key를 다른 낱말로 쓴 문항": [o for o in t if not o["text"].startswith('{"subject"')],
+           "일반 질문": [o for o in G if o["kind"] == "general"], "산문으로 답하라는 문항": [o for o in G if o["kind"] == "override"]}
+    w("| 문항 | 수 | 첫 편집의 read vector, 자리 0 | 둘째 편집의 read vector, 자리 1 |\n| --- | --- | --- | --- |")
+    for name, g in grp.items():
+        v1 = np.mean([o["gates_first_positions"][0][0] for o in g])
+        v2 = np.mean([o["gates_first_positions"][1][1] for o in g if len(o["gates_first_positions"][1]) > 1])
+        w(f"| {name} | {len(g)} | {v1:.2f} | {v2:.2f} |")
+    w("")
+w("## 표 4. key 이름을 쓰는 편집을 키우면 고쳐지는가\n")
+w("같은 실행의 편집을 다시 넣되 둘째 편집에만 배수를 곱하고 episode를 다시 채점했다. 채점 문항으로 배수를 들여다본 것이므로 실패의 원인을 보는 진단이고, 배수를 고르는 방법이 아니다. 코드는 `wsp/followup_scale_key_edit.py`다.\n")
+w("| episode | 배수 | 목표 문항 | 통제 문항 유지 | 첫 목표 문항의 답 |\n| --- | --- | --- | --- | --- |")
+for name, f in (("test split, seed 0, key는 `subject`", "results/followup/scale_key_edit_test_seed0.json"), ("test split, seed 6, key는 `profile_name`", "results/followup/scale_key_edit_test_seed6.json")):
+    if os.path.exists(f):
+        for k, v in json.load(open(f))["factors"].items():
+            w(f"| {name} | {k} | {v['targets']}/{v['n_targets']} | {v['retention']:.2f} | `{v['examples'][1][:44]}` |")
+w("")
+w("## 표 5. key 이름을 쓰는 자리에서 편집이 logit을 얼마나 옮기는가\n")
+w("같은 episode에서 편집된 모델이 key를 `resident`로 쓴 문항 16개와 `subject`로 쓴 문항 16개. `{\"` 바로 뒤의 자리에서 `subject`의 logit에서 `resident`의 logit을 뺀 값이다. 0보다 커야 `subject`가 이긴다. 배수는 둘째 편집에만 곱했다. 코드는 `wsp/followup_write_ceiling.py`다.\n")
+if os.path.exists("results/followup/write_ceiling_test_seed0.json"):
+    C = json.load(open("results/followup/write_ceiling_test_seed0.json"))
+    names = list(C)
+    w("| 둘째 편집의 배수 | key를 `resident`로 쓴 문항 | key를 `subject`로 쓴 문항 | MLP들이 residual에 더한 값의 길이 |\n| --- | --- | --- | --- |")
+    for f in C[names[0]]:
+        w(f"| {f} | {C[names[0]][f]['mean_logit_gap_asked_minus_other']:+.1f} | {C[names[1]][f]['mean_logit_gap_asked_minus_other']:+.1f} | {C[names[0]][f]['mean_length_of_what_the_mlps_add']:,.0f} |")
+w("")
 if os.path.exists("results/followup/tables_text.md"):
     w(open("results/followup/tables_text.md").read())
 os.makedirs("results/followup", exist_ok=True)

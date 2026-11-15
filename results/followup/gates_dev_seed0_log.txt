@@ -1,0 +1,13 @@
+Loading weights:   0%|          | 0/883 [00:00<?, ?it/s]Loading weights:   0%|          | 1/883 [00:00<03:51,  3.80it/s]Loading weights:  24%|██▍       | 211/883 [00:00<00:00, 723.96it/s]Loading weights:  37%|███▋      | 327/883 [00:00<00:00, 809.72it/s]Loading weights:  49%|████▉     | 434/883 [00:00<00:00, 807.68it/s]Loading weights: 100%|██████████| 883/883 [00:00<00:00, 1274.59it/s]
+targets: 64 start with the asked key, 0 do not
+   asked key: edit 1, mean read-vector value at answer positions 0..5: [0.9, 0.08, 0.02, 0.0, 0.01, 0.01]
+   asked key: edit 2, mean read-vector value at answer positions 0..5: [0.01, 0.95, 0.01, -0.01, 0.03, 0.0]
+   asked key: edit 3, mean read-vector value at answer positions 0..5: [0.0, 0.0, 0.0, -0.0, 0.0, -0.0]
+   general questions: edit 1, mean read-vector value at answer positions 0..5: [0.47, 0.01, 0.02, 0.0, 0.0, 0.02]; share of items with position 0 above 0.5: 0.25
+   general questions: edit 2, mean read-vector value at answer positions 0..5: [-0.01, 0.02, 0.04, 0.02, 0.0, 0.01]; share of items with position 0 above 0.5: 0.00
+   general questions: edit 3, mean read-vector value at answer positions 0..5: [0.02, 0.02, 0.16, 0.21, 0.18, 0.02]; share of items with position 0 above 0.5: 0.00
+   prose requests: edit 1, mean read-vector value at answer positions 0..5: [0.34, 0.01, 0.0, 0.0, -0.01, -0.0]; share of items with position 0 above 0.5: 0.00
+   prose requests: edit 2, mean read-vector value at answer positions 0..5: [0.0, -0.01, -0.03, 0.01, -0.01, -0.01]; share of items with position 0 above 0.5: 0.00
+   prose requests: edit 3, mean read-vector value at answer positions 0..5: [-0.0, -0.0, -0.0, 0.01, 0.0, 0.0]; share of items with position 0 above 0.5: 0.00
+examples of another key: []
+DONE

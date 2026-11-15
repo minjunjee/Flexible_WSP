@@ -8,4 +8,4 @@ split=$3
 B=results/iwibench/${OUT_NAME:-gemma3-4b_episodes_first_run_after_freezing_the_procedure}/seed${s}_${split}
 mkdir -p "$B"
 nohup .venv/bin/python -m wsp.iwibench_structured --model gemma3-4b --no_fences --seeds "$s" --split "$split" --out "$B" ${EXTRA:-} \
-    --prompt_file results/E4/E4a_prompts_written_without_seeing_the_benchmark_code.json > "$B/log.txt" 2>&1 &
+    --prompt_file "${PROMPTS:-results/E4/E4a_prompts_written_without_seeing_the_benchmark_code.json}" > "$B/log.txt" 2>&1 &
