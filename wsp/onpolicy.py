@@ -60,7 +60,8 @@ def measure(lm, Q, max_new, applied=()):
     """Q: dicts with ids0 (prompt) and ids1 (prompt with the instruction). Rolls out the current model and compares it
     with the instructed model on every position of its own answer. applied: the edits already in the weights (a list
     of edits); a position where one of their read vectors is above 0.5 is marked as taken."""
-    own = [strip(lm, t) for t in lm.generate([q["ids0"] for q in Q], max_new)]
+    # an entry may carry "prefix": answer tokens that are forced before the model continues (see `explore` in stack)
+    own = [q.get("prefix", []) + strip(lm, t) for q, t in zip(Q, lm.generate([q["ids0"] + q.get("prefix", []) for q in Q], max_new))]
     info = []
     for q, o in zip(Q, own):
         lp1, r1 = aligned(lm, q["ids1"], o, original=True)
@@ -175,11 +176,36 @@ def profile(info, kl_min):
                 mean_kl_elsewhere=float(np.mean([float(x["kl"][1:].mean()) for x in info if len(x["kl"]) > 1])))
 
 
-def stack(lm, Q, S, rounds, max_new, kl_min=1.0, min_group=0.1, log=print):
+def near_miss_variants(lm, Q, min_prob):
+    """For every prompt, the second most likely first answer token of the current model, when its probability is at
+    least min_prob. Returned as extra entries whose answer is forced to start with that token."""
+    out = []
+    for q in Q:
+        if "prefix" in q:
+            continue
+        p = lm.logprobs(q["ids0"])[-1].exp()
+        top = p.topk(2)
+        t = int(top.indices[1])
+        if float(top.values[1]) >= min_prob and t not in lm.end_ids:
+            out.append(dict(ids0=q["ids0"], ids1=q["ids1"], prefix=[t]))
+    return out
+
+
+def stack(lm, Q, S, rounds, max_new, kl_min=1.0, min_group=0.1, log=print, explore=0.0):
     """The whole loop: measure, pick the next group, build an edit, add it to the weights; at most `rounds` times.
-    Returns (applied edits as a list of edits, one record per round)."""
+    Returns (applied edits as a list of edits, one record per round).
+
+    explore > 0: after the first edit, answers that start with the model's second most likely first token (when its
+    probability is at least `explore`) are added to the answers that are followed. An edited model is less sure of its
+    first token than the instructed model, and on new wordings it sometimes takes the runner-up (' {' or '{' for '{"');
+    without this the later edits have never seen what follows such a start."""
     applied, records = [], []
+    Q = list(Q)
+    n_base = len(Q)
     for r in range(1, rounds + 1):
+        if explore > 0 and r > 1:
+            Q = Q[:n_base] + near_miss_variants(lm, Q[:n_base], explore)
+            log(f"   round {r}: {len(Q) - n_base} answers with the runner-up first token added")
         info = measure(lm, Q, max_new, applied)
         pts = next_points(info, kl_min)
         groups = candidate_groups(lm, info, pts)
@@ -189,7 +215,7 @@ def stack(lm, Q, S, rounds, max_new, kl_min=1.0, min_group=0.1, log=print):
         for g in groups[:3]:
             log(f"   round {r} group ({g['kind']}): {g['size']} positions, median position {g['median_position']}, mean KL {g['kl_mean']:.2f}, "
                 f"shared fraction {g['shared_fraction']:.2f}, instructed wants {g['instructed_next_tokens'][:3]}, current writes {g['current_next_tokens'][:3]}")
-        if not groups or groups[0]["size"] < min_group * len(Q):
+        if not groups or groups[0]["size"] < min_group * n_base:
             rec["stopped"] = "no group is large enough"
             break
         edits, stats, members = build_edit(lm, Q, info, groups[0]["members"], S, max_new, kl_min, pts)

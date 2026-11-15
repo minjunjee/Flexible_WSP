@@ -39,6 +39,7 @@ ap.add_argument("--model", default="qwen35-0.8b")
 ap.add_argument("--out", required=True)
 ap.add_argument("--seeds", default="0,3,6", help="episode seeds; 0,3,6 are the three episodes of the published protocol")
 ap.add_argument("--rounds", type=int, default=4)
+ap.add_argument("--explore", type=float, default=0.0, help="also follow answers that start with the runner-up first token (see onpolicy.stack)")
 ap.add_argument("--prompts", default="small", choices=["small", "wide"])
 ap.add_argument("--prompt_file", help="our prompts from a JSON file (list of dicts with kind and prompt) instead of the built-in sets")
 ap.add_argument("--split", default="development", choices=["development", "test"])
@@ -156,7 +157,7 @@ for seed in [int(s) for s in args.seeds.split(",")]:
     else:
         ours = our_prompts_wide(ep) if args.prompts == "wide" else our_prompts(ep)
     Q = [dict(ids0=lm.prompt_ids(p["prompt"]), ids1=lm.prompt_ids(p["prompt"], instruction if p["kind"] == "extraction" else None)) for p in ours]
-    applied, records = onpolicy.stack(lm, Q, S, args.rounds, args.build_new, log=log)
+    applied, records = onpolicy.stack(lm, Q, S, args.rounds, args.build_new, log=log, explore=args.explore)
     onpolicy.save_applied(f"{args.out}/edits_seed{seed}.npz", applied)
     edited = dict(zip([i["id"] for i in items], answers(prompts)))
 

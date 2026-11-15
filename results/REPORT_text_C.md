@@ -5,3 +5,10 @@
 E4a는 지시서와 다르게 했다. 서버에 OpenAI key가 없어서 GPT API 대신 새로 띄운 Claude agent에게 시켰다. 이 agent에게는 IWIBench 논문 2.2.6절의 과제 설명, 논문 표의 한 줄, episode의 목표 문장만 줬고 파일을 읽지 말라고 했다. 받은 376개는 이름 추출 192개, 산문을 요구하는 이름 추출 64개, 일반 질문 120개다. 중복은 없었고, 사람 이름이 채점 문항의 이름과 겹쳐서 뺀 것도 없었다. 가장 가까운 문장 쌍은 `results/E4/E4a_leak_check.json`에 있다.
 
 참고로 대조 실험을 하나 더 돌렸다. 코드를 본 뒤 쓴 문형에서 채점 문항의 낱말인 Extract, note, Which, profile을 빼고 다시 만든 편집이다. 이 경우는 세 episode에서 192문항 중 187문항을 맞혔다.
+
+episode 2에서 4문항만 맞은 까닭도 봤다. 이 episode의 기록은 "A resident named Felix Parker has a home in Dublin. Their occupation is gardening." 꼴이다. 편집된 모델은 여기서 `Felix Parker`라고만 답했다. 답 시작 자리의 편집이 켜지지 않은 것이다. 코드를 본 뒤 쓴 문형으로 만든 편집은 같은 문항 64개를 다 맞혔다. 그러니 episode 1의 실패와 episode 2의 실패는 종류가 다르다. 앞의 것은 편집이 켜졌지만 첫 token이 어긋난 것이고, 뒤의 것은 처음 보는 기록 꼴에서 편집이 아예 켜지지 않은 것이다.
+
+지시서 밖에서 두 가지를 더 해 봤다. 둘 다 기준을 넘기지는 못했다.
+
+- 답 시작 자리의 편집을 1.25배에서 3배로 키웠다. 이름을 뽑는 문장에서 지시문 있는 모델과 같은 답이 80%에서 92%로 늘었지만, 다른 문장에서 원래 모델과 같은 답이 50%에서 7%로 줄었다. 우리 문장으로 고른 배율은 1배 그대로였다. `results/E4/extra_scaled_first_edit.json`.
+- 편집된 모델이 둘째로 유력하게 보는 첫 token으로 시작하는 답도 따라가며 편집을 쌓았다. episode 1이 34/64에서 39/64가 됐고 episode 2는 4/64 그대로다. `results/E4/extra_explore_qwen35-0.8b/`.

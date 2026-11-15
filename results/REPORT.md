@@ -153,6 +153,13 @@ E4a는 지시서와 다르게 했다. 서버에 OpenAI key가 없어서 GPT API 
 
 참고로 대조 실험을 하나 더 돌렸다. 코드를 본 뒤 쓴 문형에서 채점 문항의 낱말인 Extract, note, Which, profile을 빼고 다시 만든 편집이다. 이 경우는 세 episode에서 192문항 중 187문항을 맞혔다.
 
+episode 2에서 4문항만 맞은 까닭도 봤다. 이 episode의 기록은 "A resident named Felix Parker has a home in Dublin. Their occupation is gardening." 꼴이다. 편집된 모델은 여기서 `Felix Parker`라고만 답했다. 답 시작 자리의 편집이 켜지지 않은 것이다. 코드를 본 뒤 쓴 문형으로 만든 편집은 같은 문항 64개를 다 맞혔다. 그러니 episode 1의 실패와 episode 2의 실패는 종류가 다르다. 앞의 것은 편집이 켜졌지만 첫 token이 어긋난 것이고, 뒤의 것은 처음 보는 기록 꼴에서 편집이 아예 켜지지 않은 것이다.
+
+지시서 밖에서 두 가지를 더 해 봤다. 둘 다 기준을 넘기지는 못했다.
+
+- 답 시작 자리의 편집을 1.25배에서 3배로 키웠다. 이름을 뽑는 문장에서 지시문 있는 모델과 같은 답이 80%에서 92%로 늘었지만, 다른 문장에서 원래 모델과 같은 답이 50%에서 7%로 줄었다. 우리 문장으로 고른 배율은 1배 그대로였다. `results/E4/extra_scaled_first_edit.json`.
+- 편집된 모델이 둘째로 유력하게 보는 첫 token으로 시작하는 답도 따라가며 편집을 쌓았다. episode 1이 34/64에서 39/64가 됐고 episode 2는 4/64 그대로다. `results/E4/extra_explore_qwen35-0.8b/`.
+
 ## E0. 편집을 빼면 원래 가중치로 돌아가는가
 
 JSON 지시문의 편집 둘을 `down_proj` 행렬 24개에 더한 뒤 같은 순서로 뺐다. 원소는 모두 88,080,384개다.

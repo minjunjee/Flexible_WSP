@@ -61,6 +61,17 @@ def fit_read_vector(H, y, lam):
     return torch.linalg.solve(C + reg * torch.eye(len(C), dtype=C.dtype, device=C.device), H.T @ y).float()
 
 
+def _gram(H, y):
+    """(H^T H, H^T y, mean squared row norm) in float64, for the primal form of the ridge regression"""
+    H, y = H.double(), y.double()
+    return H.T @ H, H.T @ y, H.pow(2).sum(1).mean()
+
+
+def _solve(gram, lam):
+    C, b, scale = gram
+    return torch.linalg.solve(C + lam * scale * torch.eye(len(C), dtype=C.dtype, device=C.device), b).float()
+
+
 def collect(lm, seqs, layers):
     """seqs: dicts with q (question index), ids, adds [(layer, position, vector)], targets (positions that get label 1)
     and optionally ignore (positions left out of the fit). Returns H {layer: [N, d_mlp]}, y [N], q [N] over the
@@ -93,8 +104,11 @@ def fit_gates(H, y, q, lams=(1e-3, 1e-2, 1e-1), held_fraction=0.25):
     for l, Hl in H.items():
         Hl = Hl.to(y.device)
         best = None
+        # with more positions than MLP neurons the same matrix H^T H serves every ridge strength: build it once
+        primal = int(tr.sum()) > Hl.shape[1]
+        gram_tr = _gram(Hl[tr], y[tr]) if primal else None
         for lam in lams:
-            g = Hl[~tr] @ fit_read_vector(Hl[tr], y[tr], lam)
+            g = Hl[~tr] @ (_solve(gram_tr, lam) if primal else fit_read_vector(Hl[tr], y[tr], lam))
             pos, neg = g[y[~tr] == 1], g[y[~tr] == 0]
             if len(pos) == 0 or len(neg) == 0:                   # too few questions to hold any out: keep the middle strength
                 best = dict(layer=l, lam=lams[len(lams) // 2], target_mean=float("nan"), target_min=float("nan"),
@@ -105,7 +119,7 @@ def fit_gates(H, y, q, lams=(1e-3, 1e-2, 1e-1), held_fraction=0.25):
                      margin=float(pos.min() - neg.abs().max()))
             if best is None or r["margin"] > best["margin"]:
                 best = r
-        V[l] = fit_read_vector(Hl, y, best["lam"])
+        V[l] = _solve(_gram(Hl, y), best["lam"]) if Hl.shape[0] > Hl.shape[1] else fit_read_vector(Hl, y, best["lam"])
         stats.append(best)
     return V, stats
 

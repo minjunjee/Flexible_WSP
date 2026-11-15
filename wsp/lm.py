@@ -36,6 +36,8 @@ class LM:
         float32: with bfloat16 arithmetic the greedy output of this model changed with the batch size in about one
         answer out of ten. Edited weights are still rounded to bfloat16 values, as a saved checkpoint would hold them."""
         spec = MODELS[name]
+        # the server is shared: without a limit every process starts one CPU thread per core
+        torch.set_num_threads(int(os.environ.get("WSP_THREADS", "8")))
         self.name, self.device, self.template = name, device, dict(spec["template"])
         rev = dict(revision=spec["revision"]) if "revision" in spec else {}
         self.tok = AutoTokenizer.from_pretrained(spec["path"], **rev)
