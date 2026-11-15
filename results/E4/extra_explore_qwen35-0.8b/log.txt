@@ -62,3 +62,9 @@
 [ 1381s]    round 2 group (same next token for the instructed model): 33 positions, median position 12.0, mean KL 2.25, shared fraction 0.56, instructed wants [['\n\n', 33]], current writes [['<|im_end|>', 13], [' It', 9], ['\n', 4]]
 [ 1489s]    round 2: edit built for 221 positions (group had 221); fit {'target_mean': 0.8627310246229172, 'target_min': 0.3638392388820648, 'other_max_abs': 0.8894057869911194}
 [ 1496s]    round 3: 233 answers with the runner-up first token added
+[ 1541s]    round 3 group (same next token for the instructed model): 34 positions, median position 12.0, mean KL 2.29, shared fraction 0.54, instructed wants [['\n\n', 34]], current writes [['<|im_end|>', 14], [' It', 9], ['\n', 4]]
+[ 1541s]    round 3 group (same next token for the instructed model): 30 positions, median position 12.0, mean KL 2.55, shared fraction 0.71, instructed wants [['"', 30]], current writes [['",', 30]]
+[ 1541s]    round 3 group (similar direction of the hidden-state difference): 30 positions, median position 12.0, mean KL 2.55, shared fraction 0.71, instructed wants [['"', 30]], current writes [['",', 30]]
+[ 1542s] seed 6: edited targets 61/64 (base 0.00), retention 0.9666666666666667, reward 0.9213541666666667; controls {'targets': {'count': 64, 'base_successes': 0, 'successes': 61, 'retained': 0}, 'nearby_controls': {'count': 32, 'base_successes': 0, 'successes': 32, 'retained': 0}, 'general_controls': {'count': 64, 'base_successes': 60, 'successes': 59, 'retained': 58}, 'override_controls': {'count': 8, 'base_successes': 0, 'successes': 0, 'retained': 0}}; instruction in the prompt: targets 64/64, retention 0.0
+[ 1542s] all episodes: edited targets 104/192; mean reward 0.519
+[ 1542s] DONE
