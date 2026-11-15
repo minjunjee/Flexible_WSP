@@ -15,7 +15,8 @@
 | `gemma3-4b_before_restricting_targets/` | Gemma 3 4B, 세기 2배. 편집이 겨냥하는 자리를 제한하기 전의 절차다. 코드를 보지 않은 다른 모델이 쓴 376개로 episode 셋, 코드를 읽은 뒤 쓴 376개로 episode 하나 |
 | `gemma3-4b_prompts_written_without_seeing_the_code/` | Gemma 3 4B, 세기 2배, 코드를 보지 않은 다른 모델이 쓴 376개. 원래 모델을 따라야 하는 문장은 겨냥하지 않도록 고친 절차다 |
 | `gemma3-4b_solved_questions_not_targeted/` | 위 절차에 규칙을 하나 더했다. 이미 지시문 있는 모델과 글자까지 같은 답을 내는 질문은 겨냥하지 않는다 |
-| `gemma3-4b_episodes_first_run_after_freezing_the_procedure/` | 절차를 고치는 동안 본 적이 없는 episode에서 처음 돌린 결과 |
+| `gemma3-4b_episodes_first_run_after_freezing_the_procedure/` | 절차를 고치는 동안 본 적이 없는 episode에서 처음 돌린 결과. 벤치의 test split에서 이름을 뽑는 episode 셋(seed 0, 3, 6)이고, 절차는 바로 위 줄의 것이다 |
+| `gemma3-4b_test_split_without_the_added_rule/` | test split의 첫 episode를, 규칙을 더하기 전의 절차로 돌린 것 |
 | `../E4/E4b_qwen35-0.8b/` | 코드를 보지 않은 다른 모델이 쓴 376개 |
 | `../E4/E4b_qwen35-0.8b_targets_restricted/` | 같은 문장으로, Gemma에서 고친 절차(겨냥하는 자리 제한)를 Qwen3.5-0.8B에 다시 돌린 것 |
 

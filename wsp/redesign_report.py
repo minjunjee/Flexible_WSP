@@ -143,7 +143,8 @@ for model, name, d in (("Qwen3.5-0.8B", "코드를 본 뒤 쓴 376개", "qwen35-
                        ("Gemma 3 4B", "코드를 안 보고 쓴 376개, 겨냥하는 자리를 제한하기 전", "gemma3-4b_before_restricting_targets/prompts_written_without_seeing_the_code"),
                        ("Gemma 3 4B", "코드를 본 뒤 쓴 376개, episode 1만, 제한하기 전", "gemma3-4b_before_restricting_targets/wide"),
                        ("Gemma 3 4B", "코드를 안 보고 쓴 376개, 겨냥하는 자리를 제한한 뒤", "gemma3-4b_prompts_written_without_seeing_the_code"),
-                       ("Gemma 3 4B", "제한한 뒤에 더해, 이미 같은 답을 내는 질문도 겨냥하지 않음", "gemma3-4b_solved_questions_not_targeted")):
+                       ("Gemma 3 4B", "제한한 뒤에 더해, 이미 같은 답을 내는 질문도 겨냥하지 않음", "gemma3-4b_solved_questions_not_targeted"),
+                       ("Gemma 3 4B", "위와 같은 절차, 본 적 없는 test split episode 셋", "gemma3-4b_episodes_first_run_after_freezing_the_procedure")):
     per, tot = iwi_cell(d)
     w(f"| {model} | {name} | {per} | {tot} |")
 w("")

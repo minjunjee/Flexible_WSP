@@ -20,3 +20,7 @@
 [ 1246s]    round 4 group (similar direction of the hidden-state difference): 29 positions, median position 9.0, mean KL 6.30, shared fraction 0.67, instructed wants [['\n', 26], ['<end_of_turn>', 3]], current writes [['\n\n', 19], ['<end_of_turn>', 5], [' ', 3]]
 [ 1246s]    round 4 group (same next token for the instructed model): 28 positions, median position 9.0, mean KL 6.16, shared fraction 0.63, instructed wants [['\n', 28]], current writes [['\n\n', 19], ['<end_of_turn>', 6], [' ', 3]]
 [ 1246s]    round 4 group (similar direction of the hidden-state difference): 10 positions, median position 3.0, mean KL 6.94, shared fraction 0.62, instructed wants [[' a', 1], [' the', 1], [' of', 1]], current writes [[' is', 2], [' a', 1], [' for', 1]]
+[ 1503s]    round 4: edit built for 29 positions (group had 29); fit {'target_mean': 0.47756944447481897, 'target_min': -0.017692536115646362, 'other_max_abs': 0.5664313435554504}
+[ 1505s] seed 6: edited targets 64/64 (base 0.00), retention 0.9583333333333334, reward 0.9583333333333334; controls {'targets': {'count': 64, 'base_successes': 0, 'successes': 64, 'retained': 0}, 'nearby_controls': {'count': 32, 'base_successes': 32, 'successes': 32, 'retained': 32}, 'general_controls': {'count': 64, 'base_successes': 64, 'successes': 60, 'retained': 60}, 'override_controls': {'count': 8, 'base_successes': 0, 'successes': 0, 'retained': 0}}; instruction in the prompt: targets 64/64, retention 0.3541666666666667
+[ 1505s] all episodes: edited targets 64/64; mean reward 0.958
+[ 1505s] DONE
