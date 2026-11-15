@@ -141,11 +141,14 @@ class LM:
                 h.remove()
         return torch.stack([post[l] for l in range(self.L)]), torch.stack([pre[l] for l in range(self.L)])
 
-    def to_pre_norm(self, l, u, ybar, mnorm, strength=4.0):
+    def to_pre_norm(self, l, u, ybar, mnorm, strength=None):
         """The vector to add to the MLP output (before the norm) so that what reaches the residual stream at layer l
         is close to ybar + u: ybar is the mean of what the MLP adds there now, u the wanted shift. The norm removes
         the scale of its input, so only a direction can be set: the direction whose normed image is ybar + u. It is
         added with `strength` times the usual length of the MLP output, enough to dominate it where the edit fires."""
+        # strength 4 as a weight edit wrecked Gemma 3 4B: the read vector is 0.1 to 0.3 at the answer start of unrelated
+        # questions, and 0.1 x 4 is already a large part of the MLP output there. 2 keeps the first token (32 of 32).
+        strength = float(os.environ.get("WSP_PRE_NORM_STRENGTH", "2")) if strength is None else strength
         g = 1.0 + self.post_norm[l].weight.detach().float()
         g = torch.where(g.abs() < 0.05, 0.05 * torch.where(g < 0, -torch.ones_like(g), torch.ones_like(g)), g)
         z = (ybar.to(g.device) + u.to(g.device)) / g
