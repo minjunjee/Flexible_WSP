@@ -72,10 +72,16 @@ def measure(lm, Q, max_new, applied=()):
     return info
 
 
-def next_points(info, kl_min):
-    """for each question, the first diverging position where no earlier edit fires"""
+def next_points(info, kl_min, Q=None):
+    """for each question, the first diverging position where no earlier edit fires.
+    A question whose entry in Q has follow=False is one where the model should keep behaving as it does without any
+    edit (its teacher is the unedited model). Such questions are never targeted: if the model diverges there, an
+    earlier edit leaked, and the cure is not another edit aimed at the damage (on Gemma 3 4B that took one episode
+    from a working two-edit model to 0 of 64)."""
     pts = []
     for qi, x in enumerate(info):
+        if Q is not None and not Q[qi].get("follow", True):
+            continue
         for j in range(len(x["kl"])):
             if float(x["kl"][j]) > kl_min and not bool(x["taken"][j]):
                 pts.append((qi, j))
@@ -137,7 +143,8 @@ def _build(lm, Q, info, members, S, max_new, kl_min, lams):
         from there, with the vector switched on at the member position. This is the path the edited model should take.
       - for every question, its own answer as it is.
     Positions where the two models still disagree (other than the targets) are left out of the fit: the edit is not
-    required to stay silent there."""
+    required to stay silent there. The exception is a question the model should answer as it does without any edit
+    (follow=False): there every position is a place to stay silent, also the ones an earlier edit has damaged."""
     d = torch.stack([info[qi]["r1"][:, j] - info[qi]["r0"][:, j] for qi, j in members]).mean(0)
     u = edit.writes(d, S)
     if lm.has_post_norm:
@@ -160,8 +167,9 @@ def _build(lm, Q, info, members, S, max_new, kl_min, lams):
             seqs.append(dict(q=qi, ids=q["ids0"] + ans, adds=adds, targets=[p0 + j],
                              ignore=[p0 + i for i in range(len(k)) if i != j and float(k[i]) > kl_min]))
         k = info[qi]["kl"]
-        seqs.append(dict(q=qi, ids=q["ids0"] + o, targets=[p0 + at[qi][0]] if qi in at else [],
-                         ignore=[p0 + i for i in range(len(k)) if float(k[i]) > kl_min]))
+        # where the model must stay as it is, every position counts as a place to stay silent, diverging or not
+        skip = [p0 + i for i in range(len(k)) if float(k[i]) > kl_min] if q.get("follow", True) else []
+        seqs.append(dict(q=qi, ids=q["ids0"] + o, targets=[p0 + at[qi][0]] if qi in at else [], ignore=skip))
     H, y, qidx = edit.collect(lm, seqs, S)
     V, stats = edit.fit_gates(H, y, qidx, lams)
     return [dict(layer=l, u=u[l].float().cpu(), v=V[l].cpu()) for l in S], stats
@@ -187,7 +195,7 @@ def near_miss_variants(lm, Q, min_prob):
         top = p.topk(2)
         t = int(top.indices[1])
         if float(top.values[1]) >= min_prob and t not in lm.end_ids:
-            out.append(dict(ids0=q["ids0"], ids1=q["ids1"], prefix=[t]))
+            out.append(dict(ids0=q["ids0"], ids1=q["ids1"], prefix=[t], follow=q.get("follow", True)))
     return out
 
 
@@ -207,15 +215,16 @@ def stack(lm, Q, S, rounds, max_new, kl_min=1.0, min_group=0.1, log=print, explo
             Q = Q[:n_base] + near_miss_variants(lm, Q[:n_base], explore)
             log(f"   round {r}: {len(Q) - n_base} answers with the runner-up first token added")
         info = measure(lm, Q, max_new, applied)
-        pts = next_points(info, kl_min)
+        pts = next_points(info, kl_min, Q)
         groups = candidate_groups(lm, info, pts)
+        n_follow = sum(q.get("follow", True) for q in Q[:n_base])
         rec = dict(round=r, own_answers=profile(info, kl_min), questions_with_an_untargeted_divergence=len(pts),
                    candidate_groups=[{k: v for k, v in g.items() if k != "members"} for g in groups[:6]])
         records.append(rec)
         for g in groups[:3]:
             log(f"   round {r} group ({g['kind']}): {g['size']} positions, median position {g['median_position']}, mean KL {g['kl_mean']:.2f}, "
                 f"shared fraction {g['shared_fraction']:.2f}, instructed wants {g['instructed_next_tokens'][:3]}, current writes {g['current_next_tokens'][:3]}")
-        if not groups or groups[0]["size"] < min_group * n_base:
+        if not groups or groups[0]["size"] < min_group * n_follow:
             rec["stopped"] = "no group is large enough"
             break
         edits, stats, members = build_edit(lm, Q, info, groups[0]["members"], S, max_new, kl_min, pts)

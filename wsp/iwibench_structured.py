@@ -156,7 +156,8 @@ for seed in [int(s) for s in args.seeds.split(",")]:
         log(f"   prompts from {args.prompt_file}: {len(ours)} used, {len(loaded) - len(ours)} dropped because the person's name is one of the episode's private names")
     else:
         ours = our_prompts_wide(ep) if args.prompts == "wide" else our_prompts(ep)
-    Q = [dict(ids0=lm.prompt_ids(p["prompt"]), ids1=lm.prompt_ids(p["prompt"], instruction if p["kind"] == "extraction" else None)) for p in ours]
+    Q = [dict(ids0=lm.prompt_ids(p["prompt"]), ids1=lm.prompt_ids(p["prompt"], instruction if p["kind"] == "extraction" else None),
+              follow=p["kind"] == "extraction") for p in ours]
     applied, records = onpolicy.stack(lm, Q, S, args.rounds, args.build_new, log=log, explore=args.explore)
     onpolicy.save_applied(f"{args.out}/edits_seed{seed}.npz", applied)
     edited = dict(zip([i["id"] for i in items], answers(prompts)))

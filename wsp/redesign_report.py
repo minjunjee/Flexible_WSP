@@ -28,7 +28,7 @@ ci = lambda r, k="follows": f"{100 * float(r[k]):.0f} [{100 * float(r[k + '_lo']
 def iwi(d):
     base = d if d.startswith("results/") else f"results/iwibench/{d}"
     files = [f"{base}/summary.json"] if os.path.exists(f"{base}/summary.json") else sorted(glob.glob(f"{base}/seed*/summary.json"))
-    eps = [e for f in files for e in json.load(open(f))["episodes"]]
+    eps = [e for f in files for e in json.load(open(f))["episodes"] if "edited" in e]
     if not eps:
         return None
     return [(e["seed"], e["edited"]["target_successes"], e["edited"]["target_count"], e["edited"]["control_retention"], e["edited"]["reward"], e["edits"]) for e in eps]
@@ -139,7 +139,11 @@ w("| 모델 | 편집을 만든 문형 | episode별 목표 문항과 점수 | 합
 for model, name, d in (("Qwen3.5-0.8B", "코드를 본 뒤 쓴 376개", "qwen35-0.8b_wide"), ("Qwen3.5-0.8B", "같은 문형에서 채점 문항의 낱말을 뺀 것", "qwen35-0.8b_wide_heldout_wording"),
                        ("Qwen3.5-0.8B", "낱말을 뺀 문형, 벤치의 test split episode", "qwen35-0.8b_wide_test_split"),
                        ("Qwen3.5-4B", "코드를 본 뒤 쓴 376개, episode 1만", "qwen35-4b_wide"),
-                       ("Gemma 3 4B", "코드를 본 뒤 쓴 376개", "gemma3-4b_wide"), ("Gemma 3 4B", "코드를 안 보고 쓴 376개", "gemma3-4b_prompts_written_without_seeing_the_code")):
+                       ("Qwen3.5-0.8B", "코드를 안 보고 쓴 376개, 겨냥하는 자리를 제한한 뒤", "results/E4/E4b_qwen35-0.8b_targets_restricted"),
+                       ("Gemma 3 4B", "코드를 안 보고 쓴 376개, 겨냥하는 자리를 제한하기 전", "gemma3-4b_before_restricting_targets/prompts_written_without_seeing_the_code"),
+                       ("Gemma 3 4B", "코드를 본 뒤 쓴 376개, episode 1만, 제한하기 전", "gemma3-4b_before_restricting_targets/wide"),
+                       ("Gemma 3 4B", "코드를 안 보고 쓴 376개, 겨냥하는 자리를 제한한 뒤", "gemma3-4b_prompts_written_without_seeing_the_code"),
+                       ("Gemma 3 4B", "코드를 본 뒤 쓴 376개, episode 1만, 제한한 뒤", "gemma3-4b_wide")):
     per, tot = iwi_cell(d)
     w(f"| {model} | {name} | {per} | {tot} |")
 w("")
