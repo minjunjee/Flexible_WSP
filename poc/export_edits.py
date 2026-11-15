@@ -6,12 +6,13 @@
 Conditions: astra_edit, remove_direction, gc_128, gc_1024, random_1024, recipe_own_15_19, recipe_own_21_23
 (lp_push is a steering vector, not a weight edit; its vectors are in nathanrs/weight-space-lp/steer/realshift_k8.npz)
 """
+import os
 import sys
 
 import numpy as np
 import torch
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 from conds import all_conditions
 
@@ -59,5 +60,5 @@ if __name__ == "__main__":
                     z[f"{name}|L{op[1]}|v"] = op[3].numpy()
                 elif op[0] == "push":
                     z[f"{name}|L{op[1]}|push"] = op[2].numpy()
-        np.savez_compressed("/home/claude/poc/edits_poc.npz", **z)
+        np.savez_compressed(f"{qw.ROOT}/edits_poc.npz", **z)
         print("wrote edits_poc.npz with", len(z), "arrays")

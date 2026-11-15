@@ -11,36 +11,34 @@
 2026-11-15 기준이다.
 
 - 실험 0은 끝났다. Qwen3.5-0.8B를 CPU로 돌린 것이고 코드와 결과가 `poc/`에 있다. `PLAN.md`에 따르면 MLP 행렬 6개에 조건부 편집을 하나씩 넣었을 때, 지시문 없는 질문 30개 중 27개에서 유효한 JSON이 나왔다. 이 서버에서 다시 확인한 값은 아니다.
-- 실험 1부터 14까지는 시작하지 않았다. 이 서버에서는 아직 어떤 코드도 돌리지 않았다.
+- 받은 묶음에 없던 파일은 2026-11-15에 서버에서 `poc/` 스크립트를 다시 돌려 만들었다. 무엇을 만들었고 원래 결과와 얼마나 같은지는 `poc/README.md`의 마지막 절에 있다. 실험 0의 표를 만든 `expF_gated.py`, `expG_divergence.py`, `expH_share.py`는 이때 돌리지 않았다.
+- 실험 1부터 14까지는 시작하지 않았다.
 
 ## 폴더
 
 | 경로 | 내용 |
 | --- | --- |
 | `PLAN.md` | 실험 0부터 14까지의 계획과 판정 기준 |
-| `poc/` | 실험 0의 코드와 결과. CPU로 돌린 것을 고치지 않고 그대로 옮겼다. 파일별 설명은 `poc/README.md`에 있다 |
+| `poc/` | 실험 0의 코드와 결과. 파일별 설명은 `poc/README.md`에 있다. 받은 묶음에서 바꾼 것은 스크립트 안의 경로와 thread 수 설정뿐이다 |
+| `docs/plan_related_work.md` | 원래 계획 문서에서 `PLAN.md`로 옮기지 않은 부분. 겹치는 최근 연구의 표와 출처 목록이 있다 |
+| `scripts/setup_env.sh` | Python 환경, 모델, 외부 저장소를 `/data` 아래에 준비하고 repo 안에 symlink를 건다 |
 | `wsp/` | 실험 1부터 새로 짜는 코드를 둔다. 지금은 비어 있다 |
 | `results/` | 실험마다 폴더를 하나씩 둔다. 폴더마다 `README.md`를 쓰고, `results/SUMMARY.md`에 실험마다 한 문단씩 쌓는다 |
-| `requirements.txt` | `poc/` 스크립트가 쓰는 Python package 목록. 버전은 아직 고정하지 않았다 |
+| `requirements.txt` | `poc/` 스크립트가 쓰는 Python package 목록 |
+| `requirements.lock.txt` | 2026-11-15에 서버에 실제로 설치된 버전. Python 3.12.3, torch 2.15.0, transformers 5.23.0이다 |
 
-## `poc/`를 돌리기 전에
+## `poc/`를 돌리려면
 
-`poc/`의 스크립트는 이 서버에서 아직 돌려 보지 않았다. 지금 상태 그대로는 돌지 않는다. 이유는 세 가지다.
+```
+scripts/setup_env.sh
+cd poc && ../.venv/bin/python expF_gated.py
+```
 
-첫째, 스크립트 안에 `/home/claude/poc`라는 경로가 그대로 적혀 있다. `PLAN.md`의 실험 1에서 실제 경로로 바꾸기로 했다.
+`scripts/setup_env.sh`는 세 가지를 `/data` 아래에 준비한다. Python 환경, `Qwen/Qwen3.5-0.8B` 모델, 외부 저장소 두 개다. 외부 저장소는 Weight-Space Programming 글이 공개한 기록인 `lm_understand-logs`와 `weight-space-lp`다. 그다음 repo 안에 `.venv`, `poc/models`, `poc/ext`, `poc/outA`, `poc/outA2`라는 symlink를 건다. 다른 계정에서는 `DATA_ROOT`와 `HF_HOME`을 바꿔서 부른다.
 
-둘째, 스크립트가 읽는 모델과 자료가 repo에 없다. 아래 경로에 따로 받아야 한다. 받는 명령은 `poc/README.md`의 준비 절에 있다.
+`poc/`의 스크립트는 모델을 CPU에서 돌린다. GPU로 옮기는 코드는 들어 있지 않다. thread 수는 `POC_THREADS`로 정하고 기본값은 2다.
 
-| 경로 | 무엇인가 | 누가 읽는가 |
-| --- | --- | --- |
-| `poc/models/qwen35_08b` | `Qwen/Qwen3.5-0.8B` 모델 | 거의 모든 스크립트. 저장된 결과만 읽는 `anaA.py`와 `anaC.py`는 읽지 않는다 |
-| `poc/ext/lm_understand-logs` | Weight-Space Programming 글이 공개한 편집과 풀이 기록 | `qw.py`의 `load_released`, `astra_edit`, `astra_deltas` 함수. 이 함수를 부르는 스크립트는 `ana_stop_oracle.py`, `conds.py`, `export_edits.py`, `expA_record.py`, `expA2_tight.py`, `expC_escape.py`다 |
-| `poc/ext/weight-space-lp` | `poc/README.md`에 선형계획법 재현과 steering vector가 들어 있다고 적힌 저장소 | `conds.py` |
-| `poc/data/math500.json`, `poc/data/gsm8k_test.json` | MATH-500과 GSM8K 문제 | 이름이 `expA`, `expC`, `expT`로 시작하는 스크립트와 `anaA_check.py` |
-
-실험 0의 표를 만든 `expF_gated.py`, `expG_divergence.py`, `expH_share.py`는 이 가운데 모델만 읽는다.
-
-셋째, 스크립트와 `poc/README.md`가 가리키는 파일 일부가 받은 묶음에 들어 있지 않았다. `edits_poc.npz`, `outC/results.json`, `out*.txt`, `released_stats.json`, `results_anaA.json`, `results_D.json`, `results_E.json`, `results_T.json`, 그리고 중간 출력 폴더 `outA/`와 `outA2/`다. `PLAN.md`에 따르면 이 파일들을 읽고 쓰는 스크립트는 후보 1과 2를 처음 검증할 때 쓴 것이다. `expF_gated.py`, `expG_divergence.py`, `expH_share.py`는 이 파일들을 읽지 않는다.
+실험 0의 표를 만든 `expF_gated.py`, `expG_divergence.py`, `expH_share.py`는 모델만 있으면 돈다. 나머지 스크립트는 문제 파일과 앞 단계의 출력이 더 필요하다. `poc/run_missing.sh`가 그것들을 순서대로 만든다.
 
 ## 서버에서 돌릴 때
 

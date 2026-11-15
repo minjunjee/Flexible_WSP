@@ -1,0 +1,134 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 13808.96it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[json] contrast built in 20s; instruction followed on build questions: 1.00
+[json] share of the mean MLP-output change carried by top-k neurons per layer: {8: 0.1192141464082831, 64: 0.31082692800999784, 512: 0.7044582696863356}; baked-fit mean abs error {9: 0.003156671766191721, 5: 0.004079013597220182}
+[json] finished set same_style elapsed 80s
+[json] finished set new_style elapsed 109s
+[json] finished set explicit_other_request elapsed 138s
+[json/same_style] condition                     format ok  answer ok   both  tokens
+[json/same_style] no_edit                            0.00       0.85   0.00    31.8
+[json/same_style] direction_L5_x1                    0.00       0.70   0.00    18.6
+[json/same_style] direction_L5_x2                    0.00       0.00   0.00     4.0
+[json/same_style] direction_L5_x4                    0.00       0.00   0.00     2.3
+[json/same_style] direction_L9_x1                    0.00       0.65   0.00    11.4
+[json/same_style] direction_L9_x2                    0.00       0.05   0.00     4.5
+[json/same_style] direction_L9_x4                    0.00       0.00   0.00     5.2
+[json/same_style] direction_L13_x1                   0.00       0.65   0.00     9.8
+[json/same_style] direction_L13_x2                   0.00       0.05   0.00     2.4
+[json/same_style] direction_L13_x4                   0.00       0.00   0.00     1.6
+[json/same_style] neurons_all_x1                     0.00       0.15   0.00    22.1
+[json/same_style] neurons_top8_x1                    0.00       0.85   0.00    29.5
+[json/same_style] neurons_top64_x1                   0.00       0.70   0.00    29.1
+[json/same_style] neurons_all_x2                     0.00       0.00   0.00     1.0
+[json/same_style] neurons_top8_x2                    0.00       0.75   0.00    20.4
+[json/same_style] neurons_top64_x2                   0.00       0.05   0.00    21.8
+[json/same_style] baked_weight_L9_x2                 0.00       0.05   0.00     4.0
+[json/same_style] baked_weight_L5_x2                 0.00       0.05   0.00     6.8
+[json/same_style] instruction_in_prompt              1.00       0.75   0.75     8.4
+[json/new_style] condition                     format ok  answer ok   both  tokens
+[json/new_style] no_edit                            0.00       0.90   0.00    16.9
+[json/new_style] direction_L5_x1                    0.00       0.90   0.00     4.4
+[json/new_style] direction_L5_x2                    0.00       0.20   0.00     4.3
+[json/new_style] direction_L5_x4                    0.00       0.00   0.00     1.2
+[json/new_style] direction_L9_x1                    0.00       0.70   0.00     4.4
+[json/new_style] direction_L9_x2                    0.00       0.30   0.00     4.6
+[json/new_style] direction_L9_x4                    0.00       0.00   0.00     2.1
+[json/new_style] direction_L13_x1                   0.00       0.50   0.00     4.3
+[json/new_style] direction_L13_x2                   0.00       0.10   0.00     2.8
+[json/new_style] direction_L13_x4                   0.00       0.00   0.00     1.3
+[json/new_style] neurons_all_x1                     0.00       0.60   0.00    16.4
+[json/new_style] neurons_top8_x1                    0.00       0.80   0.00     9.2
+[json/new_style] neurons_top64_x1                   0.00       0.80   0.00     9.2
+[json/new_style] neurons_all_x2                     0.00       0.00   0.00     1.9
+[json/new_style] neurons_top8_x2                    0.00       0.60   0.00     6.5
+[json/new_style] neurons_top64_x2                   0.00       0.10   0.00    21.3
+[json/new_style] baked_weight_L9_x2                 0.00       0.40   0.00     5.3
+[json/new_style] baked_weight_L5_x2                 0.00       0.50   0.00     5.3
+[json/new_style] instruction_in_prompt              1.00       1.00   1.00     8.0
+[json/explicit_other_request] condition                     format ok  answer ok   both  tokens
+[json/explicit_other_request] no_edit                            0.00       0.88   0.00    18.8
+[json/explicit_other_request] direction_L5_x1                    0.00       0.75   0.00     5.6
+[json/explicit_other_request] direction_L5_x2                    0.00       0.00   0.00     7.1
+[json/explicit_other_request] direction_L5_x4                    0.00       0.00   0.00     2.6
+[json/explicit_other_request] direction_L9_x1                    0.00       0.88   0.00     8.2
+[json/explicit_other_request] direction_L9_x2                    0.00       0.00   0.00     4.5
+[json/explicit_other_request] direction_L9_x4                    0.00       0.00   0.00     7.6
+[json/explicit_other_request] direction_L13_x1                   0.00       0.50   0.00     8.8
+[json/explicit_other_request] direction_L13_x2                   0.00       0.00   0.00     7.6
+[json/explicit_other_request] direction_L13_x4                   0.00       0.00   0.00     1.1
+[json/explicit_other_request] neurons_all_x1                     0.00       0.38   0.00    23.1
+[json/explicit_other_request] neurons_top8_x1                    0.00       0.75   0.00    18.5
+[json/explicit_other_request] neurons_top64_x1                   0.00       1.00   0.00    22.4
+[json/explicit_other_request] neurons_all_x2                     0.00       0.00   0.00     1.5
+[json/explicit_other_request] neurons_top8_x2                    0.00       0.75   0.00     7.4
+[json/explicit_other_request] neurons_top64_x2                   0.00       0.12   0.00    28.4
+[json/explicit_other_request] baked_weight_L9_x2                 0.00       0.12   0.00     4.4
+[json/explicit_other_request] baked_weight_L5_x2                 0.00       0.00   0.00     4.1
+[brief] contrast built in 155s; instruction followed on build questions: 0.94
+[brief] share of the mean MLP-output change carried by top-k neurons per layer: {8: 0.11349561851989713, 64: 0.30616886778548635, 512: 0.7021373440253235}; baked-fit mean abs error {9: 0.003156671766191721, 5: 0.004079013597220182}
+[brief] finished set same_style elapsed 239s
+[brief] finished set new_style elapsed 274s
+[brief] finished set explicit_other_request elapsed 305s
+[brief/same_style] condition                     format ok  answer ok   both  tokens
+[brief/same_style] no_edit                            0.00       0.85   0.00    31.8
+[brief/same_style] direction_L5_x1                    0.05       0.70   0.00    27.4
+[brief/same_style] direction_L5_x2                    0.25       0.00   0.00     9.3
+[brief/same_style] direction_L5_x4                    0.30       0.00   0.00    19.6
+[brief/same_style] direction_L9_x1                    0.15       0.65   0.00    11.2
+[brief/same_style] direction_L9_x2                    0.60       0.00   0.00     3.9
+[brief/same_style] direction_L9_x4                    0.60       0.00   0.00     1.0
+[brief/same_style] direction_L13_x1                   0.10       0.45   0.00     7.4
+[brief/same_style] direction_L13_x2                   0.10       0.00   0.00     1.1
+[brief/same_style] direction_L13_x4                   0.00       0.00   0.00     1.0
+[brief/same_style] neurons_all_x1                     0.40       0.05   0.00    19.2
+[brief/same_style] neurons_top8_x1                    0.05       0.75   0.00    30.3
+[brief/same_style] neurons_top64_x1                   0.05       0.70   0.00    30.5
+[brief/same_style] neurons_all_x2                     0.00       0.00   0.00     1.0
+[brief/same_style] neurons_top8_x2                    0.35       0.80   0.20    20.9
+[brief/same_style] neurons_top64_x2                   0.10       0.15   0.00    18.4
+[brief/same_style] baked_weight_L9_x2                 0.50       0.00   0.00    11.2
+[brief/same_style] baked_weight_L5_x2                 0.10       0.00   0.00    21.1
+[brief/same_style] instruction_in_prompt              0.95       0.80   0.75     3.0
+[brief/new_style] condition                     format ok  answer ok   both  tokens
+[brief/new_style] no_edit                            0.30       0.90   0.30    16.9
+[brief/new_style] direction_L5_x1                    0.40       0.80   0.30    10.5
+[brief/new_style] direction_L5_x2                    0.50       0.10   0.00     6.1
+[brief/new_style] direction_L5_x4                    0.70       0.00   0.00    10.3
+[brief/new_style] direction_L9_x1                    0.40       0.80   0.30     6.0
+[brief/new_style] direction_L9_x2                    0.60       0.00   0.00     3.0
+[brief/new_style] direction_L9_x4                    0.60       0.00   0.00     1.0
+[brief/new_style] direction_L13_x1                   0.70       0.60   0.30     4.6
+[brief/new_style] direction_L13_x2                   0.20       0.00   0.00     1.1
+[brief/new_style] direction_L13_x4                   0.00       0.00   0.00     1.0
+[brief/new_style] neurons_all_x1                     0.60       0.10   0.00    15.2
+[brief/new_style] neurons_top8_x1                    0.50       0.90   0.40    12.4
+[brief/new_style] neurons_top64_x1                   0.60       0.80   0.40    12.2
+[brief/new_style] neurons_all_x2                     0.00       0.00   0.00     1.0
+[brief/new_style] neurons_top8_x2                    0.40       0.80   0.40    11.9
+[brief/new_style] neurons_top64_x2                   0.20       0.50   0.00    18.5
+[brief/new_style] baked_weight_L9_x2                 0.50       0.30   0.10     6.2
+[brief/new_style] baked_weight_L5_x2                 0.50       0.30   0.10     5.8
+[brief/new_style] instruction_in_prompt              0.90       1.00   0.90     2.9
+[brief/explicit_other_request] condition                     format ok  answer ok   both  tokens
+[brief/explicit_other_request] no_edit                            0.00       0.88   0.00    40.1
+[brief/explicit_other_request] direction_L5_x1                    0.00       0.75   0.00    38.9
+[brief/explicit_other_request] direction_L5_x2                    0.75       0.00   0.00     5.0
+[brief/explicit_other_request] direction_L5_x4                    0.38       0.00   0.00    31.0
+[brief/explicit_other_request] direction_L9_x1                    0.00       0.62   0.00    13.9
+[brief/explicit_other_request] direction_L9_x2                    1.00       0.00   0.00     1.0
+[brief/explicit_other_request] direction_L9_x4                    0.62       0.00   0.00     1.0
+[brief/explicit_other_request] direction_L13_x1                   0.25       0.62   0.00     6.1
+[brief/explicit_other_request] direction_L13_x2                   0.00       0.00   0.00     1.0
+[brief/explicit_other_request] direction_L13_x4                   0.00       0.00   0.00     1.0
+[brief/explicit_other_request] neurons_all_x1                     0.00       0.00   0.00    48.0
+[brief/explicit_other_request] neurons_top8_x1                    0.00       0.75   0.00    37.1
+[brief/explicit_other_request] neurons_top64_x1                   0.00       0.75   0.00    44.2
+[brief/explicit_other_request] neurons_all_x2                     0.00       0.00   0.00     1.0
+[brief/explicit_other_request] neurons_top8_x2                    0.00       0.62   0.00    39.8
+[brief/explicit_other_request] neurons_top64_x2                   0.00       0.00   0.00    12.6
+[brief/explicit_other_request] baked_weight_L9_x2                 0.12       0.00   0.00     3.9
+[brief/explicit_other_request] baked_weight_L5_x2                 0.00       0.00   0.00    17.4
+DONE

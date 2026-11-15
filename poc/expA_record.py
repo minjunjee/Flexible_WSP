@@ -13,14 +13,14 @@ import time
 import numpy as np
 import torch
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--n_base", type=int, default=110)
 ap.add_argument("--n_math", type=int, default=110)
 ap.add_argument("--n_gsm", type=int, default=110)
-ap.add_argument("--out", default="/home/claude/poc/outA")
+ap.add_argument("--out", default=f"{qw.ROOT}/outA")
 ap.add_argument("--q", type=float, default=0.95)
 args = ap.parse_args()
 os.makedirs(args.out, exist_ok=True)

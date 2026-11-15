@@ -20,7 +20,7 @@ import time
 import numpy as np
 import torch
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 from gen import Editor, generate, END_IDS
 
@@ -65,7 +65,7 @@ INSTR = 'Respond only with a JSON object of the form {"answer": "..."} and nothi
 NEW = 12 if SMOKE else 28
 J = 5                                   # aligned positions: last prompt token, then inputs '{"', 'answer', '":', ' "'
 PREFIX = tok('{"answer": "', add_special_tokens=False).input_ids
-RES = "/home/claude/poc/results_F_smoke.json" if SMOKE else "/home/claude/poc/results_F.json"
+RES = f"{qw.ROOT}/results_F_smoke.json" if SMOKE else f"{qw.ROOT}/results_F.json"
 
 
 def prompt_ids(q, instr=None):

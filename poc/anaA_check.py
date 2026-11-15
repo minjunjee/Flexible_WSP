@@ -1,4 +1,5 @@
 """Verification of A-2: stronger baselines and paired bootstrap for the gain from component-level features."""
+import os
 import json, sys, warnings
 import numpy as np
 from scipy import stats
@@ -9,11 +10,11 @@ from sklearn.model_selection import StratifiedKFold, KFold
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 warnings.filterwarnings("ignore")
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 from transformers import AutoTokenizer
 tok = AutoTokenizer.from_pretrained(qw.MP)
-OUT = "/home/claude/poc/outA"
+OUT = f"{qw.ROOT}/outA"
 meta = json.load(open(f"{OUT}/meta.json"))
 CKPT = [128, 256, 384, 512, 768, 1024]
 MATH = json.load(open(f"{qw.ROOT}/data/math500.json")); GSM = json.load(open(f"{qw.ROOT}/data/gsm8k_test.json"))
@@ -98,4 +99,4 @@ for L in (768, 512):
             i = rng.integers(0, mm.sum(), mm.sum()); bs.append(stats.spearmanr(p[i], level[mm][i]).statistic)
         print(f"     {k:50s} rho {r:.3f}  95% CI [{np.percentile(bs, 2.5):.3f}, {np.percentile(bs, 97.5):.3f}]")
         RES[f"{L}|level|{k}"] = dict(rho=float(r), lo=float(np.percentile(bs, 2.5)), hi=float(np.percentile(bs, 97.5)))
-json.dump(RES, open("/home/claude/poc/results_anaA_check.json", "w"))
+json.dump(RES, open(f"{qw.ROOT}/results_anaA_check.json", "w"))

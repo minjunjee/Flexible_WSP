@@ -4,16 +4,17 @@ All statistics used to choose neurons / directions come from half 0 of the recor
 half 1 is kept for held-out checks.
 """
 import json
+import os
 import sys
 
 import numpy as np
 import torch
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 
-A = "/home/claude/poc/outA"
-A2 = "/home/claude/poc/outA2"
+A = f"{qw.ROOT}/outA"
+A2 = f"{qw.ROOT}/outA2"
 
 
 def stats(half=0):

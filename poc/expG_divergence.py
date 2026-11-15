@@ -11,13 +11,14 @@ Two behaviors: JSON format and a brief answer. For the brief answer the script a
 """
 import json
 import re
+import os
 import sys
 import time
 
 import numpy as np
 import torch
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 from gen import Editor, generate, END_IDS
 
@@ -211,6 +212,6 @@ for task, instr in TASKS.items():
             print(f"[brief] {nm:22s} {np.mean([x['brief'] for x in r]):9.2f} {np.mean([x['correct'] for x in r]):7.2f} "
                   f"{np.mean([x['brief'] and x['correct'] for x in r]):6.2f} {np.mean([x['ended'] for x in r]):6.2f} {np.median([x['words'] for x in r]):12.1f}", flush=True)
         ALL[task]["free"] = out
-    json.dump(ALL, open("/home/claude/poc/results_G.json", "w"))
+    json.dump(ALL, open(f"{qw.ROOT}/results_G.json", "w"))
     print(f"[{task}] finished at {time.time() - t0:.0f}s", flush=True)
 print("DONE", flush=True)

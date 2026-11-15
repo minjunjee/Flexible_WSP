@@ -1,0 +1,12 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 15534.58it/s]
+jobs {'tight': 40, 'prod_mid': 30}
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[1/70] tight elapsed 1s
+[11/70] tight elapsed 11s
+[21/70] prod_mid elapsed 21s
+[31/70] prod_mid elapsed 31s
+[41/70] tight elapsed 41s
+[51/70] tight elapsed 51s
+[61/70] prod_mid elapsed 60s
+DONE 68.4

@@ -1,13 +1,14 @@
 """Where is the loop 'located'? Compare what the residual-direction view and the neuron view point to,
 and how unique that location is. Uses A (base productive) and A2 (tight loop / productive mid-trace) statistics."""
 import json
+import os
 import sys
 
 import numpy as np
 import torch
 from safetensors import safe_open
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 from conds import gc_sets, heuristic_direction, stats
 
@@ -108,5 +109,5 @@ for l in (15, 19):
     rank = (sc.argsort(descending=True).argsort().reshape(qw.N_LAYERS, qw.D_MLP)[l][cols]).float()
     print(f"  published 64 columns in layer {l}: mean loop-specificity {float(s.mean()):.3f}; in our top-1024 loop-specific set: {int((rank < 1024).sum())}/64")
     R[f"pub_in_gc_{l}"] = int((rank < 1024).sum())
-json.dump(R, open("/home/claude/poc/results_loc.json", "w"))
+json.dump(R, open(f"{qw.ROOT}/results_loc.json", "w"))
 print("saved results_loc.json")

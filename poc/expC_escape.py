@@ -4,13 +4,14 @@ Context = problem prompt + 1,000 response tokens taken from inside a tight loop 
 (traces not used for choosing neurons or directions). Each branch then samples 256 new tokens.
 """
 import json
+import os
 import sys
 import time
 
 import numpy as np
 import torch
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 from conds import all_conditions
 from gen import Editor, generate
@@ -18,7 +19,7 @@ from gen import Editor, generate
 N_PREFIX = int(sys.argv[1]) if len(sys.argv) > 1 else 12
 ALT = [int(x) for x in sys.argv[2].split(",")] if len(sys.argv) > 2 else [11, 23]
 NEW, CTX = 256, 1000
-OUT = "/home/claude/poc/outC"
+OUT = f"{qw.ROOT}/outC"
 import os
 os.makedirs(OUT, exist_ok=True)
 torch.set_grad_enabled(False)
@@ -29,7 +30,7 @@ names = list(conds)
 print("conditions:", names, flush=True)
 MATH = json.load(open(f"{qw.ROOT}/data/math500.json"))
 GSM = json.load(open(f"{qw.ROOT}/data/gsm8k_test.json"))
-used = {m["id"] for m in json.load(open("/home/claude/poc/outA2/meta.json"))}
+used = {m["id"] for m in json.load(open(f"{qw.ROOT}/outA2/meta.json"))}
 rng = np.random.default_rng(7)
 
 

@@ -1,0 +1,68 @@
+====================================================================================================
+prefix length 768: n=250; hits limit 0.22; correct 0.56
+  outcome: hits token limit
+     text (7 features)                                AUC 0.757
+     activation scalars                               AUC 0.727
+     activation probe (PCA-10 of mean residual)       AUC 0.793
+     component                                        AUC 0.761
+     text + activation scalars + probe                AUC 0.791
+     text + activation scalars + probe + component    AUC 0.785
+     component: recurrence only                       AUC 0.765
+     component: counts only                           AUC 0.739
+     gain [component] over [text (7 features)]: +0.005  95% CI [-0.047, +0.060]  share of resamples with no gain 0.438
+     gain [component] over [activation scalars]: +0.034  95% CI [-0.003, +0.073]  share of resamples with no gain 0.036
+     gain [component] over [activation probe (PCA-10 of mean residual)]: -0.033  95% CI [-0.089, +0.024]  share of resamples with no gain 0.880
+     gain [text + activation scalars + probe + component] over [text + activation scalars + probe]: -0.006  95% CI [-0.023, +0.009]  share of resamples with no gain 0.787
+  outcome: answer correct
+     text (7 features)                                AUC 0.802
+     activation scalars                               AUC 0.697
+     activation probe (PCA-10 of mean residual)       AUC 0.811
+     component                                        AUC 0.741
+     text + activation scalars + probe                AUC 0.829
+     text + activation scalars + probe + component    AUC 0.822
+     component: recurrence only                       AUC 0.718
+     component: counts only                           AUC 0.688
+     gain [component] over [text (7 features)]: -0.062  95% CI [-0.120, -0.004]  share of resamples with no gain 0.983
+     gain [component] over [activation scalars]: +0.044  95% CI [-0.002, +0.091]  share of resamples with no gain 0.030
+     gain [component] over [activation probe (PCA-10 of mean residual)]: -0.070  95% CI [-0.123, -0.020]  share of resamples with no gain 0.997
+     gain [text + activation scalars + probe + component] over [text + activation scalars + probe]: -0.008  95% CI [-0.020, +0.005]  share of resamples with no gain 0.890
+  difficulty level (MATH-500, n=150): Spearman of cross-validated prediction
+     subject only                                       rho -0.019  95% CI [-0.181, 0.139]
+     subject + text                                     rho 0.454  95% CI [0.316, 0.573]
+     subject + text + activation scalars                rho 0.415  95% CI [0.270, 0.546]
+     subject + text + activation scalars + component    rho 0.410  95% CI [0.263, 0.542]
+     component only                                     rho 0.286  95% CI [0.133, 0.420]
+====================================================================================================
+prefix length 512: n=250; hits limit 0.22; correct 0.56
+  outcome: hits token limit
+     text (7 features)                                AUC 0.745
+     activation scalars                               AUC 0.691
+     activation probe (PCA-10 of mean residual)       AUC 0.793
+     component                                        AUC 0.721
+     text + activation scalars + probe                AUC 0.786
+     text + activation scalars + probe + component    AUC 0.783
+     component: recurrence only                       AUC 0.721
+     component: counts only                           AUC 0.706
+     gain [component] over [text (7 features)]: -0.023  95% CI [-0.072, +0.025]  share of resamples with no gain 0.834
+     gain [component] over [activation scalars]: +0.030  95% CI [-0.014, +0.077]  share of resamples with no gain 0.093
+     gain [component] over [activation probe (PCA-10 of mean residual)]: -0.072  95% CI [-0.128, -0.018]  share of resamples with no gain 0.997
+     gain [text + activation scalars + probe + component] over [text + activation scalars + probe]: -0.003  95% CI [-0.021, +0.016]  share of resamples with no gain 0.625
+  outcome: answer correct
+     text (7 features)                                AUC 0.791
+     activation scalars                               AUC 0.650
+     activation probe (PCA-10 of mean residual)       AUC 0.811
+     component                                        AUC 0.694
+     text + activation scalars + probe                AUC 0.827
+     text + activation scalars + probe + component    AUC 0.833
+     component: recurrence only                       AUC 0.682
+     component: counts only                           AUC 0.631
+     gain [component] over [text (7 features)]: -0.096  95% CI [-0.157, -0.037]  share of resamples with no gain 1.000
+     gain [component] over [activation scalars]: +0.044  95% CI [-0.014, +0.102]  share of resamples with no gain 0.066
+     gain [component] over [activation probe (PCA-10 of mean residual)]: -0.117  95% CI [-0.172, -0.061]  share of resamples with no gain 1.000
+     gain [text + activation scalars + probe + component] over [text + activation scalars + probe]: +0.006  95% CI [-0.008, +0.020]  share of resamples with no gain 0.198
+  difficulty level (MATH-500, n=150): Spearman of cross-validated prediction
+     subject only                                       rho -0.019  95% CI [-0.173, 0.142]
+     subject + text                                     rho 0.480  95% CI [0.339, 0.595]
+     subject + text + activation scalars                rho 0.436  95% CI [0.289, 0.561]
+     subject + text + activation scalars + component    rho 0.449  95% CI [0.309, 0.570]
+     component only                                     rho 0.309  95% CI [0.157, 0.441]

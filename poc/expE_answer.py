@@ -2,13 +2,14 @@
 Every edited model is compared with the unedited model inside the same batch (bf16 results depend on batch shape).
 """
 import json
+import os
 import sys
 import time
 
 import numpy as np
 import torch
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 from conds import all_conditions
 from gen import Editor, generate
@@ -56,7 +57,7 @@ for qi, (q, gold) in enumerate(Q):
         rows.append(dict(q=q, cond=n, text=txt, correct=bool(ok), same_as_base=(txt == base_txt)))
     if qi % 10 == 0:
         print(f"[{qi + 1}/{len(Q)}] elapsed {time.time() - t0:.0f}s", flush=True)
-json.dump(rows, open("/home/claude/poc/results_E.json", "w"))
+json.dump(rows, open(f"{qw.ROOT}/results_E.json", "w"))
 print(f"{'condition':24s} {'correct':>8s} {'same output as unedited':>26s}")
 for n in names:
     r = [x for x in rows if x["cond"] == n]

@@ -7,17 +7,18 @@ Because traces are 32k tokens long, each segment is fed with a truncated context
 The first 256 tokens of every segment are burn-in and are excluded from statistics.
 """
 import json
+import os
 import sys
 import time
 
 import numpy as np
 import torch
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 
 torch.set_grad_enabled(False)
-OUT = "/home/claude/poc/outA2"
+OUT = f"{qw.ROOT}/outA2"
 import os
 os.makedirs(OUT, exist_ok=True)
 N_TIGHT, N_PROD, SEG, BURN = int(sys.argv[1]) if len(sys.argv) > 1 else 40, int(sys.argv[2]) if len(sys.argv) > 2 else 30, 1200, 256
@@ -27,7 +28,7 @@ lm = qw.lm_of(model)
 MATH = json.load(open(f"{qw.ROOT}/data/math500.json"))
 GSM = json.load(open(f"{qw.ROOT}/data/gsm8k_test.json"))
 WN = [lm.layers[l].mlp.down_proj.weight.float().norm(dim=0) for l in range(qw.N_LAYERS)]
-TAU = torch.load("/home/claude/poc/outA/tau.pt")
+TAU = torch.load(f"{qw.ROOT}/outA/tau.pt")
 H = {}
 for l, layer in enumerate(lm.layers):
     layer.mlp.down_proj.register_forward_hook(lambda mod, inp, out, l=l: H.__setitem__(l, inp[0][0].detach()))

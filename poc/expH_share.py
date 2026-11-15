@@ -6,12 +6,13 @@ one answer position. "Constant share" = squared norm of the mean difference / me
 differences share nothing.
 """
 import json
+import os
 import sys
 
 import numpy as np
 import torch
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 from gen import generate, END_IDS
 
@@ -21,7 +22,7 @@ lm = qw.lm_of(model)
 PRE = {}
 lm.norm.register_forward_hook(lambda mod, inp, out: PRE.__setitem__("x", inp[0].detach()))
 NL = qw.N_LAYERS
-exec(open("/home/claude/poc/expG_divergence.py").read().split("QA = ")[1].split("BUILD, EVAL")[0].join(["QA = ", ""]))
+exec(open(f"{qw.ROOT}/expG_divergence.py").read().split("QA = ")[1].split("BUILD, EVAL")[0].join(["QA = ", ""]))
 TASKS = {"json": 'Respond only with a JSON object of the form {"answer": "..."} and nothing else.',
          "brief": "Reply with the answer only, in as few words as possible. No explanation."}
 
@@ -53,5 +54,5 @@ for task, instr in TASKS.items():
         sh = {L: float(X[:, L + 1].mean(0).norm() ** 2 / (X[:, L + 1].norm(dim=-1) ** 2).mean()) for L in (9, 13, 17, 21, 23)}
         OUT[task][name] = sh
         print(f"[{task}] {name:14s} constant share by layer: " + ", ".join(f"L{L} {v:.2f}" for L, v in sh.items()) + f"   (Q = {len(X)}, floor {1 / len(X):.2f})", flush=True)
-json.dump(OUT, open("/home/claude/poc/results_H.json", "w"))
+json.dump(OUT, open(f"{qw.ROOT}/results_H.json", "w"))
 print("DONE")

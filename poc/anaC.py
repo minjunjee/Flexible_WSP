@@ -1,10 +1,11 @@
 """Summarize the fork-inside-a-loop experiment (C) together with the answer-change (E) and side-effect (T) measures."""
 import json
+import os
 import sys
 
 import numpy as np
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 
 
@@ -18,10 +19,10 @@ def wilson(k, n, z=1.96):
     return (max(0.0, c - h), min(1.0, c + h))
 
 
-R = json.load(open("/home/claude/poc/outC/results.json"))
-E = json.load(open("/home/claude/poc/results_E.json"))
+R = json.load(open(f"{qw.ROOT}/outC/results.json"))
+E = json.load(open(f"{qw.ROOT}/results_E.json"))
 try:
-    T = json.load(open("/home/claude/poc/results_T.json"))
+    T = json.load(open(f"{qw.ROOT}/results_T.json"))
 except Exception:
     T = None
 conds = []
@@ -48,4 +49,4 @@ for c in conds:
     out[c] = dict(escaped=k, n=n, lo=lo, hi=hi, dup_last=float(np.mean([r["dup_last"] for r in rr])), closed=float(closed),
                   boxed_correct=int(np.sum(box)), n_gsm=len(g), short_changed=float(ch), short_correct=float(ec), kl_prod=float(kl), dlogp_loop=float(dl))
     print(f"{c:22s} {k:>4d}/{n:<5d} [{lo:.2f}, {hi:.2f}] {np.mean([r['dup_last'] for r in rr]):17.2f} {closed:16.2f} {int(np.sum(box)):>8d}/{len(g):<8d} | {ch:22.2f} {ec:14.2f} | {kl:14.4f} {dl:11.4f}")
-json.dump(out, open("/home/claude/poc/results_C_summary.json", "w"))
+json.dump(out, open(f"{qw.ROOT}/results_C_summary.json", "w"))

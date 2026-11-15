@@ -13,13 +13,13 @@ import re
 import numpy as np
 import torch
 
-ROOT = "/home/claude/poc"
+ROOT = os.path.dirname(os.path.abspath(__file__))
 MP = f"{ROOT}/models/qwen35_08b"
 LOGS = f"{ROOT}/ext/lm_understand-logs/exp8_math"
 SUFFIX = "Please reason step by step, and put your final answer within \\boxed{}."
 N_LAYERS, D_MODEL, D_MLP = 24, 1024, 3584
 
-torch.set_num_threads(2)
+torch.set_num_threads(int(os.environ.get("POC_THREADS", "2")))
 
 
 def load_model():

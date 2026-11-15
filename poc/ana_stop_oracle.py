@@ -6,11 +6,12 @@ happen if thinking stopped at the first wrap-up phrase? Used as background for t
 import collections
 import json
 import re
+import os
 import sys
 
 import numpy as np
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 from transformers import AutoTokenizer
 
@@ -56,4 +57,4 @@ for run in ["unedited", "p50c"]:
     res[run] = dict(n=n, final_correct=int(sum(r["correct_first"] for r in rows)), correct_number_written_in_thinking=gold_appears,
                     median_response_tokens=float(np.median(total_tok)), stop_at_first_phrase=dict(stats))
     print(run, json.dumps(res[run]))
-json.dump(res, open("/home/claude/poc/results_oracle_stop.json", "w"), indent=1)
+json.dump(res, open(f"{qw.ROOT}/results_oracle_stop.json", "w"), indent=1)

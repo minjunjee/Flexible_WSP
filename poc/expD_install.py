@@ -8,13 +8,14 @@ The instruction is used only to measure what changes inside the model; at test t
 """
 import json
 import re
+import os
 import sys
 import time
 
 import numpy as np
 import torch
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 from gen import Editor, generate
 
@@ -44,7 +45,7 @@ TASKS = {"json": 'Respond only with a JSON object of the form {"answer": "..."} 
          "brief": "Reply with the answer only, in as few words as possible. No explanation."}
 if len(sys.argv) > 1:
     TASKS = {k: v for k, v in TASKS.items() if k in sys.argv[1].split(",")}
-RESFILE = "/home/claude/poc/results_D.json" if len(sys.argv) <= 1 else f"/home/claude/poc/results_D_{sys.argv[1]}.json"
+RESFILE = f"{qw.ROOT}/results_D.json" if len(sys.argv) <= 1 else f"{qw.ROOT}/results_D_{sys.argv[1]}.json"
 LAYERS_RES, DOSES = [5, 9, 13], [1.0, 2.0, 4.0]
 MLP_RANGE = list(range(2, 16))
 NEW = 32

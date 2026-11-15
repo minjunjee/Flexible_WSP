@@ -1,0 +1,47 @@
+====================================================================================================
+L1  Residual-direction view: how different is the residual stream in tight loops vs productive reasoning, by layer
+  layer  rel. gap  cos(half0,half1)  MLP write along u  top8 share  top64 share
+      0     0.241             0.895              0.062       0.500        0.627
+      1     0.335             0.943              0.050       0.383        0.630
+      2     0.389             0.953              0.031       0.340        0.583
+      3     0.471             0.969              0.093       0.379        0.637
+      4     0.501             0.975              0.027       0.270        0.493
+      5     0.548             0.978              0.028       0.231        0.484
+      6     0.612             0.977              0.091       0.356        0.603
+      7     0.671             0.985              0.137       0.184        0.501
+      8     0.757             0.986              0.021       0.235        0.516
+      9     0.792             0.987              0.068       0.217        0.496
+     10     0.965             0.988              0.049       0.283        0.561
+     11     1.027             0.989              0.049       0.262        0.523
+     12     0.994             0.989              0.052       0.277        0.517
+     13     0.983             0.990              0.101       0.309        0.555
+     14     1.057             0.989              0.116       0.139        0.400
+     15     0.985             0.986              0.373       0.233        0.544
+     16     0.945             0.985              0.129       0.262        0.487
+     17     0.926             0.986              0.088       0.311        0.504
+     18     0.880             0.985              0.028       0.307        0.488
+     19     0.862             0.985              0.707       0.580        0.705
+     20     0.787             0.982              0.147       0.255        0.431
+     21     0.753             0.979              0.267       0.322        0.483
+     22     0.804             0.972              0.137       0.356        0.563
+     23     0.896             0.933              0.211       0.129        0.401
+  layers ranked by MLP write along the loop direction: [19, 15, 21, 23, 20, 7, 22, 16, 14, 13]
+  rank of the published layers: 15 -> 2, 19 -> 1 (of 24)
+====================================================================================================
+L2  Is 'the location' unique? Same recipe as the published edit, applied to our own statistics
+  layer 15: cosine between our loop direction and the published one = 0.720
+     top-64 writer neurons: overlap with the published 64 -> ours 39/64, published direction + our activations 46/64; our two data halves agree on 55/64  (chance ~ 1.1)
+  layer 19: cosine between our loop direction and the published one = 0.737
+     top-64 writer neurons: overlap with the published 64 -> ours 30/64, published direction + our activations 39/64; our two data halves agree on 54/64  (chance ~ 1.1)
+====================================================================================================
+L3  Neuron view: neurons that are active in tight loops but not in productive reasoning (selected on half 0, checked on half 1)
+  top-128: held-out active rate in loops 0.813 vs productive 0.125 | matched random control: loops 0.056 vs productive 0.122
+          layers (count): {1: 1, 6: 3, 7: 3, 8: 4, 9: 7, 10: 19, 11: 9, 12: 15, 13: 14, 14: 15, 15: 7, 16: 4, 17: 7, 18: 5, 19: 3, 20: 2, 21: 3, 23: 7}
+  top-1024: held-out active rate in loops 0.559 vs productive 0.164 | matched random control: loops 0.094 vs productive 0.156
+          layers (count): {0: 5, 1: 10, 2: 12, 3: 15, 4: 12, 5: 14, 6: 38, 7: 63, 8: 66, 9: 65, 10: 110, 11: 90, 12: 55, 13: 63, 14: 106, 15: 57, 16: 30, 17: 27, 18: 28, 19: 21, 20: 12, 21: 14, 22: 35, 23: 76}
+  number of neurons (of 86,016) whose active rate is higher in loops by more than 0.2 / 0.3 / 0.5 / 0.7: [1270, 714, 259, 67]
+  number whose active rate is LOWER in loops by more than 0.2 / 0.3 / 0.5: [244, 27, 2]
+  mean active rate per neuron: loops 0.0361  productive mid-trace 0.0454  productive early 0.0501
+  published 64 columns in layer 15: mean loop-specificity 0.190; in our top-1024 loop-specific set: 23/64
+  published 64 columns in layer 19: mean loop-specificity 0.048; in our top-1024 loop-specific set: 8/64
+saved results_loc.json

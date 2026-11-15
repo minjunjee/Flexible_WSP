@@ -1,0 +1,22 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 13635.19it/s]
+questions 50 conditions ['base', 'astra_edit', 'lp_push', 'remove_direction', 'gc_128', 'gc_1024', 'random_1024', 'recipe_own_15_19', 'recipe_own_21_23']
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[1/50] elapsed 1s
+[11/50] elapsed 5s
+[21/50] elapsed 9s
+[31/50] elapsed 14s
+[41/50] elapsed 18s
+condition                 correct    same output as unedited
+base                        0.940                      1.000
+astra_edit                  0.940                      0.980
+lp_push                     0.920                      0.940
+remove_direction            0.940                      0.980
+gc_128                      0.960                      0.940
+gc_1024                     0.880                      0.780
+random_1024                 0.800                      0.740
+recipe_own_15_19            0.920                      0.940
+recipe_own_21_23            0.920                      0.940
+DONE

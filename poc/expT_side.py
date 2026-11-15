@@ -6,13 +6,14 @@ Note: the replication write-up found that teacher-forced numbers rank near-equiv
 so these are used only as a coarse side-effect measure.
 """
 import json
+import os
 import sys
 import time
 
 import numpy as np
 import torch
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 from conds import all_conditions
 from gen import Editor
@@ -28,7 +29,7 @@ conds, sets, S = all_conditions(model, ALT)
 names = list(conds)
 MATH = json.load(open(f"{qw.ROOT}/data/math500.json"))
 GSM = json.load(open(f"{qw.ROOT}/data/gsm8k_test.json"))
-meta = [m for m in json.load(open("/home/claude/poc/outA2/meta.json")) if m["half"] == 1]
+meta = [m for m in json.load(open(f"{qw.ROOT}/outA2/meta.json")) if m["half"] == 1]
 out = {n: dict(kl_prod=[], dlogp_prod=[], dlogp_loop=[], kl_loop=[]) for n in names}
 t0 = time.time()
 for cls in ["prod_mid", "tight"]:
@@ -58,7 +59,7 @@ for cls in ["prod_mid", "tight"]:
             ed.clear()
             del hid, lp0
         print(f"{cls} {m['id']} elapsed {time.time() - t0:.0f}s", flush=True)
-json.dump(out, open("/home/claude/poc/results_T.json", "w"))
+json.dump(out, open(f"{qw.ROOT}/results_T.json", "w"))
 print(f"{'condition':24s} {'KL on productive text':>22s} {'dlogp productive':>17s} {'dlogp loop continuation':>24s}")
 for n in names:
     if n == "base":

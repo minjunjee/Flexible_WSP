@@ -1,5 +1,6 @@
 """Analysis of Experiment A recordings. Prints tables and saves results/anaA.json."""
 import json
+import os
 import sys
 import warnings
 
@@ -13,10 +14,10 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
 warnings.filterwarnings("ignore")
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 
-OUT = "/home/claude/poc/outA"
+OUT = f"{qw.ROOT}/outA"
 meta = json.load(open(f"{OUT}/meta.json"))
 CKPT = [128, 256, 384, 512, 768, 1024]
 R = {}
@@ -266,5 +267,5 @@ for k in f3:
     sa = strat_auc(xp, PP, xn, PN)
     R["A3"]["feat"][k] = dict(raw=float(raw), matched=float(sa))
     print(f"  {k:24s} {raw:8.3f} {sa:22.3f}")
-json.dump(R, open("/home/claude/poc/results_anaA.json", "w"))
+json.dump(R, open(f"{qw.ROOT}/results_anaA.json", "w"))
 print("saved results_anaA.json")

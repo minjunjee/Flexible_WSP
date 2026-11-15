@@ -7,12 +7,13 @@ Every edit used in these experiments is a change to a down_proj matrix W (neuron
   push    : constant vector added to the MLP output   (steering vector; not a pure weight edit)
 Applying them through hooks is mathematically the same as editing W, and lets one batch hold several edited models.
 """
+import os
 import sys
 
 import numpy as np
 import torch
 
-sys.path.insert(0, "/home/claude/poc")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qw
 
 EOS_ID = 248044
