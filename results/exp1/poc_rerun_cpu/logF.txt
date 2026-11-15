@@ -1,0 +1,70 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 12262.45it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+contrast built in 21s; JSON prefix aligned on 16/16 build questions
+layer 5: cos(mean effect at position 0, at position j) = [1.0, -0.02, 0.12, 0.04, 0.21]; norms [0.7, 0.7, 0.7, 0.5, 0.6]; share of squared norm in top 1/2/3/5 directions = [0.3, 0.54, 0.72, 0.93]
+layer 9: cos(mean effect at position 0, at position j) = [1.0, 0.26, 0.19, 0.26, 0.34]; norms [1.1, 1.0, 0.9, 0.9, 0.7]; share of squared norm in top 1/2/3/5 directions = [0.41, 0.59, 0.74, 0.93]
+layer 13: cos(mean effect at position 0, at position j) = [1.0, 0.31, 0.25, 0.2, 0.14]; norms [2.1, 1.6, 1.8, 1.2, 0.9]; share of squared norm in top 1/2/3/5 directions = [0.41, 0.62, 0.74, 0.86]
+layer 17: cos(mean effect at position 0, at position j) = [1.0, 0.2, 0.11, 0.11, 0.25]; norms [4.2, 2.9, 2.9, 1.7, 0.9]; share of squared norm in top 1/2/3/5 directions = [0.36, 0.55, 0.67, 0.76]
+layer 21: cos(mean effect at position 0, at position j) = [1.0, 0.12, 0.1, 0.17, 0.28]; norms [6.9, 4.9, 4.2, 2.4, 1.3]; share of squared norm in top 1/2/3/5 directions = [0.34, 0.53, 0.63, 0.71]
+layer 23: cos(mean effect at position 0, at position j) = [1.0, 0.11, 0.09, 0.2, 0.37]; norms [9.3, 6.3, 5.6, 3.7, 1.9]; share of squared norm in top 1/2/3/5 directions = [0.34, 0.51, 0.62, 0.71]
+gates for all24: held-out build questions, over layers: gate at position 0 mean 0.98 (lowest single value 0.54); elsewhere largest |gate| 0.61, mean 99th pct 0.099   [24s]
+gates for coarse6: held-out build questions, over layers: gate at position 0 mean 0.96 (lowest single value 0.57); elsewhere largest |gate| 0.40, mean 99th pct 0.130   [27s]
+gates for late6: held-out build questions, over layers: gate at position 0 mean 0.90 (lowest single value 0.51); elsewhere largest |gate| 0.73, mean 99th pct 0.190   [29s]
+gates for L23: held-out build questions, over layers: gate at position 0 mean 0.85 (lowest single value 0.58); elsewhere largest |gate| 0.34, mean 99th pct 0.179   [31s]
+21 conditions; starting evaluation at 31s
+finished set same_style elapsed 88s
+finished set new_style elapsed 117s
+[same_style] condition         starts {  valid  strict  clean  answer strict+ans
+[same_style] no_edit               0.00   0.00    0.00   0.00    0.80       0.00
+[same_style] const_L9              0.00   0.00    0.00   0.00    0.75       0.00
+[same_style] const_L13             0.00   0.00    0.00   0.00    0.40       0.00
+[same_style] const_L17             1.00   0.10    0.00   0.10    0.05       0.00
+[same_style] gate0_L13             0.00   0.00    0.00   0.00    0.70       0.00
+[same_style] gate0_L17             0.00   0.00    0.00   0.00    0.80       0.00
+[same_style] gate0_L21             0.00   0.00    0.00   0.00    0.75       0.00
+[same_style] gate0_L13_x4          0.00   0.00    0.00   0.00    0.25       0.00
+[same_style] gate0_L17_x4          0.00   0.00    0.00   0.00    0.10       0.00
+[same_style] gate0_all24           1.00   0.85    0.65   0.85    0.90       0.55
+[same_style] gate0_late12          1.00   0.85    0.65   0.85    0.90       0.60
+[same_style] gate0_late6           0.80   0.55    0.40   0.55    0.70       0.40
+[same_style] gate0_last2           0.95   0.75    0.55   0.75    0.75       0.50
+[same_style] gate0_early12         0.00   0.00    0.00   0.00    0.85       0.00
+[same_style] gate0_coarse6         1.00   0.95    0.65   0.95    0.95       0.65
+[same_style] gate0_coarse3         1.00   0.90    0.65   0.90    0.90       0.65
+[same_style] gate0_L23             0.90   0.75    0.55   0.75    0.80       0.50
+[same_style] baked_all24           1.00   0.85    0.65   0.85    0.85       0.55
+[same_style] baked_coarse6         1.00   0.95    0.60   0.95    0.90       0.60
+[same_style] baked_late6           0.75   0.55    0.35   0.50    0.60       0.30
+[same_style] baked_L23             0.90   0.75    0.55   0.75    0.85       0.55
+[same_style] instruction_in_prompt      1.00   1.00    1.00   1.00    0.75       0.75
+[new_style] condition         starts {  valid  strict  clean  answer strict+ans
+[new_style] no_edit               0.00   0.00    0.00   0.00    0.90       0.00
+[new_style] const_L9              0.00   0.00    0.00   0.00    0.70       0.00
+[new_style] const_L13             0.00   0.00    0.00   0.00    0.60       0.00
+[new_style] const_L17             0.80   0.20    0.00   0.20    0.10       0.00
+[new_style] gate0_L13             0.00   0.00    0.00   0.00    1.00       0.00
+[new_style] gate0_L17             0.00   0.00    0.00   0.00    0.80       0.00
+[new_style] gate0_L21             0.00   0.00    0.00   0.00    1.00       0.00
+[new_style] gate0_L13_x4          0.00   0.00    0.00   0.00    0.60       0.00
+[new_style] gate0_L17_x4          0.00   0.00    0.00   0.00    0.20       0.00
+[new_style] gate0_all24           1.00   0.90    0.10   0.90    0.90       0.10
+[new_style] gate0_late12          1.00   0.80    0.10   0.80    0.90       0.10
+[new_style] gate0_late6           1.00   0.90    0.10   0.90    0.90       0.10
+[new_style] gate0_last2           1.00   0.90    0.10   0.90    0.90       0.10
+[new_style] gate0_early12         0.00   0.00    0.00   0.00    1.00       0.00
+[new_style] gate0_coarse6         1.00   1.00    0.20   1.00    1.00       0.20
+[new_style] gate0_coarse3         1.00   0.90    0.10   0.90    0.90       0.10
+[new_style] gate0_L23             1.00   1.00    0.20   1.00    1.00       0.20
+[new_style] baked_all24           0.80   0.60    0.00   0.60    0.80       0.00
+[new_style] baked_coarse6         0.80   0.80    0.10   0.80    1.00       0.10
+[new_style] baked_late6           0.70   0.60    0.10   0.60    0.90       0.10
+[new_style] baked_L23             0.80   0.80    0.20   0.80    0.90       0.20
+[new_style] instruction_in_prompt      1.00   1.00    1.00   1.00    1.00       1.00
+gates of baked_all24 on evaluation questions: at position 0 mean 0.91 min -0.02; elsewhere max |gate| 0.41, 99th pct 0.129, n 22464
+gates of baked_coarse6 on evaluation questions: at position 0 mean 0.86 min 0.02; elsewhere max |gate| 0.47, 99th pct 0.158, n 5202
+gates of baked_late6 on evaluation questions: at position 0 mean 0.87 min -0.04; elsewhere max |gate| 0.92, 99th pct 0.378, n 6126
+gates of baked_L23 on evaluation questions: at position 0 mean 0.87 min 0.07; elsewhere max |gate| 0.32, 99th pct 0.224, n 962
+DONE

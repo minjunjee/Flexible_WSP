@@ -1,0 +1,10 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 21034.89it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[json] answer start   constant share by layer: L9 0.91, L13 0.88, L17 0.75, L21 0.71, L23 0.72   (Q = 36, floor 0.03)
+[json] key name       constant share by layer: L9 0.94, L13 0.91, L17 0.87, L21 0.86, L23 0.80   (Q = 36, floor 0.03)
+[brief] answer start   constant share by layer: L9 0.93, L13 0.88, L17 0.60, L21 0.44, L23 0.33   (Q = 36, floor 0.03)
+[brief] end of answer  constant share by layer: L9 0.56, L13 0.66, L17 0.59, L21 0.57, L23 0.54   (Q = 36, floor 0.03)
+DONE

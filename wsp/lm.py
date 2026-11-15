@@ -1,0 +1,191 @@
+"""Model wrapper shared by the experiments.
+
+What it gives:
+  - chat prompts as token ids, with or without an instruction appended to the question
+  - the residual stream after every block and the inputs of every MLP output matrix (down_proj), for one sequence
+  - additions to the MLP output at chosen positions (used to build edits and as inference-time baselines)
+  - rank-1 changes to down_proj.weight, stored in the weight's own dtype, and a way to restore the original weights
+  - greedy generation without padding (prompts of equal length are batched together)
+
+"Answer-start position" means the last prompt token after the chat template is applied: the position whose output
+decides the first token of the answer.
+"""
+import json
+import os
+
+import torch
+from transformers import AutoTokenizer
+
+DATA_ROOT = os.environ.get("WSP_DATA_ROOT", "/data/minjun_dev/Introduction_LLM/Flexible_WSP")
+MODELS = {
+    "qwen35-0.8b": dict(path=f"{DATA_ROOT}/models/qwen35_08b", loader="image_text", template=dict(enable_thinking=False)),
+    "qwen35-2b": dict(path="Qwen/Qwen3.5-2B", loader="image_text", template=dict(enable_thinking=False)),
+    "qwen35-4b": dict(path="Qwen/Qwen3.5-4B", loader="image_text", template=dict(enable_thinking=False)),
+    "phi35-mini": dict(path="microsoft/Phi-3.5-mini-instruct", loader="causal", template={}),
+    "gemma3-4b": dict(path="google/gemma-3-4b-it", loader="causal", template={}),
+    "gemma2-9b": dict(path="google/gemma-2-9b-it", loader="causal", template={}),
+}
+END_TOKENS = ("<|im_end|>", "<|endoftext|>", "<end_of_turn>", "<|end|>", "<eos>")
+
+
+class LM:
+    def __init__(self, name, device="cuda", dtype=torch.bfloat16):
+        spec = MODELS[name]
+        self.name, self.device, self.template = name, device, dict(spec["template"])
+        self.tok = AutoTokenizer.from_pretrained(spec["path"])
+        if spec["loader"] == "image_text":
+            from transformers import AutoModelForImageTextToText
+            model = AutoModelForImageTextToText.from_pretrained(spec["path"], dtype=dtype).eval()
+            model.model.visual = None
+            self.body = model.model.language_model
+        else:
+            from transformers import AutoModelForCausalLM
+            model = AutoModelForCausalLM.from_pretrained(spec["path"], dtype=dtype).eval()
+            self.body = model.model
+        self.model = model.to(device)
+        self.head = model.lm_head
+        self.layers = list(self.body.layers)
+        self.L = len(self.layers)
+        self.mlp_out = [layer.mlp.down_proj for layer in self.layers]
+        self.d_model, self.d_mlp = self.mlp_out[0].weight.shape
+        self.W0 = [m.weight.detach().clone() for m in self.mlp_out]
+        vocab = self.tok.get_vocab()
+        self.end_ids = {vocab[t] for t in END_TOKENS if t in vocab} | {self.tok.eos_token_id}
+        self.cap_h, self.cap_res, self.adds, self.phase = None, None, [], None
+        for l in range(self.L):
+            self.mlp_out[l].register_forward_hook(self._mlp_hook(l))
+            self.layers[l].register_forward_hook(self._block_hook(l))
+
+    # ------------------------------------------------------------ hooks
+    def _mlp_hook(self, l):
+        def hook(mod, inp, out):
+            if self.cap_h is not None:
+                self.cap_h[l] = inp[0].detach()
+            todo = [a for a in self.adds if a[0] == l]
+            if not todo:
+                return None
+            out = out.clone()
+            for _, where, vec in todo:
+                vec = vec.to(out.dtype)
+                if where == "all":                               # every position, every forward pass
+                    out += vec if vec.dim() == 1 else vec[:, None, :]
+                elif where == "start":                           # last prompt token only (first pass of generation)
+                    if self.phase == "prompt":
+                        out[:, -1] += vec
+                else:                                            # an absolute position in a single full-sequence pass
+                    out[:, where] += vec
+            return out
+        return hook
+
+    def _block_hook(self, l):
+        def hook(mod, inp, out):
+            if self.cap_res is not None:
+                self.cap_res[l] = (out[0] if isinstance(out, tuple) else out).detach()
+        return hook
+
+    # ------------------------------------------------------------ prompts
+    def prompt_ids(self, question, instruction=None, **template):
+        text = question if instruction is None else question + " " + instruction
+        kw = dict(self.template)
+        kw.update(template)
+        s = self.tok.apply_chat_template([{"role": "user", "content": text}], tokenize=False, add_generation_prompt=True, **kw)
+        return self.tok(s, add_special_tokens=False).input_ids
+
+    def decode(self, tokens):
+        return self.tok.decode([t for t in tokens if t not in self.end_ids]).strip()
+
+    # ------------------------------------------------------------ one full sequence
+    @torch.inference_mode()
+    def run(self, ids, adds=(), logits=False):
+        """One sequence, no cache. Returns (res, hh[, logits]):
+        res [L, T, d_model] residual after each block (the last one is the input of the final norm),
+        hh  [L, T, d_mlp]   inputs of each down_proj, both float32.
+        adds: (layer, position, vector) added to that layer's MLP output at that position."""
+        self.cap_h, self.cap_res, self.adds, self.phase = {}, {}, list(adds), None
+        try:
+            out = self.body(input_ids=torch.tensor([ids], device=self.device))
+            res = torch.stack([self.cap_res[l][0].float() for l in range(self.L)])
+            hh = torch.stack([self.cap_h[l][0].float() for l in range(self.L)])
+            if logits:
+                return res, hh, self.head(out.last_hidden_state[0]).float()
+            return res, hh
+        finally:
+            self.cap_h, self.cap_res, self.adds = None, None, []
+
+    @torch.inference_mode()
+    def logprobs(self, ids, adds=()):
+        """log-probabilities of the next token at every position of one sequence [T, V]"""
+        self.adds, self.phase = list(adds), None
+        try:
+            out = self.body(input_ids=torch.tensor([ids], device=self.device))
+            return torch.log_softmax(self.head(out.last_hidden_state[0]).float(), -1)
+        finally:
+            self.adds = []
+
+    # ------------------------------------------------------------ generation
+    @torch.inference_mode()
+    def generate(self, prompts, max_new=40, adds=(), batch=64):
+        """Greedy. prompts: list of token-id lists. Returns a list of generated token lists (end token included).
+        adds: (layer, "all" | "start", vector). Prompts are batched only with prompts of the same length, so no padding."""
+        out = [None] * len(prompts)
+        by_len = {}
+        for i, p in enumerate(prompts):
+            by_len.setdefault(len(p), []).append(i)
+        self.adds = list(adds)
+        try:
+            for idx_all in by_len.values():
+                for s in range(0, len(idx_all), batch):
+                    idx = idx_all[s:s + batch]
+                    ids = torch.tensor([prompts[i] for i in idx], device=self.device)
+                    self.phase = "prompt"
+                    o = self.body(input_ids=ids, use_cache=True)
+                    self.phase = "gen"
+                    toks = [[] for _ in idx]
+                    done = [False] * len(idx)
+                    for _ in range(max_new):
+                        nxt = self.head(o.last_hidden_state[:, -1]).float().argmax(-1)
+                        for b, t in enumerate(nxt.tolist()):
+                            if not done[b]:
+                                toks[b].append(t)
+                                done[b] = t in self.end_ids
+                        if all(done):
+                            break
+                        o = self.body(input_ids=nxt[:, None], past_key_values=o.past_key_values, use_cache=True)
+                    for b, i in enumerate(idx):
+                        out[i] = toks[b]
+        finally:
+            self.adds, self.phase = [], None
+        return out
+
+    @torch.inference_mode()
+    def generate_rows(self, prompt, row_adds, max_new=40):
+        """One prompt, one row per condition. row_adds[b] = [(layer, "all" | "start", vector)] for row b."""
+        B, table = len(row_adds), {}
+        for b, lst in enumerate(row_adds):
+            for l, where, vec in lst:
+                M = table.setdefault((l, where), torch.zeros(B, self.d_model, device=self.device))
+                M[b] += vec.to(self.device).float()
+        return self.generate([prompt] * B, max_new, adds=[(l, w, M) for (l, w), M in table.items()], batch=B)
+
+    # ------------------------------------------------------------ weight edits
+    def add_rank1(self, l, u, v, scale=1.0):
+        """down_proj.weight of layer l += scale * outer(u, v), rounded to the weight's dtype (what a checkpoint would hold)"""
+        W = self.mlp_out[l].weight
+        W.data.copy_((W.data.float() + scale * torch.outer(u.float().to(W.device), v.float().to(W.device))).to(W.dtype))
+
+    def apply(self, edits, scale=1.0):
+        """edits: list of dicts with keys layer, u, v"""
+        for e in edits:
+            self.add_rank1(e["layer"], torch.as_tensor(e["u"]), torch.as_tensor(e["v"]), scale)
+
+    def restore(self):
+        for m, w0 in zip(self.mlp_out, self.W0):
+            m.weight.data.copy_(w0)
+
+    def changed_weights(self):
+        return int(sum((m.weight.data != w0).sum() for m, w0 in zip(self.mlp_out, self.W0)))
+
+
+def load_questions(path=None):
+    path = path or os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "questions_v1.json")
+    return json.load(open(path))["questions"]

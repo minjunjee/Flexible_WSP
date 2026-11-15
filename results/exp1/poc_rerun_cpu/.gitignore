@@ -1,0 +1,3 @@
+# 이 폴더의 스크립트와 models는 poc/를 가리키는 symlink다. 결과와 로그만 올린다.
+*.py
+models
