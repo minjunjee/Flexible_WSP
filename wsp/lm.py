@@ -23,7 +23,8 @@ MODELS = {
     "qwen35-2b": dict(path="Qwen/Qwen3.5-2B", loader="image_text", template=dict(enable_thinking=False)),
     "qwen35-4b": dict(path="Qwen/Qwen3.5-4B", loader="image_text", template=dict(enable_thinking=False)),
     "phi35-mini": dict(path="microsoft/Phi-3.5-mini-instruct", loader="causal", template={}),
-    "gemma3-4b": dict(path="google/gemma-3-4b-it", loader="causal", template={}),
+    # the revision IWIBench fixes for its target model
+    "gemma3-4b": dict(path="google/gemma-3-4b-it", loader="image_text", template={}, revision="093f9f388b31de276ce2de164bdc2081324b9767"),
     "gemma2-9b": dict(path="google/gemma-2-9b-it", loader="causal", template={}),
 }
 END_TOKENS = ("<|im_end|>", "<|endoftext|>", "<end_of_turn>", "<|end|>", "<eos>")
@@ -36,15 +37,17 @@ class LM:
         answer out of ten. Edited weights are still rounded to bfloat16 values, as a saved checkpoint would hold them."""
         spec = MODELS[name]
         self.name, self.device, self.template = name, device, dict(spec["template"])
-        self.tok = AutoTokenizer.from_pretrained(spec["path"])
+        rev = dict(revision=spec["revision"]) if "revision" in spec else {}
+        self.tok = AutoTokenizer.from_pretrained(spec["path"], **rev)
         if spec["loader"] == "image_text":
             from transformers import AutoModelForImageTextToText
-            model = AutoModelForImageTextToText.from_pretrained(spec["path"], dtype=dtype).eval()
-            model.model.visual = None
+            model = AutoModelForImageTextToText.from_pretrained(spec["path"], dtype=dtype, **rev).eval()
+            if hasattr(model.model, "visual"):
+                model.model.visual = None
             self.body = model.model.language_model
         else:
             from transformers import AutoModelForCausalLM
-            model = AutoModelForCausalLM.from_pretrained(spec["path"], dtype=dtype).eval()
+            model = AutoModelForCausalLM.from_pretrained(spec["path"], dtype=dtype, **rev).eval()
             self.body = model.model
         self.model = model.to(device)
         self.head = model.lm_head

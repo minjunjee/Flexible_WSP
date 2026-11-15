@@ -1,0 +1,47 @@
+{
+ "d1 vs edit compliance": {
+  "rho": -0.17003991446960448,
+  "p": 0.5786321379373366,
+  "n": 13
+ },
+ "d1 vs number of edits": {
+  "rho": -0.26793816301681106,
+  "p": 0.3761204231228026,
+  "n": 13
+ },
+ "nD vs edit compliance": {
+  "rho": -0.530949608204904,
+  "p": 0.06190457656187384,
+  "n": 13
+ },
+ "nD vs number of edits": {
+  "rho": 0.42638420541457683,
+  "p": 0.14625335651523386,
+  "n": 13
+ },
+ "nD_share vs edit compliance": {
+  "rho": 0.12929860925197142,
+  "p": 0.6737596060710331,
+  "n": 13
+ },
+ "nD_share vs number of edits": {
+  "rho": -0.07106403423576281,
+  "p": 0.8175497115751396,
+  "n": 13
+ },
+ "dL vs edit compliance": {
+  "rho": -0.5612109848383441,
+  "p": 0.04598112208659831,
+  "n": 13
+ },
+ "dL vs number of edits": {
+  "rho": 0.3865883462425497,
+  "p": 0.19193951113977473,
+  "n": 13
+ },
+ "three instructions with the latest last decision (dL)": [
+  "postscript",
+  "three_bullets",
+  "end_phrase"
+ ]
+}

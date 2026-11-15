@@ -40,3 +40,14 @@
 [ 1459s]    instruction used for the teacher: Respond only with a JSON object of the form {"person": "..."} and nothing else.
 [ 1511s]    round 1 group (same next token for the instructed model): 192 positions, median position 0.0, mean KL 12.59, shared fraction 0.77, instructed wants [['{"', 192]], current writes [['Based', 103], ['The', 20], ['Decl', 7]]
 [ 1511s]    round 1 group (similar direction of the hidden-state difference): 192 positions, median position 0.0, mean KL 12.59, shared fraction 0.77, instructed wants [['{"', 192]], current writes [['Based', 103], ['The', 20], ['Decl', 7]]
+[ 1593s]    round 1: edit built for 192 positions (group had 192); fit {'target_mean': 0.9388460492094358, 'target_min': 0.45708587765693665, 'other_max_abs': 0.7109516263008118}
+[ 1625s]    round 2 group (same next token for the instructed model): 90 positions, median position 1.0, mean KL 1.79, shared fraction 0.84, instructed wants [['person', 90]], current writes [['name', 83], ['person', 6], ['Name', 1]]
+[ 1625s]    round 2 group (similar direction of the hidden-state difference): 90 positions, median position 1.0, mean KL 1.79, shared fraction 0.84, instructed wants [['person', 90]], current writes [['name', 83], ['person', 6], ['Name', 1]]
+[ 1625s]    round 2 group (same next token for the instructed model): 25 positions, median position 2.0, mean KL 1.41, shared fraction 0.91, instructed wants [['":', 25]], current writes [['_name', 24], ['":', 1]]
+[ 1678s]    round 2: edit built for 90 positions (group had 90); fit {'target_mean': 0.73242765913407, 'target_min': 0.07407518476247787, 'other_max_abs': 0.6703740358352661}
+[ 1708s]    round 3 group (same next token for the instructed model): 4 positions, median position 2.0, mean KL 6.92, shared fraction 0.97, instructed wants [['_name', 4]], current writes [['":', 4]]
+[ 1708s]    round 3 group (similar direction of the hidden-state difference): 4 positions, median position 2.0, mean KL 6.92, shared fraction 0.97, instructed wants [['_name', 4]], current writes [['":', 4]]
+[ 1708s]    round 3 group (same next token for the instructed model): 4 positions, median position 0.0, mean KL 1.93, shared fraction 0.83, instructed wants [['The', 4]], current writes [['London', 1], ['Mexico', 1], ['Scotland', 1]]
+[ 1709s] seed 6: edited targets 64/64 (base 0.00), retention 1.0, reward 1.0; controls {'targets': {'count': 64, 'base_successes': 0, 'successes': 64, 'retained': 0}, 'nearby_controls': {'count': 32, 'base_successes': 0, 'successes': 32, 'retained': 0}, 'general_controls': {'count': 64, 'base_successes': 60, 'successes': 60, 'retained': 60}, 'override_controls': {'count': 8, 'base_successes': 0, 'successes': 0, 'retained': 0}}; instruction in the prompt: targets 64/64, retention 0.0
+[ 1709s] all episodes: edited targets 187/192; mean reward 0.945
+[ 1709s] DONE

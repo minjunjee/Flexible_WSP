@@ -1,0 +1,757 @@
+{
+ "model": "qwen35-0.8b",
+ "prompts": "results/E4/E4a_prompts_written_without_seeing_the_benchmark_code.json",
+ "split": "development",
+ "hold_out_wording": false,
+ "episodes": [
+  {
+   "seed": 0,
+   "episode_id": "structured_response_default/0.2.2/gemma-3-4b-it/development/0",
+   "objective": "When extracting name from a short residence record, return only a JSON object by default. Use exactly these keys: name → who. Copy the correct field values from the record. Preserve extraction accuracy and honour explicit requests for ordinary prose.",
+   "instruction": "Respond only with a JSON object of the form {\"who\": \"...\"} and nothing else.",
+   "keys": {
+    "name": "who"
+   },
+   "n_build_prompts": 376,
+   "edits": 2,
+   "changed_weights": 82810327,
+   "rounds": [
+    {
+     "round": 1,
+     "own_answers": {
+      "positions": 15409,
+      "diverging": 799,
+      "share": 0.05185281329093387,
+      "questions_with_divergence": 192,
+      "mean_kl_at_answer_start": 6.3425897664212165,
+      "mean_kl_elsewhere": 0.19466067811825927
+     },
+     "questions_with_an_untargeted_divergence": 192,
+     "candidate_groups": [
+      {
+       "kind": "same next token for the instructed model",
+       "size": 192,
+       "kl_sum": 2384.8137521743774,
+       "kl_mean": 12.420904959241549,
+       "median_position": 0.0,
+       "shared_fraction": 0.7941671013832092,
+       "instructed_next_tokens": [
+        [
+         "{\"",
+         192
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "Based",
+         111
+        ],
+        [
+         "The",
+         33
+        ],
+        [
+         "**",
+         4
+        ],
+        [
+         "C",
+         3
+        ],
+        [
+         "I",
+         3
+        ],
+        [
+         "B",
+         2
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 192,
+       "kl_sum": 2384.8137521743774,
+       "kl_mean": 12.420904959241549,
+       "median_position": 0.0,
+       "shared_fraction": 0.7941671013832092,
+       "instructed_next_tokens": [
+        [
+         "{\"",
+         192
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "Based",
+         111
+        ],
+        [
+         "The",
+         33
+        ],
+        [
+         "**",
+         4
+        ],
+        [
+         "C",
+         3
+        ],
+        [
+         "I",
+         3
+        ],
+        [
+         "B",
+         2
+        ]
+       ]
+      }
+     ],
+     "chosen_group": {
+      "kind": "same next token for the instructed model",
+      "size": 192,
+      "kl_sum": 2384.8137521743774,
+      "kl_mean": 12.420904959241549,
+      "median_position": 0.0,
+      "shared_fraction": 0.7941671013832092,
+      "instructed_next_tokens": [
+       [
+        "{\"",
+        192
+       ]
+      ],
+      "current_next_tokens": [
+       [
+        "Based",
+        111
+       ],
+       [
+        "The",
+        33
+       ],
+       [
+        "**",
+        4
+       ],
+       [
+        "C",
+        3
+       ],
+       [
+        "I",
+        3
+       ],
+       [
+        "B",
+        2
+       ]
+      ]
+     },
+     "positions_in_the_group": {
+      "chosen": 192,
+      "after_adding_positions_where_the_edit_fires_anyway": 192
+     },
+     "fit": {
+      "target_mean": 0.8944686303536097,
+      "target_min": 0.2975218892097473,
+      "other_max_abs": 0.8656492233276367
+     },
+     "changed_weights": 77860937
+    },
+    {
+     "round": 2,
+     "own_answers": {
+      "positions": 9822,
+      "diverging": 362,
+      "share": 0.03685603746691102,
+      "questions_with_divergence": 244,
+      "mean_kl_at_answer_start": 0.8437315007833333,
+      "mean_kl_elsewhere": 0.30730840500426837
+     },
+     "questions_with_an_untargeted_divergence": 232,
+     "candidate_groups": [
+      {
+       "kind": "same next token for the instructed model",
+       "size": 188,
+       "kl_sum": 1339.8786380290985,
+       "kl_mean": 7.127014032069673,
+       "median_position": 1.0,
+       "shared_fraction": 0.8086195588111877,
+       "instructed_next_tokens": [
+        [
+         "who",
+         188
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "name",
+         158
+        ],
+        [
+         "person",
+         20
+        ],
+        [
+         "record",
+         3
+        ],
+        [
+         "resident",
+         2
+        ],
+        [
+         "city",
+         1
+        ],
+        [
+         "description",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 188,
+       "kl_sum": 1339.8786380290985,
+       "kl_mean": 7.127014032069673,
+       "median_position": 1.0,
+       "shared_fraction": 0.8086195588111877,
+       "instructed_next_tokens": [
+        [
+         "who",
+         188
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "name",
+         158
+        ],
+        [
+         "person",
+         20
+        ],
+        [
+         "record",
+         3
+        ],
+        [
+         "resident",
+         2
+        ],
+        [
+         "city",
+         1
+        ],
+        [
+         "description",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "same next token for the instructed model",
+       "size": 24,
+       "kl_sum": 59.012176275253296,
+       "kl_mean": 2.458840678135554,
+       "median_position": 12.0,
+       "shared_fraction": 0.5525269508361816,
+       "instructed_next_tokens": [
+        [
+         "\n\n",
+         24
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "<|im_end|>",
+         10
+        ],
+        [
+         " It",
+         6
+        ],
+        [
+         "\n",
+         4
+        ],
+        [
+         "\n\n",
+         1
+        ],
+        [
+         " (",
+         1
+        ],
+        [
+         " He",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 22,
+       "kl_sum": 54.60870587825775,
+       "kl_mean": 2.4822139035571706,
+       "median_position": 12.0,
+       "shared_fraction": 0.595539391040802,
+       "instructed_next_tokens": [
+        [
+         "\n\n",
+         20
+        ],
+        [
+         " The",
+         1
+        ],
+        [
+         "<|im_end|>",
+         1
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "<|im_end|>",
+         9
+        ],
+        [
+         " It",
+         6
+        ],
+        [
+         "\n",
+         4
+        ],
+        [
+         "\n\n",
+         1
+        ],
+        [
+         " He",
+         1
+        ],
+        [
+         " This",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "same next token for the instructed model",
+       "size": 5,
+       "kl_sum": 8.70124065876007,
+       "kl_mean": 1.7402481317520142,
+       "median_position": 0.0,
+       "shared_fraction": 0.6603866815567017,
+       "instructed_next_tokens": [
+        [
+         "The",
+         5
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "The",
+         2
+        ],
+        [
+         "Das",
+         1
+        ],
+        [
+         "El",
+         1
+        ],
+        [
+         "Le",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 5,
+       "kl_sum": 8.70124065876007,
+       "kl_mean": 1.7402481317520142,
+       "median_position": 0.0,
+       "shared_fraction": 0.6603866815567017,
+       "instructed_next_tokens": [
+        [
+         "The",
+         5
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "The",
+         2
+        ],
+        [
+         "Das",
+         1
+        ],
+        [
+         "El",
+         1
+        ],
+        [
+         "Le",
+         1
+        ]
+       ]
+      }
+     ],
+     "chosen_group": {
+      "kind": "same next token for the instructed model",
+      "size": 188,
+      "kl_sum": 1339.8786380290985,
+      "kl_mean": 7.127014032069673,
+      "median_position": 1.0,
+      "shared_fraction": 0.8086195588111877,
+      "instructed_next_tokens": [
+       [
+        "who",
+        188
+       ]
+      ],
+      "current_next_tokens": [
+       [
+        "name",
+        158
+       ],
+       [
+        "person",
+        20
+       ],
+       [
+        "record",
+        3
+       ],
+       [
+        "resident",
+        2
+       ],
+       [
+        "city",
+        1
+       ],
+       [
+        "description",
+        1
+       ]
+      ]
+     },
+     "positions_in_the_group": {
+      "chosen": 188,
+      "after_adding_positions_where_the_edit_fires_anyway": 188
+     },
+     "fit": {
+      "target_mean": 0.9804721424976984,
+      "target_min": 0.616425633430481,
+      "other_max_abs": 0.9904626607894897
+     },
+     "changed_weights": 82810327
+    },
+    {
+     "round": 3,
+     "own_answers": {
+      "positions": 9867,
+      "diverging": 285,
+      "share": 0.028884159318941928,
+      "questions_with_divergence": 147,
+      "mean_kl_at_answer_start": 0.8255512293430041,
+      "mean_kl_elsewhere": 0.12758058605392394
+     },
+     "questions_with_an_untargeted_divergence": 131,
+     "candidate_groups": [
+      {
+       "kind": "same next token for the instructed model",
+       "size": 22,
+       "kl_sum": 55.830875277519226,
+       "kl_mean": 2.537767058069056,
+       "median_position": 12.0,
+       "shared_fraction": 0.5666558146476746,
+       "instructed_next_tokens": [
+        [
+         "\n\n",
+         22
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "<|im_end|>",
+         8
+        ],
+        [
+         " It",
+         6
+        ],
+        [
+         "\n",
+         4
+        ],
+        [
+         "\n\n",
+         1
+        ],
+        [
+         " (",
+         1
+        ],
+        [
+         " He",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 36,
+       "kl_sum": 48.44620108604431,
+       "kl_mean": 1.3457278079456754,
+       "median_position": 9.0,
+       "shared_fraction": 0.6893382668495178,
+       "instructed_next_tokens": [
+        [
+         "\"}",
+         35
+        ],
+        [
+         " is",
+         1
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "\",",
+         36
+        ]
+       ]
+      },
+      {
+       "kind": "same next token for the instructed model",
+       "size": 35,
+       "kl_sum": 47.052106499671936,
+       "kl_mean": 1.3443458999906268,
+       "median_position": 9.0,
+       "shared_fraction": 0.6959025263786316,
+       "instructed_next_tokens": [
+        [
+         "\"}",
+         35
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "\",",
+         35
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 25,
+       "kl_sum": 41.324819564819336,
+       "kl_mean": 1.6529927825927735,
+       "median_position": 11.0,
+       "shared_fraction": 0.752937912940979,
+       "instructed_next_tokens": [
+        [
+         "name",
+         12
+        ],
+        [
+         "occupation",
+         3
+        ],
+        [
+         "title",
+         2
+        ],
+        [
+         "role",
+         2
+        ],
+        [
+         "res",
+         1
+        ],
+        [
+         "location",
+         1
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "what",
+         23
+        ],
+        [
+         "where",
+         1
+        ],
+        [
+         "who",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "similar direction of the hidden-state difference",
+       "size": 16,
+       "kl_sum": 40.76821959018707,
+       "kl_mean": 2.548013724386692,
+       "median_position": 12.5,
+       "shared_fraction": 0.6570687890052795,
+       "instructed_next_tokens": [
+        [
+         "\n\n",
+         16
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         " It",
+         6
+        ],
+        [
+         "<|im_end|>",
+         5
+        ],
+        [
+         "\n",
+         2
+        ],
+        [
+         "\n\n",
+         1
+        ],
+        [
+         " He",
+         1
+        ],
+        [
+         " This",
+         1
+        ]
+       ]
+      },
+      {
+       "kind": "same next token for the instructed model",
+       "size": 16,
+       "kl_sum": 37.86427068710327,
+       "kl_mean": 2.3665169179439545,
+       "median_position": 12.0,
+       "shared_fraction": 0.7059049010276794,
+       "instructed_next_tokens": [
+        [
+         "\"",
+         16
+        ]
+       ],
+       "current_next_tokens": [
+        [
+         "\",",
+         16
+        ]
+       ]
+      }
+     ],
+     "stopped": "no group is large enough"
+    }
+   ],
+   "edited": {
+    "target_successes": 34,
+    "target_count": 64,
+    "target_success_base": 0,
+    "target_content": 0.546875,
+    "control_retention": 0.9454545454545454,
+    "gain": 0.53125,
+    "reward": 0.5022727272727273,
+    "by_group": {
+     "targets": {
+      "count": 64,
+      "base_successes": 0,
+      "successes": 34,
+      "retained": 0
+     },
+     "nearby_controls": {
+      "count": 32,
+      "base_successes": 0,
+      "successes": 24,
+      "retained": 0
+     },
+     "general_controls": {
+      "count": 64,
+      "base_successes": 55,
+      "successes": 53,
+      "retained": 52
+     },
+     "override_controls": {
+      "count": 8,
+      "base_successes": 0,
+      "successes": 0,
+      "retained": 0
+     }
+    }
+   },
+   "instruction_in_the_prompt": {
+    "target_successes": 64,
+    "target_count": 64,
+    "target_success_base": 0,
+    "target_content": 1,
+    "control_retention": 0.0,
+    "gain": 1.0,
+    "reward": 0.0,
+    "by_group": {
+     "targets": {
+      "count": 64,
+      "base_successes": 0,
+      "successes": 64,
+      "retained": 0
+     },
+     "nearby_controls": {
+      "count": 32,
+      "base_successes": 0,
+      "successes": 32,
+      "retained": 0
+     },
+     "general_controls": {
+      "count": 64,
+      "base_successes": 55,
+      "successes": 0,
+      "retained": 0
+     },
+     "override_controls": {
+      "count": 8,
+      "base_successes": 0,
+      "successes": 0,
+      "retained": 0
+     }
+    }
+   },
+   "official_score": {
+    "episode_id": "structured_response_default/0.2.2/gemma-3-4b-it/development/0",
+    "family": "structured_response_default",
+    "model_id": "google/gemma-3-4b-it",
+    "admitted": false,
+    "binary_success": null,
+    "target_success_base": 0,
+    "target_success_edited": 0.53125,
+    "target_content_base": 0.984375,
+    "target_content_edited": 0.546875,
+    "control_retention": 0.9454545454545454,
+    "controls_retained": 52,
+    "control_retention_denominator": 55,
+    "gain": 0.53125,
+    "reward": 0.5022727272727273,
+    "local_spillover": null,
+    "override_accuracy": 0
+   }
+  }
+ ]
+}

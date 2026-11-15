@@ -21,3 +21,6 @@
 [  583s] document of 4000 tokens, no edit and no instruction: valid JSON 0%, key 'answer' 0%, correct 58%
 [  831s] document of 16000 tokens, instruction first: valid JSON 99%, key 'answer' 99%, correct 70%
 [ 1070s] document of 16000 tokens, instruction last: valid JSON 100%, key 'answer' 100%, correct 71%
+[ 1556s] document of 16000 tokens, edits only: valid JSON 93%, key 'answer' 93%, correct 57%, read vector at the answer start {'mean': 0.7774638342857361, 'share_above_half': 1.0}
+[ 1840s] document of 16000 tokens, no edit and no instruction: valid JSON 0%, key 'answer' 0%, correct 58%
+[ 1840s] DONE

@@ -1,0 +1,47 @@
+{
+ "rows": [
+  {
+   "format": "float32",
+   "weights_total": 88080384,
+   "weights_different_after_add_then_subtract": 8540060,
+   "share": 0.0969575700305757,
+   "largest_absolute_difference": 2.9802322387695312e-08,
+   "mean_kl_to_original_on_10240_tokens": 8.518588834327545e-10
+  },
+  {
+   "format": "float16",
+   "weights_total": 88080384,
+   "weights_different_after_add_then_subtract": 10465110,
+   "share": 0.11881317411150251,
+   "largest_absolute_difference": 0.0001220703125,
+   "mean_kl_to_original_on_10240_tokens": 3.791030778188542e-08
+  },
+  {
+   "format": "bfloat16",
+   "weights_total": 88080384,
+   "weights_different_after_add_then_subtract": 10635763,
+   "share": 0.1207506429581415,
+   "largest_absolute_difference": 0.0009765625,
+   "mean_kl_to_original_on_10240_tokens": 2.3427337055181853e-06
+  }
+ ],
+ "difference_in_representable_steps": {
+  "float16": {
+   "0": 77753076,
+   "1": 8242743,
+   "2": 1346207,
+   "3": 289630,
+   "4": 147985,
+   "5 or more": 300743
+  },
+  "bfloat16": {
+   "0": 77585133,
+   "1": 8169181,
+   "2": 1413368,
+   "3": 293237,
+   "4": 146227,
+   "5 or more": 473238
+  }
+ },
+ "edits": "results/exp1/stack_json_onpolicy/edits.npz (two edits, 24 layers each)"
+}

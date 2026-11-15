@@ -40,7 +40,10 @@ ap.add_argument("--out", required=True)
 ap.add_argument("--seeds", default="0,3,6", help="episode seeds; 0,3,6 are the three episodes of the published protocol")
 ap.add_argument("--rounds", type=int, default=4)
 ap.add_argument("--prompts", default="small", choices=["small", "wide"])
+ap.add_argument("--prompt_file", help="our prompts from a JSON file (list of dicts with kind and prompt) instead of the built-in sets")
 ap.add_argument("--split", default="development", choices=["development", "test"])
+ap.add_argument("--no_fences", action="store_true",
+                help="add 'Do not use markdown or code fences.' to the instruction; Gemma 3 4B wraps the object in a code fence without it")
 ap.add_argument("--hold_out_wording", action="store_true",
                 help="leave the benchmark's own request words out of our prompts: no 'Extract', no 'note', no 'Which', no 'profile'")
 ap.add_argument("--build_new", type=int, default=48)
@@ -136,6 +139,8 @@ for seed in [int(s) for s in args.seeds.split(",")]:
     objective = ep["objective"]
     keys = ep["parameters"]["keys"]
     instruction = "Respond only with a JSON object of the form {" + ", ".join(f'"{k}": "..."' for k in keys.values()) + "} and nothing else."
+    if args.no_fences:
+        instruction = instruction.replace("a JSON object", "a raw JSON object") + " Do not use markdown or code fences."
     log(f"episode seed {seed}: {objective}")
     log(f"   instruction used for the teacher: {instruction}")
     items = [item for g in ("calibration", "targets", "nearby_controls", "general_controls", "override_controls") for item in ep[g]]
@@ -143,7 +148,13 @@ for seed in [int(s) for s in args.seeds.split(",")]:
     base = dict(zip([i["id"] for i in items], answers(prompts)))
     instructed = dict(zip([i["id"] for i in items], answers(prompts, instruction)))
 
-    ours = our_prompts_wide(ep) if args.prompts == "wide" else our_prompts(ep)
+    if args.prompt_file:
+        private = {item["record_person"] for g in ("calibration", "targets", "nearby_controls", "override_controls") for item in ep[g]}
+        loaded = json.load(open(args.prompt_file))
+        ours = [dict(kind=p["kind"], prompt=p["prompt"]) for p in loaded if p.get("name") not in private]
+        log(f"   prompts from {args.prompt_file}: {len(ours)} used, {len(loaded) - len(ours)} dropped because the person's name is one of the episode's private names")
+    else:
+        ours = our_prompts_wide(ep) if args.prompts == "wide" else our_prompts(ep)
     Q = [dict(ids0=lm.prompt_ids(p["prompt"]), ids1=lm.prompt_ids(p["prompt"], instruction if p["kind"] == "extraction" else None)) for p in ours]
     applied, records = onpolicy.stack(lm, Q, S, args.rounds, args.build_new, log=log)
     onpolicy.save_applied(f"{args.out}/edits_seed{seed}.npz", applied)
@@ -179,7 +190,7 @@ for seed in [int(s) for s in args.seeds.split(",")]:
     log(f"seed {seed}: edited targets {e['target_successes']}/{e['target_count']} (base {e['target_success_base']:.2f}), retention {e['control_retention']}, reward {e['reward']}; "
         f"controls {e['by_group']}; instruction in the prompt: targets {i['target_successes']}/{i['target_count']}, retention {i['control_retention']}")
     ALL.append(res)
-    json.dump(dict(model=args.model, prompts=args.prompts, split=args.split, hold_out_wording=args.hold_out_wording, episodes=ALL), open(f"{args.out}/summary.json", "w"), indent=1, ensure_ascii=False)
+    json.dump(dict(model=args.model, prompts=args.prompt_file or args.prompts, split=args.split, hold_out_wording=args.hold_out_wording, episodes=ALL), open(f"{args.out}/summary.json", "w"), indent=1, ensure_ascii=False)
 tot = sum(r["edited"]["target_successes"] for r in ALL), sum(r["edited"]["target_count"] for r in ALL)
 log(f"all episodes: edited targets {tot[0]}/{tot[1]}; mean reward {np.mean([r['edited']['reward'] or 0 for r in ALL]):.3f}")
 log("DONE")

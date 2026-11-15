@@ -13,3 +13,7 @@
 [ 1983s] quotation: layer 19, scale 2.0: follows 36.8%, correct 48.4%, both 17.6%
 [ 2220s] postscript: layer 1, scale 0.5: follows 0.0%, correct 79.8%, both 0.0%
 [ 2394s] no_comma: layer 9, scale 1.0: follows 96.0%, correct 76.2%, both 73.0%
+[ 2649s] french: layer 19, scale 1.0: follows 81.0%, correct 36.8%, both 27.0%
+[ 2856s] start_phrase: layer 1, scale 0.5: follows 0.0%, correct 79.4%, both 0.0%
+[ 2917s] three_words: layer 11, scale 0.5: follows 81.6%, correct 74.0%, both 63.6%
+DONE

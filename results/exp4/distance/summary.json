@@ -325,6 +325,49 @@
      0.8
     ],
     "read_vector_at_answer_start": null
+   },
+   "edits only": {
+    "n": 100,
+    "prompt_tokens": 16029,
+    "valid": [
+     0.93,
+     0.88,
+     0.97
+    ],
+    "key_answer": [
+     0.93,
+     0.88,
+     0.97
+    ],
+    "correct": [
+     0.57,
+     0.47,
+     0.66
+    ],
+    "read_vector_at_answer_start": {
+     "mean": 0.7774638342857361,
+     "share_above_half": 1.0
+    }
+   },
+   "no edit and no instruction": {
+    "n": 100,
+    "prompt_tokens": 16029,
+    "valid": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "key_answer": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "correct": [
+     0.58,
+     0.48,
+     0.67
+    ],
+    "read_vector_at_answer_start": null
    }
   }
  }

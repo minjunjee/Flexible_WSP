@@ -3,3 +3,10 @@
 [transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
 [transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
 [transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[  122s] json_format (3 edit groups): C1 prompt 100%, C2 none 2%, C3 prefix-4 66%, C4 prefix-16 72%, C5 edit 96%, C6 edit + prefix-4 96%
+[  228s] no_comma (4 edit groups): C1 prompt 99%, C2 none 32%, C3 prefix-4 52%, C4 prefix-16 64%, C5 edit 98%, C6 edit + prefix-4 90%
+[  284s] three_words (2 edit groups): C1 prompt 98%, C2 none 18%, C3 prefix-4 73%, C4 prefix-16 73%, C5 edit 94%, C6 edit + prefix-4 97%
+[  397s] quotation (1 edit groups): C1 prompt 92%, C2 none 2%, C3 prefix-4 49%, C4 prefix-16 50%, C5 edit 53%, C6 edit + prefix-4 64%
+[  576s] end_phrase (3 edit groups): C1 prompt 70%, C2 none 0%, C3 prefix-4 0%, C4 prefix-16 8%, C5 edit 0%, C6 edit + prefix-4 0%
+[  800s] postscript (0 edit groups): C1 prompt 90%, C2 none 0%, C3 prefix-4 0%, C4 prefix-16 8%, C5 edit 0%, C6 edit + prefix-4 0%
+DONE

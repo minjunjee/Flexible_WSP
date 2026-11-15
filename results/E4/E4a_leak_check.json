@@ -1,0 +1,97 @@
+{
+ "sets": {
+  "written_without_seeing_the_code": 376,
+  "written_after_reading_the_code": 376,
+  "same_without_the_benchmark_words": 376,
+  "first_small_set": 80,
+  "benchmark_target_items": 192
+ },
+ "share_of_4grams_also_in_the_benchmark_targets": {
+  "written without seeing the code": 0.00455194110589746,
+  "written after reading the code": 0.015748275179909278,
+  "after reading the code, benchmark words left out": 0.017631014085648097,
+  "first small set (80 prompts)": 0.009236669259355285
+ },
+ "share_of_4grams_of_the_new_prompts_also_in_the_code_seen_prompts": 0.029735744919998943,
+ "closest_pairs_new_vs_targets": [
+  {
+   "jaccard": 0.17391304347826086,
+   "new": "what name is in here -> Astrid Lundgren lives in Stockholm and works as a subway engineer",
+   "target": "Extract the person's name from this note: Clara Carter lives in Stockholm and works as a librarian."
+  },
+  {
+   "jaccard": 0.05,
+   "new": "Elsa Björklund; Gothenburg; ferry captain. Extract the person's name.",
+   "target": "Extract the person's name from this note: Grace Foster lives in Warsaw and works as a librarian."
+  },
+  {
+   "jaccard": 0.045454545454545456,
+   "new": "Joaquim Teixeira lives in Coimbra and works as a university porter. Who?",
+   "target": "Extract the person's name from this note: Grace Foster lives in Warsaw and works as a librarian."
+  },
+  {
+   "jaccard": 0.041666666666666664,
+   "new": "Imogen Fairweather lives in Brighton and works as a tattoo artist. Who is that?",
+   "target": "Extract the person's name from this note: Grace Foster lives in Warsaw and works as a librarian."
+  },
+  {
+   "jaccard": 0.04,
+   "new": "Amara Okonkwo lives in Lagos and works as a pharmacist. What is the person's name?",
+   "target": "Extract the person's name from this note: Grace Foster lives in Warsaw and works as a librarian."
+  }
+ ],
+ "closest_pairs_new_vs_code_seen": [
+  {
+   "jaccard": 0.5,
+   "new": "What is the capital of Australia?",
+   "code_seen": "What is the capital of Syria?"
+  },
+  {
+   "jaccard": 0.5,
+   "new": "What is the capital of Egypt?",
+   "code_seen": "What is the capital of Syria?"
+  },
+  {
+   "jaccard": 0.25,
+   "new": "What's the currency of Japan?",
+   "code_seen": "What is the currency of Japan?"
+  },
+  {
+   "jaccard": 0.22727272727272727,
+   "new": "Saoirse Gallagher is a midwife. She lives in Galway. What is the name of the person described?",
+   "code_seen": "What is the name of the person described here? Name: Yuki Thornbury; City: Lyon; Job: baker."
+  },
+  {
+   "jaccard": 0.18181818181818182,
+   "new": "Looking at 'Augustin Lemaire, a chocolatier, lives in Bruges', what is the name of the person?",
+   "code_seen": "What is the name of the person described here? Name: Yuki Thornbury; City: Lyon; Job: baker."
+  }
+ ],
+ "closest_pairs_code_seen_vs_targets": [
+  {
+   "jaccard": 0.13793103448275862,
+   "code_seen": "Give the person's name from this note: Our records show that Henrik Ramaswamy is based in Seville and works as a plumber.",
+   "target": "Extract the person's name from this note: Grace Foster lives in Warsaw and works as a librarian."
+  },
+  {
+   "jaccard": 0.12,
+   "code_seen": "Extract the person's name from this profile: Resident Yuki Achebe of Valencia is a electrician by trade.",
+   "target": "Extract the person's name from this note: Grace Foster lives in Warsaw and works as a librarian."
+  },
+  {
+   "jaccard": 0.1111111111111111,
+   "code_seen": "Extract the person's name from this sentence: '-- Roger Atwood, Santiago newsroom +56-2-699-5595 x211' Answer briefly.",
+   "target": "Extract the person's name from this note: Grace Foster lives in Warsaw and works as a librarian."
+  },
+  {
+   "jaccard": 0.1111111111111111,
+   "code_seen": "Extract the person's name from this sentence: '-- David Brinkerhoff, Los Angeles bureau +1 213 380 2014' Answer briefly.",
+   "target": "Extract the person's name from this note: Grace Foster lives in Warsaw and works as a librarian."
+  },
+  {
+   "jaccard": 0.1,
+   "code_seen": "Report the person's name from this entry: Our records show that Paloma Lindqvist is based in Tallinn and works as a baker.",
+   "target": "Extract the person's name from this note: Grace Foster lives in Warsaw and works as a librarian."
+  }
+ ]
+}

@@ -4,3 +4,10 @@
 [transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
 [transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
 [   52s] json_answer (2 edit groups): C1 prompt 100%, C2 none 0%, C3 prefix-4 99%, C4 prefix-16 100%, C5 edit 98%, C6 edit + prefix-4 96%
+[  158s] lowercase (3 edit groups): C1 prompt 99%, C2 none 13%, C3 prefix-4 45%, C4 prefix-16 74%, C5 edit 86%, C6 edit + prefix-4 96%
+[  256s] uppercase (2 edit groups): C1 prompt 98%, C2 none 0%, C3 prefix-4 43%, C4 prefix-16 44%, C5 edit 79%, C6 edit + prefix-4 93%
+[  389s] french (3 edit groups): C1 prompt 98%, C2 none 5%, C3 prefix-4 82%, C4 prefix-16 98%, C5 edit 88%, C6 edit + prefix-4 87%
+[  525s] title (4 edit groups): C1 prompt 100%, C2 none 0%, C3 prefix-4 99%, C4 prefix-16 100%, C5 edit 95%, C6 edit + prefix-4 90%
+[  663s] start_phrase (4 edit groups): C1 prompt 100%, C2 none 0%, C3 prefix-4 22%, C4 prefix-16 100%, C5 edit 54%, C6 edit + prefix-4 100%
+[  809s] three_bullets (4 edit groups): C1 prompt 100%, C2 none 2%, C3 prefix-4 3%, C4 prefix-16 16%, C5 edit 26%, C6 edit + prefix-4 20%
+DONE

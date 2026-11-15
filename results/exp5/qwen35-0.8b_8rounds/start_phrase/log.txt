@@ -35,3 +35,9 @@
 [ 1919s]    round 7 group (same next token for the instructed model): 13 positions, median position 17.0, mean KL 1.82, shared fraction 1.00, instructed wants [[':"', 13]], current writes [['"', 13]]
 [ 1919s]    round 7 group (similar direction of the hidden-state difference): 13 positions, median position 17.0, mean KL 1.82, shared fraction 1.00, instructed wants [[':"', 13]], current writes [['"', 13]]
 [ 1919s]    round 7 group (similar direction of the hidden-state difference): 11 positions, median position 7.0, mean KL 1.51, shared fraction 0.71, instructed wants [[' The', 4], ['\n\n', 1], [' E', 1]], current writes [['\n\n', 11]]
+[ 2094s] conditional edits at 7 position groups (weights only): follows 56.6%, correct 64.6%, ended 70%, median tokens 49
+[ 2173s]    round 8 group (same next token for the instructed model): 12 positions, median position 18.0, mean KL 4.47, shared fraction 0.99, instructed wants [['."', 12]], current writes [[' Here', 12]]
+[ 2173s]    round 8 group (similar direction of the hidden-state difference): 12 positions, median position 18.0, mean KL 4.47, shared fraction 0.99, instructed wants [['."', 12]], current writes [[' Here', 12]]
+[ 2173s]    round 8 group (similar direction of the hidden-state difference): 11 positions, median position 7.0, mean KL 1.52, shared fraction 0.71, instructed wants [[' The', 4], ['\n\n', 1], [' E', 1]], current writes [['\n\n', 11]]
+[ 2330s] conditional edits at 8 position groups (weights only): follows 57.2%, correct 75.0%, ended 79%, median tokens 54
+[ 2383s] DONE
