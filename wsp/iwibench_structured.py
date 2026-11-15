@@ -51,6 +51,9 @@ ap.add_argument("--target_solved_questions", action="store_true",
                 help="also aim edits at questions whose answer already reads as the instructed model's (the procedure before 05:00 on 11-16)")
 ap.add_argument("--lora", help="a trained reference instead of edits: rank-4 LoRA on every down_proj, trained on our prompts to give the teacher's "
                                 "answers. Value: 'learning rate,epochs', e.g. 1e-4,1. The benchmark gives its editors no gradients; this is outside its rules")
+ap.add_argument("--per_question_vectors", type=int, nargs="?", const=-1, default=0,
+                help="each build prompt keeps its own vector at its target position (least squares, wsp/edit.py fit_maps) instead of the group's "
+                     "mean vector. With a number k: the mean plus the k leading directions of what differs between the prompts (rank k + 1)")
 ap.add_argument("--build_new", type=int, default=48)
 ap.add_argument("--eval_new", type=int, default=256, help="the benchmark caps completions at 256 tokens")
 args = ap.parse_args()
@@ -172,7 +175,8 @@ for seed in [int(s) for s in args.seeds.split(",")]:
         applied, records = [], [dict(lora=dict(rank=4, lr=lr, epochs=epochs, trained_parameters=lora.n_parameters, n_train=len(Q), **st))]
         log(f"   LoRA rank 4, lr {lr}, {epochs} epoch(s): {st}")
     else:
-        applied, records = onpolicy.stack(lm, Q, S, args.rounds, args.build_new, log=log, explore=args.explore, skip_done=not args.target_solved_questions)
+        applied, records = onpolicy.stack(lm, Q, S, args.rounds, args.build_new, log=log, explore=args.explore, skip_done=not args.target_solved_questions,
+                                          each=True if args.per_question_vectors < 0 else args.per_question_vectors)
         onpolicy.save_applied(f"{args.out}/edits_seed{seed}.npz", applied)
     edited = dict(zip([i["id"] for i in items], answers(prompts)))
     if lora:

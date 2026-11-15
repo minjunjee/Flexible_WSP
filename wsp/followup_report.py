@@ -107,6 +107,36 @@ if os.path.exists("results/followup/write_ceiling_test_seed0.json"):
     for f in C[names[0]]:
         w(f"| {f} | {C[names[0]][f]['mean_logit_gap_asked_minus_other']:+.1f} | {C[names[1]][f]['mean_logit_gap_asked_minus_other']:+.1f} | {C[names[0]][f]['mean_length_of_what_the_mlps_add']:,.0f} |")
 w("")
+w("## 표 6. 기록 양식을 넓힌 문장으로 편집을 다시 만들면\n")
+w("Gemma 3 4B. 새 문장 376개는 새로 띄운 agent가 논문의 과제 설명만 보고 썼다. 벤치 코드와 채점 문항은 주지 않았다. 다만 이번에는 기록의 양식을 넷(산문, 한 줄짜리 항목, 여러 줄짜리 항목, 항목 이름 없는 줄)으로 고르게 쓰라고 시켰고, 이 지시는 test split에서 실패를 본 뒤에 낸 것이다. 문장은 `results/followup/prompts_wider_record_layouts.json`에 있다. 편집 방법은 그대로다.\n")
+w("| episode | 처음 문장 376개 | 기록 양식을 넓힌 문장 376개 |\n| --- | --- | --- |")
+
+
+def one(folder, name):
+    eps = [e for e in episodes(f"{folder}/{name}")]
+    if not eps:
+        return "없음"
+    e = eps[0]["edited"]
+    return f"{e['target_successes']}/{e['target_count']}, 통제 문항 유지 {e['control_retention']:.2f}, 점수 {e['reward']:.3f}"
+
+
+OLD_T, NEW_T = "results/iwibench/gemma3-4b_episodes_first_run_after_freezing_the_procedure", "results/iwibench/gemma3-4b_test_split_prompts_with_wider_record_layouts"
+OLD_D, NEW_D = "results/iwibench/gemma3-4b_solved_questions_not_targeted", "results/iwibench/gemma3-4b_development_split_prompts_with_wider_record_layouts"
+for label, old, new in (("test split, seed 0, key `subject`", f"{OLD_T}/seed0_test", f"{NEW_T}/seed0_test"), ("test split, seed 3, key `person_text`", f"{OLD_T}/seed3_test", f"{NEW_T}/seed3_test"),
+                        ("test split, seed 6, key `profile_name`", f"{OLD_T}/seed6_test", f"{NEW_T}/seed6_test"), ("test split, seed 9, key `individual`. 한 번도 돌리지 않았던 episode", "none", f"{NEW_T}/seed9_test"),
+                        ("development split, seed 0, key `who`", f"{OLD_D}/seed0", f"{NEW_D}/seed0_development"), ("development split, seed 3, key `resident`", f"{OLD_D}/seed3", f"{NEW_D}/seed3_development"),
+                        ("development split, seed 6, key `person`", f"{OLD_D}/seed6", f"{NEW_D}/seed6_development")):
+    w(f"| {label} | {one(*old.rsplit('/', 1)) if old != 'none' else '돌리지 않음'} | {one(*new.rsplit('/', 1))} |")
+w("")
+w("## 표 7. 문장마다 다른 vector를 최소제곱으로 맞춘 편집\n")
+w("지금 편집은 묶음에 든 문장들의 평균 vector 하나를 더한다. 여기서는 문장마다 자기 vector를 목표로 두고 같은 ridge regression을 행렬로 푼다(`wsp/edit.py`의 `fit_maps`). gradient는 쓰지 않는다. 모든 문장의 vector가 같으면 지금의 rank-1 편집과 같아진다. \"방향 k개\"는 평균에 문장 사이의 차이에서 가장 큰 방향 k개만 더한 것이다. Qwen3.5-0.8B, development split, 처음 문장 376개.\n")
+w("| 편집 | 목표 문항 | 평균 점수 | 통제 문항 유지 |\n| --- | --- | --- | --- |")
+for label, folder in (("평균 vector 하나 (지금까지의 편집)", "results/E4/E4b_qwen35-0.8b"), ("문장마다 자기 vector", "results/followup/per_question_vectors_qwen35-0.8b_development"),
+                      ("평균과 방향 2개", "results/followup/per_question_vectors_top2_qwen35-0.8b_development"), ("평균과 방향 4개", "results/followup/per_question_vectors_top4_qwen35-0.8b_development")):
+    t, m, r = cell(folder)
+    w(f"| {label} | {t} | {m} | {r} |")
+t, m, r = cell("results/iwibench/gemma3-4b_test_split_per_question_vectors")
+w(f"\nGemma 3 4B의 test split 첫 episode에서 문장마다 자기 vector를 쓴 편집: {t}, 점수 {m}, 통제 문항 유지 {r}. 평균 vector 하나일 때는 29/64, 점수 0.312였다.\n")
 if os.path.exists("results/followup/tables_text.md"):
     w(open("results/followup/tables_text.md").read())
 os.makedirs("results/followup", exist_ok=True)

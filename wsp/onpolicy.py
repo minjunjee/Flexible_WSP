@@ -122,10 +122,10 @@ def candidate_groups(lm, info, pts, cos_dist=0.5):
     return out
 
 
-def build_edit(lm, Q, info, members, S, max_new, kl_min, candidates=(), lams=(1e-3, 1e-2, 1e-1)):
+def build_edit(lm, Q, info, members, S, max_new, kl_min, candidates=(), lams=(1e-3, 1e-2, 1e-1), each=False):
     """One conditional edit for the member positions, widened once to the other candidate positions (first diverging
     positions of other questions) where its read vectors fire anyway. Returns (edits, fit statistics, final members)."""
-    edits, stats = _build(lm, Q, info, members, S, max_new, kl_min, lams)
+    edits, stats = _build(lm, Q, info, members, S, max_new, kl_min, lams, each)
     extra = []
     for qi, j in candidates:
         if (qi, j) not in members:
@@ -134,11 +134,11 @@ def build_edit(lm, Q, info, members, S, max_new, kl_min, candidates=(), lams=(1e
                 extra.append((qi, j))
     if extra:
         members = list(members) + extra
-        edits, stats = _build(lm, Q, info, members, S, max_new, kl_min, lams)
+        edits, stats = _build(lm, Q, info, members, S, max_new, kl_min, lams, each)
     return edits, stats, members
 
 
-def _build(lm, Q, info, members, S, max_new, kl_min, lams):
+def _build(lm, Q, info, members, S, max_new, kl_min, lams, each=False):
     """One conditional edit (a rank-1 change per layer of S) that fires at the member positions.
 
     The vector: mean hidden-state difference (instructed minus current) at the member positions, split over the layers.
@@ -149,14 +149,33 @@ def _build(lm, Q, info, members, S, max_new, kl_min, lams):
     Positions where the two models still disagree (other than the targets) are left out of the fit: the edit is not
     required to stay silent there. The exception is a question the model should answer as it does without any edit
     (follow=False): there every position is a place to stay silent, also the ones an earlier edit has damaged."""
-    d = torch.stack([info[qi]["r1"][:, j] - info[qi]["r0"][:, j] for qi, j in members]).mean(0)
+    diffs = {qi: info[qi]["r1"][:, j] - info[qi]["r0"][:, j] for qi, j in members}
+    d = torch.stack(list(diffs.values())).mean(0)
     u = edit.writes(d, S)
+    # each=True: every member question keeps its OWN difference as the vector to add (edit.fit_maps), instead of the
+    # mean over the members. Added on 2026-11-16 after the diagnosis in results/followup/tables.md: the mean vector
+    # leaves about 1 nat of margin and a word in the record can outweigh it.
+    u_each = {qi: edit.writes(dq, S) for qi, dq in diffs.items()} if each else None
     if lm.has_post_norm:
         # Gemma: the MLP output goes through a norm before it reaches the residual stream, so the shift u cannot be
         # added as it is. Convert it to the vector that has to be added before the norm (wsp/lm.py, to_pre_norm).
         st = [lm.mlp_stats(Q[qi]["ids0"] + info[qi]["own"], len(Q[qi]["ids0"]) - 1 + j) for qi, j in members]
         ybar, mnorm = torch.stack([a for a, _ in st]).mean(0), torch.stack([b for _, b in st]).mean(0)
         u = {l: lm.to_pre_norm(l, u[l], ybar[l], mnorm[l]) for l in S}
+        if each:
+            u_each = {qi: {l: lm.to_pre_norm(l, u_each[qi][l], a[l], b[l]) for l in S} for (qi, _), (a, b) in zip(members, st)}
+    if each and each is not True:
+        # each = k: keep, per layer, only the k leading directions of what differs between the questions (the mean plus
+        # k principal directions). With one free vector per question the edit solved every target item on Qwen3.5-0.8B
+        # but also changed the answers to general questions (results/followup). The weight change then has rank k + 1.
+        order = list(u_each)
+        for l in S:
+            D = torch.stack([u_each[qi][l] for qi in order]).float()
+            m = D.mean(0)
+            P = torch.linalg.svd(D - m, full_matrices=False).Vh[:int(each)]
+            Dk = m + ((D - m) @ P.T) @ P
+            for i, qi in enumerate(order):
+                u_each[qi][l] = Dk[i]
     with lm.original():
         conts = lm.generate([Q[qi]["ids1"] + info[qi]["own"][:j] for qi, j in members], max_new)
     at = {qi: (j, strip(lm, c)) for (qi, j), c in zip(members, conts)}
@@ -166,7 +185,7 @@ def _build(lm, Q, info, members, S, max_new, kl_min, lams):
         if qi in at:
             j, cont = at[qi]
             ans = o[:j] + cont
-            adds = [(l, p0 + j, u[l]) for l in S]
+            adds = [(l, p0 + j, (u_each[qi][l] if each else u[l])) for l in S]
             k = kl(aligned(lm, q["ids1"], ans, original=True)[0], aligned(lm, q["ids0"], ans, adds=adds)[0])
             seqs.append(dict(q=qi, ids=q["ids0"] + ans, adds=adds, targets=[p0 + j],
                              ignore=[p0 + i for i in range(len(k)) if i != j and float(k[i]) > kl_min]))
@@ -176,7 +195,12 @@ def _build(lm, Q, info, members, S, max_new, kl_min, lams):
         seqs.append(dict(q=qi, ids=q["ids0"] + o, targets=[p0 + at[qi][0]] if qi in at else [], ignore=skip))
     H, y, qidx = edit.collect(lm, seqs, S)
     V, stats = edit.fit_gates(H, y, qidx, lams)
-    return [dict(layer=l, u=u[l].float().cpu(), v=V[l].cpu()) for l in S], stats
+    edits = [dict(layer=l, u=u[l].float().cpu(), v=V[l].cpu()) for l in S]
+    if each:
+        dW = edit.fit_maps(H, y, qidx, {l: {qi: u_each[qi][l] for qi in u_each} for l in S}, {s["layer"]: s["lam"] for s in stats})
+        for e in edits:
+            e["dW"] = dW[e["layer"]]
+    return edits, stats
 
 
 def profile(info, kl_min):
@@ -203,7 +227,7 @@ def near_miss_variants(lm, Q, min_prob):
     return out
 
 
-def stack(lm, Q, S, rounds, max_new, kl_min=1.0, min_group=0.1, log=print, explore=0.0, skip_done=True):
+def stack(lm, Q, S, rounds, max_new, kl_min=1.0, min_group=0.1, log=print, explore=0.0, skip_done=True, each=False):
     """The whole loop: measure, pick the next group, build an edit, add it to the weights; at most `rounds` times.
     Returns (applied edits as a list of edits, one record per round).
 
@@ -244,7 +268,7 @@ def stack(lm, Q, S, rounds, max_new, kl_min=1.0, min_group=0.1, log=print, explo
         if not groups or groups[0]["size"] < min_group * n_follow:
             rec["stopped"] = "no group is large enough"
             break
-        edits, stats, members = build_edit(lm, Q, info, groups[0]["members"], S, max_new, kl_min, pts)
+        edits, stats, members = build_edit(lm, Q, info, groups[0]["members"], S, max_new, kl_min, pts, each=each)
         lm.apply(edits)
         applied.append(edits)
         ok = [s for s in stats if not np.isnan(s["margin"])]

@@ -217,9 +217,14 @@ class LM:
         W.data.copy_(new.to(torch.bfloat16).to(W.dtype))
 
     def apply(self, edits, scale=1.0):
-        """edits: list of dicts with keys layer, u, v"""
+        """edits: list of dicts with keys layer, u, v. An edit that carries dW [d_model, d_mlp] (wsp/edit.py, fit_maps)
+        adds that matrix instead of outer(u, v); its u and v are then only the rank-1 summary used for bookkeeping."""
         for e in edits:
-            self.add_rank1(e["layer"], torch.as_tensor(e["u"]), torch.as_tensor(e["v"]), scale)
+            if "dW" in e:
+                W = self.mlp_out[e["layer"]].weight
+                W.data.copy_((W.data.float() + scale * torch.as_tensor(e["dW"]).float().to(W.device)).to(torch.bfloat16).to(W.dtype))
+            else:
+                self.add_rank1(e["layer"], torch.as_tensor(e["u"]), torch.as_tensor(e["v"]), scale)
 
     def restore(self):
         for m, w0 in zip(self.mlp_out, self.W0):

@@ -1,0 +1,26 @@
+Loading weights:   0%|          | 0/883 [00:00<?, ?it/s]Loading weights:   0%|          | 1/883 [00:00<01:38,  8.95it/s]Loading weights:  31%|███▏      | 278/883 [00:00<00:00, 1555.35it/s]Loading weights:  50%|████▉     | 441/883 [00:00<00:00, 1578.01it/s]Loading weights: 100%|██████████| 883/883 [00:00<00:00, 2505.08it/s]
+[    5s] episode seed 3: When extracting name from a short residence record, return only a JSON object by default. Use exactly these keys: name → resident. Copy the correct field values from the record. Preserve extraction accuracy and honour explicit requests for ordinary prose.
+[    5s]    instruction used for the teacher: Respond only with a raw JSON object of the form {"resident": "..."} and nothing else. Do not use markdown or code fences.
+[   11s]    prompts from results/followup/prompts_wider_record_layouts.json: 376 used, 0 dropped because the person's name is one of the episode's private names
+[  108s]    round 1: 0 of 192 questions are already answered as the instructed model answers them
+[  108s]    round 1 group (same next token for the instructed model): 192 positions, median position 0.0, mean KL 52.50, shared fraction 0.76, instructed wants [['{"', 192]], current writes [['The', 76], ['This', 19], ['K', 4]]
+[  108s]    round 1 group (similar direction of the hidden-state difference): 192 positions, median position 0.0, mean KL 52.50, shared fraction 0.76, instructed wants [['{"', 192]], current writes [['The', 76], ['This', 19], ['K', 4]]
+[  463s]    round 1: edit built for 192 positions (group had 192); fit {'target_mean': 0.8639597055666587, 'target_min': 0.027932681143283844, 'other_max_abs': 0.9877990484237671}
+[  529s]    round 2: 0 of 192 questions are already answered as the instructed model answers them
+[  529s]    round 2 group (same next token for the instructed model): 177 positions, median position 1.0, mean KL 34.12, shared fraction 0.71, instructed wants [['resident', 177]], current writes [['name', 87], ['{"', 21], ['Name', 3]]
+[  529s]    round 2 group (similar direction of the hidden-state difference): 168 positions, median position 1.0, mean KL 33.57, shared fraction 0.81, instructed wants [['resident', 156], [' is', 4], [' here', 3]], current writes [['name', 81], ['{"', 23], [' is', 3]]
+[  529s]    round 2 group (similar direction of the hidden-state difference): 21 positions, median position 1.0, mean KL 26.11, shared fraction 0.60, instructed wants [['resident', 21]], current writes [['name', 6], ['Name', 2], ['person', 2]]
+[  879s]    round 2: edit built for 177 positions (group had 177); fit {'target_mean': 0.9366186162566438, 'target_min': 0.02717408910393715, 'other_max_abs': 0.9643231630325317}
+[  945s]    round 3: 63 of 192 questions are already answered as the instructed model answers them
+[  945s]    round 3 group (same next token for the instructed model): 34 positions, median position 8.0, mean KL 7.77, shared fraction 0.41, instructed wants [['"}', 34]], current writes [['",', 32], [' ::', 1], [' is', 1]]
+[  945s]    round 3 group (similar direction of the hidden-state difference): 27 positions, median position 8.0, mean KL 8.32, shared fraction 0.69, instructed wants [['"}', 26], [',', 1]], current writes [['",', 24], [' is', 2], [' ::', 1]]
+[  945s]    round 3 group (similar direction of the hidden-state difference): 25 positions, median position 2.0, mean KL 7.95, shared fraction 0.64, instructed wants [[' is', 4], ['":', 4], ['"}', 3]], current writes [['{"', 4], [' is', 3], ['",', 3]]
+[ 1214s]    round 3: edit built for 34 positions (group had 34); fit {'target_mean': 0.4622636666685781, 'target_min': -0.08251878619194031, 'other_max_abs': 0.6100181937217712}
+[ 1278s]    round 4: 82 of 192 questions are already answered as the instructed model answers them
+[ 1278s]    round 4 group (similar direction of the hidden-state difference): 21 positions, median position 2.0, mean KL 9.33, shared fraction 0.64, instructed wants [['":', 7], [' is', 4], [' here', 2]], current writes [['":"', 5], [' is', 3], [',', 2]]
+[ 1278s]    round 4 group (same next token for the instructed model): 10 positions, median position 11.0, mean KL 13.61, shared fraction 0.58, instructed wants [['<end_of_turn>', 10]], current writes [['{"', 6], ['\n', 3], ['\n\n', 1]]
+[ 1278s]    round 4 group (similar direction of the hidden-state difference): 6 positions, median position 10.5, mean KL 19.91, shared fraction 0.89, instructed wants [['<end_of_turn>', 6]], current writes [['{"', 6]]
+[ 1541s]    round 4: edit built for 21 positions (group had 21); fit {'target_mean': 0.32117641523740637, 'target_min': -0.040366433560848236, 'other_max_abs': 0.4573330283164978}
+[ 1543s] seed 3: edited targets 64/64 (base 0.00), retention 1.0, reward 1.0; controls {'targets': {'count': 64, 'base_successes': 0, 'successes': 64, 'retained': 0}, 'nearby_controls': {'count': 32, 'base_successes': 32, 'successes': 32, 'retained': 32}, 'general_controls': {'count': 64, 'base_successes': 64, 'successes': 64, 'retained': 64}, 'override_controls': {'count': 8, 'base_successes': 0, 'successes': 0, 'retained': 0}}; instruction in the prompt: targets 64/64, retention 0.34375
+[ 1543s] all episodes: edited targets 64/64; mean reward 1.000
+[ 1543s] DONE

@@ -1,0 +1,30 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights:  61%|██████    | 287/473 [00:00<00:00, 2846.18it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 3956.29it/s]
+[    4s] episode seed 3: When extracting name from a short residence record, return only a JSON object by default. Use exactly these keys: name → resident. Copy the correct field values from the record. Preserve extraction accuracy and honour explicit requests for ordinary prose.
+[    4s]    instruction used for the teacher: Respond only with a JSON object of the form {"resident": "..."} and nothing else.
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[   13s]    prompts from results/E4/E4a_prompts_written_without_seeing_the_benchmark_code.json: 376 used, 0 dropped because the person's name is one of the episode's private names
+[  131s]    round 1: 0 of 192 questions are already answered as the instructed model answers them
+[  131s]    round 1 group (same next token for the instructed model): 192 positions, median position 0.0, mean KL 12.45, shared fraction 0.78, instructed wants [['{"', 192]], current writes [['Based', 111], ['The', 33], ['**', 4]]
+[  131s]    round 1 group (similar direction of the hidden-state difference): 192 positions, median position 0.0, mean KL 12.45, shared fraction 0.78, instructed wants [['{"', 192]], current writes [['Based', 111], ['The', 33], ['**', 4]]
+[  322s]    round 1: edit built for 192 positions (group had 192); fit {'target_mean': 0.8926225379109383, 'target_min': 0.30536317825317383, 'other_max_abs': 0.8625859022140503}
+[  396s]    round 2: 4 of 192 questions are already answered as the instructed model answers them
+[  396s]    round 2 group (same next token for the instructed model): 184 positions, median position 1.0, mean KL 9.17, shared fraction 0.86, instructed wants [['resident', 184]], current writes [['name', 137], ['person', 36], ['record', 4]]
+[  396s]    round 2 group (similar direction of the hidden-state difference): 184 positions, median position 1.0, mean KL 9.17, shared fraction 0.86, instructed wants [['resident', 184]], current writes [['name', 137], ['person', 36], ['record', 4]]
+[  396s]    round 2 group (same next token for the instructed model): 2 positions, median position 9.5, mean KL 1.67, shared fraction 0.84, instructed wants [['"}', 2]], current writes [['",', 2]]
+[  552s]    round 2: edit built for 184 positions (group had 184); fit {'target_mean': 0.9518358409404755, 'target_min': 0.7350733876228333, 'other_max_abs': 0.961708128452301}
+[  630s]    round 3: 71 of 192 questions are already answered as the instructed model answers them
+[  630s]    round 3 group (same next token for the instructed model): 39 positions, median position 9.0, mean KL 1.70, shared fraction 0.70, instructed wants [['"}', 39]], current writes [['",', 39]]
+[  630s]    round 3 group (similar direction of the hidden-state difference): 38 positions, median position 9.0, mean KL 1.69, shared fraction 0.72, instructed wants [['"}', 38]], current writes [['",', 38]]
+[  630s]    round 3 group (same next token for the instructed model): 39 positions, median position 2.0, mean KL 1.42, shared fraction 0.85, instructed wants [['":', 39]], current writes [['"}', 39]]
+[  687s]    round 3: edit built for 39 positions (group had 39); fit {'target_mean': 0.44862700688342255, 'target_min': -0.14851810038089752, 'other_max_abs': 0.5241918563842773}
+[  762s]    round 4: 119 of 192 questions are already answered as the instructed model answers them
+[  762s]    round 4 group (same next token for the instructed model): 39 positions, median position 2.0, mean KL 1.42, shared fraction 0.85, instructed wants [['":', 39]], current writes [['"}', 39]]
+[  762s]    round 4 group (similar direction of the hidden-state difference): 39 positions, median position 2.0, mean KL 1.42, shared fraction 0.85, instructed wants [['":', 39]], current writes [['"}', 39]]
+[  762s]    round 4 group (same next token for the instructed model): 1 positions, median position 4.0, mean KL 2.58, shared fraction 1.00, instructed wants [['Y', 1]], current writes [['H', 1]]
+[  814s]    round 4: edit built for 39 positions (group had 39); fit {'target_mean': 0.5705903582274914, 'target_min': 0.07939523458480835, 'other_max_abs': 0.48498082160949707}
+[  816s] seed 3: edited targets 62/64 (base 0.00), retention 0.6271186440677966, reward 0.607521186440678; controls {'targets': {'count': 64, 'base_successes': 0, 'successes': 62, 'retained': 0}, 'nearby_controls': {'count': 32, 'base_successes': 0, 'successes': 31, 'retained': 0}, 'general_controls': {'count': 64, 'base_successes': 59, 'successes': 37, 'retained': 37}, 'override_controls': {'count': 8, 'base_successes': 0, 'successes': 0, 'retained': 0}}; instruction in the prompt: targets 64/64, retention 0.0
+[  816s] all episodes: edited targets 62/64; mean reward 0.608
+[  816s] DONE

@@ -5,3 +5,22 @@
 [  114s]    round 1: 0 of 192 questions are already answered as the instructed model answers them
 [  114s]    round 1 group (same next token for the instructed model): 192 positions, median position 0.0, mean KL 52.49, shared fraction 0.76, instructed wants [['{"', 192]], current writes [['The', 76], ['This', 19], ['K', 4]]
 [  114s]    round 1 group (similar direction of the hidden-state difference): 192 positions, median position 0.0, mean KL 52.49, shared fraction 0.76, instructed wants [['{"', 192]], current writes [['The', 76], ['This', 19], ['K', 4]]
+[  468s]    round 1: edit built for 192 positions (group had 192); fit {'target_mean': 0.8637699905563804, 'target_min': 0.028089530766010284, 'other_max_abs': 0.9998418688774109}
+[  537s]    round 2: 0 of 192 questions are already answered as the instructed model answers them
+[  537s]    round 2 group (similar direction of the hidden-state difference): 186 positions, median position 1.0, mean KL 34.07, shared fraction 0.94, instructed wants [['profile', 174], [' is', 4], [' here', 3]], current writes [['{"', 103], ['name', 53], [' is', 2]]
+[  537s]    round 2 group (same next token for the instructed model): 174 positions, median position 1.0, mean KL 35.77, shared fraction 0.97, instructed wants [['profile', 174]], current writes [['{"', 101], ['name', 53], ['Record', 2]]
+[  537s]    round 2 group (same next token for the instructed model): 3 positions, median position 2.0, mean KL 16.24, shared fraction 0.95, instructed wants [[' here', 3]], current writes [['{"', 2], [' let', 1]]
+[  904s]    round 2: edit built for 186 positions (group had 186); fit {'target_mean': 0.9022910476607435, 'target_min': -0.05352356657385826, 'other_max_abs': 0.9409441351890564}
+[  969s]    round 3: 3 of 192 questions are already answered as the instructed model answers them
+[  969s]    round 3 group (same next token for the instructed model): 134 positions, median position 2.0, mean KL 11.13, shared fraction 0.77, instructed wants [['_', 134]], current writes [['":', 93], ['":"', 33], [':', 2]]
+[  969s]    round 3 group (similar direction of the hidden-state difference): 121 positions, median position 2.0, mean KL 10.68, shared fraction 0.89, instructed wants [['_', 116], ['":', 2], ['\n', 1]], current writes [['":', 80], ['":"', 34], [':', 2]]
+[  969s]    round 3 group (same next token for the instructed model): 26 positions, median position 9.0, mean KL 5.91, shared fraction 0.70, instructed wants [['\n', 26]], current writes [['<end_of_turn>', 24], [' was', 1], ['Full', 1]]
+[ 1358s]    round 3: edit built for 134 positions (group had 134); fit {'target_mean': 0.825940872049507, 'target_min': -0.01982429251074791, 'other_max_abs': 0.9513188600540161}
+[ 1720s]    round 4: 82 of 192 questions are already answered as the instructed model answers them
+[ 1720s]    round 4 group (same next token for the instructed model): 33 positions, median position 10.0, mean KL 4.71, shared fraction 0.69, instructed wants [['\n', 33]], current writes [['<end_of_turn>', 27], ['\n\n', 4], ['\n', 1]]
+[ 1720s]    round 4 group (similar direction of the hidden-state difference): 33 positions, median position 10.0, mean KL 4.70, shared fraction 0.71, instructed wants [['\n', 32], ['<end_of_turn>', 1]], current writes [['<end_of_turn>', 27], ['\n\n', 4], ['\n', 2]]
+[ 1720s]    round 4 group (similar direction of the hidden-state difference): 26 positions, median position 9.0, mean KL 5.92, shared fraction 0.60, instructed wants [['"}', 14], ['":', 6], [':', 3]], current writes [['",', 14], ['_', 11], ['concern', 1]]
+[ 2392s]    round 4: edit built for 33 positions (group had 33); fit {'target_mean': 0.5284917282269281, 'target_min': -0.09605221450328827, 'other_max_abs': 0.5642188191413879}
+[ 2398s] seed 6: edited targets 64/64 (base 0.00), retention 1.0, reward 1.0; controls {'targets': {'count': 64, 'base_successes': 0, 'successes': 64, 'retained': 0}, 'nearby_controls': {'count': 32, 'base_successes': 32, 'successes': 32, 'retained': 32}, 'general_controls': {'count': 64, 'base_successes': 64, 'successes': 64, 'retained': 64}, 'override_controls': {'count': 8, 'base_successes': 0, 'successes': 0, 'retained': 0}}; instruction in the prompt: targets 64/64, retention 0.3333333333333333
+[ 2398s] all episodes: edited targets 64/64; mean reward 1.000
+[ 2398s] DONE

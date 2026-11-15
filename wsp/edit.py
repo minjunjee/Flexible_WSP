@@ -124,6 +124,32 @@ def fit_gates(H, y, q, lams=(1e-3, 1e-2, 1e-1), held_fraction=0.25):
     return V, stats
 
 
+def fit_maps(H, y, q, targets, lam_by_layer):
+    """The same ridge regression as the read vectors, with one target VECTOR per target position instead of the label 1.
+
+    targets {layer: {question index: vector [d_model]}}: what the edit should add at that question's target positions.
+    Returns {layer: dW [d_model, d_mlp]} with dW h close to the question's own vector at its target positions and close
+    to 0 everywhere else. If every question has the same vector u this is exactly outer(u, read vector): the rank-1
+    conditional edit is the special case in which all questions share one vector. Still no gradient step, one linear
+    solve per layer."""
+    out = {}
+    rows = torch.nonzero(y == 1).squeeze(1)
+    for l, Hl in H.items():
+        Hl = Hl.to(y.device).double()
+        reg = lam_by_layer[l] * Hl.pow(2).sum(1).mean()
+        D = torch.stack([targets[l][int(q[r])] for r in rows]).to(y.device).double()               # [T, d_model]
+        if Hl.shape[0] > Hl.shape[1]:
+            C = Hl.T @ Hl
+            X = torch.linalg.solve(C + reg * torch.eye(len(C), dtype=C.dtype, device=C.device), Hl[rows].T)      # [d_mlp, T]
+        else:
+            G = Hl @ Hl.T
+            E = torch.zeros(len(G), len(rows), dtype=G.dtype, device=G.device)
+            E[rows, torch.arange(len(rows), device=G.device)] = 1.0
+            X = Hl.T @ torch.linalg.solve(G + reg * torch.eye(len(G), dtype=G.dtype, device=G.device), E)
+        out[l] = (D.T @ X.T).float().cpu()
+    return out
+
+
 def build_start_edit(lm, items, d, S, lams=(1e-3, 1e-2, 1e-1)):
     """Conditional edit for the answer-start position.
     items: dicts with ids0 (prompt without instruction), y_instr (answer of the instructed model), y_plain (answer of

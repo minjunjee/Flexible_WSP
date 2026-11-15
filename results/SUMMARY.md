@@ -33,3 +33,7 @@
 ## 후속 실험: LoRA 기준선
 
 2026-11-16 06:10부터(KST). 두 가지를 쟀다. 첫째, 편집과 같은 질문 64개만으로 학습한 LoRA다. Qwen3.5-0.8B에서 40 step이면 JSON 100%, 소문자 96%로 편집의 98%와 86%보다 높다. 8 step으로는 0%와 18%다. 둘째, IWIBench의 구조화된 응답 과제에서 편집을 만든 문장 376개로 학습한 LoRA다. Gemma 3 4B의 test split에서 47 step LoRA가 192문제를 다 풀었고 통제 문항도 전부 지켰다. 편집은 같은 episode에서 74문제다. development split에서는 47 step LoRA가 157문제, 141 step LoRA가 192문제, 편집이 192문제다. 그러니 test split에서 편집이 무너진 것은 문장이 모자라서가 아니다. 벤치는 editor에게 gradient를 주지 않으므로 LoRA는 벤치의 규칙 밖에 있는 참고용이다. `results/followup/tables.md`.
+
+## 후속 실험: test split에서 무너진 까닭과 고쳐 본 것
+
+2026-11-16 06:24부터 07:45까지(KST). Gemma 3 4B의 test split 첫 episode를 진단했다. key를 `resident`로 쓴 26문항에서도 key 이름을 쓰는 편집의 read vector는 0.96으로 켜졌다. 모자란 것은 더하는 쪽이다. key를 쓰는 자리에서 `subject`와 `resident`의 logit 차이는 편집이 없으면 −8.4, 편집을 넣으면 틀린 문항에서 −0.9, 맞은 문항에서 +1.1이다. 편집을 키우면 1.5배에서 이미 0/64로 망가진다. 고쳐 본 것은 둘이다. 편집을 만드는 문장에 여러 양식의 기록을 넣자 test split의 episode 넷이 256문제 중 247문제, 평균 점수 0.879가 됐고 development split은 192/192에 1.000이다. 이 문장은 실패를 본 뒤에 쓴 것이라 깨끗한 검증이 아니다. 문장마다 다른 vector를 최소제곱으로 맞추는 편집은 Qwen3.5-0.8B에서 목표 문항을 100/192에서 192/192로 올렸지만 통제 문항 유지가 0.5 안팎으로 떨어졌고, Gemma 3 4B에서는 16/64로 더 낮았다. `results/followup/tables.md`.
