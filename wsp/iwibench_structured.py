@@ -41,6 +41,8 @@ ap.add_argument("--seeds", default="0,3,6", help="episode seeds; 0,3,6 are the t
 ap.add_argument("--rounds", type=int, default=4)
 ap.add_argument("--prompts", default="small", choices=["small", "wide"])
 ap.add_argument("--split", default="development", choices=["development", "test"])
+ap.add_argument("--hold_out_wording", action="store_true",
+                help="leave the benchmark's own request words out of our prompts: no 'Extract', no 'note', no 'Which', no 'profile'")
 ap.add_argument("--build_new", type=int, default=48)
 ap.add_argument("--eval_new", type=int, default=256, help="the benchmark caps completions at 256 tokens")
 args = ap.parse_args()
@@ -101,13 +103,18 @@ def our_prompts_wide(ep, n_extract=192, n_prose=64, n_general=120):
     is one of the combinations this set can produce."""
     rng = random.Random(2000 + ep["seed"])
     fields = " and ".join(ep["parameters"]["fields"])
+    verbs, docs, asks = VERBS, DOCS, WIDE_ASKS
+    if args.hold_out_wording:
+        verbs = [v for v in VERBS if v != "Extract"]
+        docs = [d for d in DOCS if d not in ("note", "profile")]
+        asks = [a for a in WIDE_ASKS if not a.startswith("Which")]
     private = {item["record_person"] for g in ("calibration", "targets", "nearby_controls", "override_controls") for item in ep[g]}
     people = [f"{a} {b}" for a in FIRST for b in LAST if f"{a} {b}" not in private]
     out = []
     for i in range(n_extract + n_prose):
         text = rng.choice(WIDE_RECORDS).format(name=rng.choice(people), city=rng.choice(TOWNS), job=rng.choice(JOBS))
-        V, d = rng.choice(VERBS), rng.choice(DOCS)
-        p = rng.choice(WIDE_ASKS).format(V=V, v=V.lower(), d=d, d_cap=d.capitalize(), f=fields, t=text)
+        V, d = rng.choice(verbs), rng.choice(docs)
+        p = rng.choice(asks).format(V=V, v=V.lower(), d=d, d_cap=d.capitalize(), f=fields, t=text)
         if i >= n_extract:
             p += " " + rng.choice(WIDE_PROSE)
         out.append(dict(kind="extraction" if i < n_extract else "extraction with a demand for prose", prompt=p))
@@ -172,7 +179,7 @@ for seed in [int(s) for s in args.seeds.split(",")]:
     log(f"seed {seed}: edited targets {e['target_successes']}/{e['target_count']} (base {e['target_success_base']:.2f}), retention {e['control_retention']}, reward {e['reward']}; "
         f"controls {e['by_group']}; instruction in the prompt: targets {i['target_successes']}/{i['target_count']}, retention {i['control_retention']}")
     ALL.append(res)
-    json.dump(dict(model=args.model, prompts=args.prompts, split=args.split, episodes=ALL), open(f"{args.out}/summary.json", "w"), indent=1, ensure_ascii=False)
+    json.dump(dict(model=args.model, prompts=args.prompts, split=args.split, hold_out_wording=args.hold_out_wording, episodes=ALL), open(f"{args.out}/summary.json", "w"), indent=1, ensure_ascii=False)
 tot = sum(r["edited"]["target_successes"] for r in ALL), sum(r["edited"]["target_count"] for r in ALL)
 log(f"all episodes: edited targets {tot[0]}/{tot[1]}; mean reward {np.mean([r['edited']['reward'] or 0 for r in ALL]):.3f}")
 log("DONE")

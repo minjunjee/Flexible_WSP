@@ -1,0 +1,36 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 5174.26it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (297053 > 262144). Running this sequence through the model will result in indexing errors
+[    6s] wikitext-103 test: 297,053 tokens
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[  197s] ordinary text: {'tokens': 100352, 'read_vector_above_half': [0, 0], 'share_above_half': [0.0, 0.0], 'share_abs_above_0p1': [9.964923469387754e-06, 0.00016940369897959184], 'largest_value': [0.10310707986354828, 0.1121639832854271], 'mean_kl_original_to_edited': 0.020061442628502846, 'share_kl_above_0p1': 0.014309630102040817, 'largest_kl': 1.2525405883789062, 'mean_increase_of_loss_on_the_text': 0.03392362967133522}
+[  198s] undo: {'weights_changed_by_the_edits': 83749533, 'weights_still_different_after_subtracting': 7229671, 'note': 'each rank-1 change is rounded to bfloat16 when it is added and again when it is subtracted'}
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[  209s] document of 0 tokens, instruction first: valid JSON 100%, key 'answer' 100%, correct 77%
+[  220s] document of 0 tokens, instruction last: valid JSON 100%, key 'answer' 100%, correct 77%
+[  254s] document of 0 tokens, edits only: valid JSON 97%, key 'answer' 97%, correct 76%, read vector at the answer start {'mean': 0.9138997000455856, 'share_above_half': 1.0}
+[  293s] document of 0 tokens, no edit and no instruction: valid JSON 0%, key 'answer' 0%, correct 78%
+[  308s] document of 1000 tokens, instruction first: valid JSON 100%, key 'answer' 100%, correct 75%
+[  322s] document of 1000 tokens, instruction last: valid JSON 100%, key 'answer' 100%, correct 74%
+[  359s] document of 1000 tokens, edits only: valid JSON 97%, key 'answer' 97%, correct 74%, read vector at the answer start {'mean': 0.9099739038944245, 'share_above_half': 1.0}
+[  397s] document of 1000 tokens, no edit and no instruction: valid JSON 0%, key 'answer' 0%, correct 74%
+[  414s] document of 4000 tokens, instruction first: valid JSON 100%, key 'answer' 100%, correct 75%
+[  432s] document of 4000 tokens, instruction last: valid JSON 100%, key 'answer' 100%, correct 74%
+[  482s] document of 4000 tokens, edits only: valid JSON 97%, key 'answer' 97%, correct 74%, read vector at the answer start {'mean': 0.9082837402820587, 'share_above_half': 1.0}
+[  532s] document of 4000 tokens, no edit and no instruction: valid JSON 0%, key 'answer' 0%, correct 74%
+[  578s] document of 16000 tokens, instruction first: valid JSON 100%, key 'answer' 100%, correct 75%
+[  620s] document of 16000 tokens, instruction last: valid JSON 100%, key 'answer' 100%, correct 74%
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/minjun_dev/Introduction_LLM/Flexible_WSP/.worktrees/wsp-poc/wsp/exp4_distance.py", line 117, in <module>
+    _, hh = lm.run(p)
+            ^^^^^^^^^
+  File "/home/minjun_dev/Introduction_LLM/Flexible_WSP/.worktrees/wsp-poc/.venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 158, in inference_mode
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/minjun_dev/Introduction_LLM/Flexible_WSP/.worktrees/wsp-poc/wsp/lm.py", line 112, in run
+    hh = torch.stack([self.cap_h[l][0].float() for l in range(self.L)])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.13 GiB. GPU 0 has a total capacity of 94.97 GiB of which 4.79 GiB is free. Process 421062 has 13.92 GiB memory in use. Process 425718 has 31.22 GiB memory in use. Including non-PyTorch memory, this process has 24.65 GiB memory in use. Process 447756 has 9.78 GiB memory in use. Process 453688 has 10.58 GiB memory in use. Of the allocated memory 19.30 GiB is allocated by PyTorch, and 4.67 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)

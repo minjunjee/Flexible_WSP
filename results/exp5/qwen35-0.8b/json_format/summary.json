@@ -1,0 +1,1119 @@
+{
+ "task": "json_format",
+ "instruction": "Entire output should be wrapped in JSON format. You can use markdown ticks such as ```.",
+ "source": "IFEval detectable_format:json_format",
+ "model": "qwen35-0.8b",
+ "n_build": 64,
+ "n_tune": 40,
+ "n_test": 500,
+ "max_new": 96,
+ "kl_min": 1.0,
+ "conditions": {
+  "instruction in the prompt": {
+   "file": "outputs_instruction_in_the_prompt.jsonl",
+   "follows": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "correct": [
+    0.784,
+    0.748,
+    0.82
+   ],
+   "follows_and_correct": [
+    0.784,
+    0.748,
+    0.82
+   ],
+   "ended": 0.998,
+   "median_tokens": 19.0,
+   "follows_by_type": {
+    "fact": 1.0,
+    "extract": 1.0,
+    "arith": 1.0,
+    "translate": 1.0,
+    "sentiment": 1.0
+   }
+  },
+  "no edit": {
+   "file": "outputs_no_edit.jsonl",
+   "follows": [
+    0.014,
+    0.004,
+    0.024
+   ],
+   "correct": [
+    0.8,
+    0.766,
+    0.836
+   ],
+   "follows_and_correct": [
+    0.006,
+    0.0,
+    0.014
+   ],
+   "ended": 0.878,
+   "median_tokens": 47.0,
+   "follows_by_type": {
+    "fact": 0.0,
+    "extract": 0.0,
+    "arith": 0.0,
+    "translate": 0.07,
+    "sentiment": 0.0
+   }
+  },
+  "difference added at every position of layer 11, scale 2.0 (hook)": {
+   "file": "outputs_hook_every_position_one_layer.jsonl",
+   "follows": [
+    0.568,
+    0.524,
+    0.612
+   ],
+   "correct": [
+    0.314,
+    0.272,
+    0.356
+   ],
+   "follows_and_correct": [
+    0.268,
+    0.228,
+    0.308
+   ],
+   "ended": 0.71,
+   "median_tokens": 9.0,
+   "follows_by_type": {
+    "fact": 0.72,
+    "extract": 0.61,
+    "arith": 0.1,
+    "translate": 0.41,
+    "sentiment": 1.0
+   }
+  },
+  "differences added at the answer start only, all layers (hook)": {
+   "file": "outputs_hook_answer_start_all_layers.jsonl",
+   "follows": [
+    0.698,
+    0.656,
+    0.738
+   ],
+   "correct": [
+    0.794,
+    0.758,
+    0.828
+   ],
+   "follows_and_correct": [
+    0.566,
+    0.522,
+    0.608
+   ],
+   "ended": 0.96,
+   "median_tokens": 20.0,
+   "follows_by_type": {
+    "fact": 0.67,
+    "extract": 0.88,
+    "arith": 0.27,
+    "translate": 0.76,
+    "sentiment": 0.91
+   }
+  },
+  "conditional edits at 1 position group (weights only)": {
+   "file": "outputs_after_1_edits.jsonl",
+   "follows": [
+    0.702,
+    0.662,
+    0.7400499999999998
+   ],
+   "correct": [
+    0.774,
+    0.738,
+    0.81
+   ],
+   "follows_and_correct": [
+    0.546,
+    0.502,
+    0.588
+   ],
+   "ended": 0.926,
+   "median_tokens": 21.0,
+   "follows_by_type": {
+    "fact": 0.7,
+    "extract": 0.93,
+    "arith": 0.18,
+    "translate": 0.78,
+    "sentiment": 0.92
+   }
+  },
+  "conditional edits at 2 position groups (weights only)": {
+   "file": "outputs_after_2_edits.jsonl",
+   "follows": [
+    0.97,
+    0.954,
+    0.984
+   ],
+   "correct": [
+    0.778,
+    0.742,
+    0.8120499999999998
+   ],
+   "follows_and_correct": [
+    0.754,
+    0.716,
+    0.79
+   ],
+   "ended": 0.97,
+   "median_tokens": 22.0,
+   "follows_by_type": {
+    "fact": 0.97,
+    "extract": 1.0,
+    "arith": 0.99,
+    "translate": 0.97,
+    "sentiment": 0.92
+   }
+  },
+  "conditional edits at 3 position groups (weights only)": {
+   "file": "outputs_after_3_edits.jsonl",
+   "follows": [
+    0.972,
+    0.956,
+    0.986
+   ],
+   "correct": [
+    0.784,
+    0.75,
+    0.82
+   ],
+   "follows_and_correct": [
+    0.764,
+    0.728,
+    0.802
+   ],
+   "ended": 0.974,
+   "median_tokens": 23.0,
+   "follows_by_type": {
+    "fact": 1.0,
+    "extract": 1.0,
+    "arith": 0.99,
+    "translate": 0.97,
+    "sentiment": 0.9
+   }
+  }
+ },
+ "rounds": [
+  {
+   "round": 1,
+   "own_answers": {
+    "positions": 2549,
+    "diverging": 247,
+    "share": 0.09690074539034915,
+    "questions_with_divergence": 64,
+    "mean_kl_at_answer_start": 13.736729681491852,
+    "mean_kl_elsewhere": 0.5304972316371277
+   },
+   "questions_with_an_untargeted_divergence": 64,
+   "candidate_groups": [
+    {
+     "kind": "same next token for the instructed model",
+     "size": 64,
+     "kl_sum": 879.1506996154785,
+     "kl_mean": 13.736729681491852,
+     "median_position": 0.0,
+     "shared_fraction": 0.6009606122970581,
+     "instructed_next_tokens": [
+      [
+       "```",
+       64
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "The",
+       28
+      ],
+      [
+       "To",
+       16
+      ],
+      [
+       "Die",
+       2
+      ],
+      [
+       "L",
+       2
+      ],
+      [
+       " bless",
+       1
+      ],
+      [
+       "\"",
+       1
+      ]
+     ]
+    },
+    {
+     "kind": "similar direction of the hidden-state difference",
+     "size": 48,
+     "kl_sum": 692.8587837219238,
+     "kl_mean": 14.434557994206747,
+     "median_position": 0.0,
+     "shared_fraction": 0.7211778163909912,
+     "instructed_next_tokens": [
+      [
+       "```",
+       48
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "The",
+       28
+      ],
+      [
+       "To",
+       16
+      ],
+      [
+       "Based",
+       1
+      ],
+      [
+       "L",
+       1
+      ],
+      [
+       "Mah",
+       1
+      ],
+      [
+       "P",
+       1
+      ]
+     ]
+    },
+    {
+     "kind": "similar direction of the hidden-state difference",
+     "size": 16,
+     "kl_sum": 186.2919158935547,
+     "kl_mean": 11.643244743347168,
+     "median_position": 0.0,
+     "shared_fraction": 0.618466854095459,
+     "instructed_next_tokens": [
+      [
+       "```",
+       16
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "Die",
+       2
+      ],
+      [
+       " bless",
+       1
+      ],
+      [
+       "\"",
+       1
+      ],
+      [
+       "Il",
+       1
+      ],
+      [
+       "L",
+       1
+      ],
+      [
+       "La",
+       1
+      ]
+     ]
+    }
+   ],
+   "positions_in_the_group": {
+    "chosen": 64,
+    "after_adding_positions_where_the_edit_fires_anyway": 64
+   },
+   "fit": {
+    "target_mean": 0.9788669769962629,
+    "target_min": 0.1750316023826599,
+    "other_max_abs": 0.6468193531036377
+   },
+   "chosen_group": {
+    "kind": "same next token for the instructed model",
+    "size": 64,
+    "kl_sum": 879.1506996154785,
+    "kl_mean": 13.736729681491852,
+    "median_position": 0.0,
+    "shared_fraction": 0.6009606122970581,
+    "instructed_next_tokens": [
+     [
+      "```",
+      64
+     ]
+    ],
+    "current_next_tokens": [
+     [
+      "The",
+      28
+     ],
+     [
+      "To",
+      16
+     ],
+     [
+      "Die",
+      2
+     ],
+     [
+      "L",
+      2
+     ],
+     [
+      " bless",
+      1
+     ],
+     [
+      "\"",
+      1
+     ]
+    ]
+   },
+   "changed_weights": 75186367
+  },
+  {
+   "round": 2,
+   "own_answers": {
+    "positions": 1796,
+    "diverging": 120,
+    "share": 0.066815144766147,
+    "questions_with_divergence": 64,
+    "mean_kl_at_answer_start": 1.8552724421024323,
+    "mean_kl_elsewhere": 0.23230052925646305
+   },
+   "questions_with_an_untargeted_divergence": 43,
+   "candidate_groups": [
+    {
+     "kind": "same next token for the instructed model",
+     "size": 21,
+     "kl_sum": 26.40095293521881,
+     "kl_mean": 1.2571882350104195,
+     "median_position": 1.0,
+     "shared_fraction": 0.8457121253013611,
+     "instructed_next_tokens": [
+      [
+       "json",
+       21
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "\n",
+       19
+      ],
+      [
+       "json",
+       2
+      ]
+     ]
+    },
+    {
+     "kind": "similar direction of the hidden-state difference",
+     "size": 21,
+     "kl_sum": 26.40095293521881,
+     "kl_mean": 1.2571882350104195,
+     "median_position": 1.0,
+     "shared_fraction": 0.8457121253013611,
+     "instructed_next_tokens": [
+      [
+       "json",
+       21
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "\n",
+       19
+      ],
+      [
+       "json",
+       2
+      ]
+     ]
+    },
+    {
+     "kind": "similar direction of the hidden-state difference",
+     "size": 11,
+     "kl_sum": 16.40434443950653,
+     "kl_mean": 1.4913040399551392,
+     "median_position": 4.0,
+     "shared_fraction": 0.8271951079368591,
+     "instructed_next_tokens": [
+      [
+       "capital",
+       6
+      ],
+      [
+       "currency",
+       5
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "answer",
+       7
+      ],
+      [
+       "name",
+       4
+      ]
+     ]
+    },
+    {
+     "kind": "same next token for the instructed model",
+     "size": 6,
+     "kl_sum": 9.551308393478394,
+     "kl_mean": 1.591884732246399,
+     "median_position": 4.0,
+     "shared_fraction": 0.8636828660964966,
+     "instructed_next_tokens": [
+      [
+       "capital",
+       6
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "answer",
+       6
+      ]
+     ]
+    },
+    {
+     "kind": "same next token for the instructed model",
+     "size": 5,
+     "kl_sum": 6.853036046028137,
+     "kl_mean": 1.3706072092056274,
+     "median_position": 4.0,
+     "shared_fraction": 0.9628942012786865,
+     "instructed_next_tokens": [
+      [
+       "currency",
+       5
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "name",
+       4
+      ],
+      [
+       "answer",
+       1
+      ]
+     ]
+    },
+    {
+     "kind": "same next token for the instructed model",
+     "size": 2,
+     "kl_sum": 6.682992458343506,
+     "kl_mean": 3.341496229171753,
+     "median_position": 1.0,
+     "shared_fraction": 0.9383285045623779,
+     "instructed_next_tokens": [
+      [
+       "\n",
+       2
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       " ]",
+       1
+      ],
+      [
+       "alias",
+       1
+      ]
+     ]
+    }
+   ],
+   "positions_in_the_group": {
+    "chosen": 21,
+    "after_adding_positions_where_the_edit_fires_anyway": 21
+   },
+   "fit": {
+    "target_mean": 0.8761728306611379,
+    "target_min": 0.6608521938323975,
+    "other_max_abs": 0.8333661556243896
+   },
+   "chosen_group": {
+    "kind": "same next token for the instructed model",
+    "size": 21,
+    "kl_sum": 26.40095293521881,
+    "kl_mean": 1.2571882350104195,
+    "median_position": 1.0,
+    "shared_fraction": 0.8457121253013611,
+    "instructed_next_tokens": [
+     [
+      "json",
+      21
+     ]
+    ],
+    "current_next_tokens": [
+     [
+      "\n",
+      19
+     ],
+     [
+      "json",
+      2
+     ]
+    ]
+   },
+   "changed_weights": 82368009
+  },
+  {
+   "round": 3,
+   "own_answers": {
+    "positions": 1648,
+    "diverging": 75,
+    "share": 0.04550970873786408,
+    "questions_with_divergence": 49,
+    "mean_kl_at_answer_start": 1.8342409105971456,
+    "mean_kl_elsewhere": 0.15074211794126313
+   },
+   "questions_with_an_untargeted_divergence": 24,
+   "candidate_groups": [
+    {
+     "kind": "similar direction of the hidden-state difference",
+     "size": 11,
+     "kl_sum": 16.023401021957397,
+     "kl_mean": 1.4566728201779453,
+     "median_position": 4.0,
+     "shared_fraction": 0.8468838930130005,
+     "instructed_next_tokens": [
+      [
+       "currency",
+       5
+      ],
+      [
+       "capital",
+       5
+      ],
+      [
+       "country",
+       1
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "answer",
+       6
+      ],
+      [
+       "name",
+       2
+      ],
+      [
+       "capital",
+       1
+      ],
+      [
+       "country",
+       1
+      ],
+      [
+       "currency",
+       1
+      ]
+     ]
+    },
+    {
+     "kind": "same next token for the instructed model",
+     "size": 6,
+     "kl_sum": 9.711533308029175,
+     "kl_mean": 1.618588884671529,
+     "median_position": 4.0,
+     "shared_fraction": 0.8351919054985046,
+     "instructed_next_tokens": [
+      [
+       "capital",
+       6
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "answer",
+       5
+      ],
+      [
+       "capital",
+       1
+      ]
+     ]
+    },
+    {
+     "kind": "similar direction of the hidden-state difference",
+     "size": 5,
+     "kl_sum": 7.02340841293335,
+     "kl_mean": 1.40468168258667,
+     "median_position": 7.0,
+     "shared_fraction": 0.8722477555274963,
+     "instructed_next_tokens": [
+      [
+       "country",
+       3
+      ],
+      [
+       "district",
+       1
+      ],
+      [
+       "capital",
+       1
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "answer",
+       5
+      ]
+     ]
+    },
+    {
+     "kind": "same next token for the instructed model",
+     "size": 5,
+     "kl_sum": 6.807997226715088,
+     "kl_mean": 1.3615994453430176,
+     "median_position": 4.0,
+     "shared_fraction": 0.9616441130638123,
+     "instructed_next_tokens": [
+      [
+       "currency",
+       5
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "answer",
+       2
+      ],
+      [
+       "name",
+       2
+      ],
+      [
+       "currency",
+       1
+      ]
+     ]
+    },
+    {
+     "kind": "same next token for the instructed model",
+     "size": 2,
+     "kl_sum": 6.732692718505859,
+     "kl_mean": 3.3663463592529297,
+     "median_position": 1.0,
+     "shared_fraction": 0.9338011145591736,
+     "instructed_next_tokens": [
+      [
+       "\n",
+       2
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       " ]",
+       1
+      ],
+      [
+       "alias",
+       1
+      ]
+     ]
+    },
+    {
+     "kind": "similar direction of the hidden-state difference",
+     "size": 2,
+     "kl_sum": 6.732692718505859,
+     "kl_mean": 3.3663463592529297,
+     "median_position": 1.0,
+     "shared_fraction": 0.9338011145591736,
+     "instructed_next_tokens": [
+      [
+       "\n",
+       2
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       " ]",
+       1
+      ],
+      [
+       "alias",
+       1
+      ]
+     ]
+    }
+   ],
+   "positions_in_the_group": {
+    "chosen": 11,
+    "after_adding_positions_where_the_edit_fires_anyway": 11
+   },
+   "fit": {
+    "target_mean": 0.9535272692640623,
+    "target_min": 0.7108581066131592,
+    "other_max_abs": 0.49087274074554443
+   },
+   "chosen_group": {
+    "kind": "similar direction of the hidden-state difference",
+    "size": 11,
+    "kl_sum": 16.023401021957397,
+    "kl_mean": 1.4566728201779453,
+    "median_position": 4.0,
+    "shared_fraction": 0.8468838930130005,
+    "instructed_next_tokens": [
+     [
+      "currency",
+      5
+     ],
+     [
+      "capital",
+      5
+     ],
+     [
+      "country",
+      1
+     ]
+    ],
+    "current_next_tokens": [
+     [
+      "answer",
+      6
+     ],
+     [
+      "name",
+      2
+     ],
+     [
+      "capital",
+      1
+     ],
+     [
+      "country",
+      1
+     ],
+     [
+      "currency",
+      1
+     ]
+    ]
+   },
+   "changed_weights": 84995299
+  },
+  {
+   "round": 4,
+   "own_answers": {
+    "positions": 1714,
+    "diverging": 59,
+    "share": 0.03442240373395566,
+    "questions_with_divergence": 49,
+    "mean_kl_at_answer_start": 1.7475606370717287,
+    "mean_kl_elsewhere": 0.13922577298944816
+   },
+   "questions_with_an_untargeted_divergence": 8,
+   "candidate_groups": [
+    {
+     "kind": "same next token for the instructed model",
+     "size": 2,
+     "kl_sum": 7.700008392333984,
+     "kl_mean": 3.850004196166992,
+     "median_position": 1.0,
+     "shared_fraction": 0.9350287318229675,
+     "instructed_next_tokens": [
+      [
+       "\n",
+       2
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       " ]",
+       1
+      ],
+      [
+       "alias",
+       1
+      ]
+     ]
+    },
+    {
+     "kind": "similar direction of the hidden-state difference",
+     "size": 2,
+     "kl_sum": 7.700008392333984,
+     "kl_mean": 3.850004196166992,
+     "median_position": 1.0,
+     "shared_fraction": 0.9350287318229675,
+     "instructed_next_tokens": [
+      [
+       "\n",
+       2
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       " ]",
+       1
+      ],
+      [
+       "alias",
+       1
+      ]
+     ]
+    },
+    {
+     "kind": "same next token for the instructed model",
+     "size": 4,
+     "kl_sum": 6.057221055030823,
+     "kl_mean": 1.5143052637577057,
+     "median_position": 9.0,
+     "shared_fraction": 0.6736306548118591,
+     "instructed_next_tokens": [
+      [
+       "\"",
+       4
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "\",",
+       4
+      ]
+     ]
+    },
+    {
+     "kind": "similar direction of the hidden-state difference",
+     "size": 4,
+     "kl_sum": 6.057221055030823,
+     "kl_mean": 1.5143052637577057,
+     "median_position": 9.0,
+     "shared_fraction": 0.6736306548118591,
+     "instructed_next_tokens": [
+      [
+       "\"",
+       4
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "\",",
+       4
+      ]
+     ]
+    },
+    {
+     "kind": "same next token for the instructed model",
+     "size": 1,
+     "kl_sum": 1.2194137573242188,
+     "kl_mean": 1.2194137573242188,
+     "median_position": 7.0,
+     "shared_fraction": 1.0,
+     "instructed_next_tokens": [
+      [
+       "translation",
+       1
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "word",
+       1
+      ]
+     ]
+    },
+    {
+     "kind": "similar direction of the hidden-state difference",
+     "size": 1,
+     "kl_sum": 1.2194137573242188,
+     "kl_mean": 1.2194137573242188,
+     "median_position": 7.0,
+     "shared_fraction": 1.0,
+     "instructed_next_tokens": [
+      [
+       "translation",
+       1
+      ]
+     ],
+     "current_next_tokens": [
+      [
+       "word",
+       1
+      ]
+     ]
+    }
+   ],
+   "stopped": "no group is large enough"
+  }
+ ],
+ "before_any_edit": {
+  "own_answers": {
+   "positions": 2549,
+   "diverging": 247,
+   "share": 0.09690074539034915,
+   "questions_with_divergence": 64,
+   "mean_kl_at_answer_start": 13.736729681491852,
+   "mean_kl_elsewhere": 0.5304972316371277
+  },
+  "questions_with_a_divergence": 64,
+  "first_divergence_at_answer_start": 1.0,
+  "median_first_divergence_position": 0.0,
+  "largest_group_share": 1.0,
+  "largest_group_shared_fraction": 0.6009606122970581,
+  "n_token_groups": 1,
+  "n_direction_groups": 2,
+  "shared_fraction_at_answer_start_last_layer": 0.6009606122970581,
+  "shared_fraction_at_answer_start_middle_layer": 0.6314701437950134,
+  "candidate_groups": [
+   {
+    "kind": "same next token for the instructed model",
+    "size": 64,
+    "kl_sum": 879.1506996154785,
+    "kl_mean": 13.736729681491852,
+    "median_position": 0.0,
+    "shared_fraction": 0.6009606122970581,
+    "instructed_next_tokens": [
+     [
+      "```",
+      64
+     ]
+    ],
+    "current_next_tokens": [
+     [
+      "The",
+      28
+     ],
+     [
+      "To",
+      16
+     ],
+     [
+      "Die",
+      2
+     ],
+     [
+      "L",
+      2
+     ],
+     [
+      " bless",
+      1
+     ],
+     [
+      "\"",
+      1
+     ]
+    ]
+   },
+   {
+    "kind": "similar direction of the hidden-state difference",
+    "size": 48,
+    "kl_sum": 692.8587837219238,
+    "kl_mean": 14.434557994206747,
+    "median_position": 0.0,
+    "shared_fraction": 0.7211778163909912,
+    "instructed_next_tokens": [
+     [
+      "```",
+      48
+     ]
+    ],
+    "current_next_tokens": [
+     [
+      "The",
+      28
+     ],
+     [
+      "To",
+      16
+     ],
+     [
+      "Based",
+      1
+     ],
+     [
+      "L",
+      1
+     ],
+     [
+      "Mah",
+      1
+     ],
+     [
+      "P",
+      1
+     ]
+    ]
+   },
+   {
+    "kind": "similar direction of the hidden-state difference",
+    "size": 16,
+    "kl_sum": 186.2919158935547,
+    "kl_mean": 11.643244743347168,
+    "median_position": 0.0,
+    "shared_fraction": 0.618466854095459,
+    "instructed_next_tokens": [
+     [
+      "```",
+      16
+     ]
+    ],
+    "current_next_tokens": [
+     [
+      "Die",
+      2
+     ],
+     [
+      " bless",
+      1
+     ],
+     [
+      "\"",
+      1
+     ],
+     [
+      "Il",
+      1
+     ],
+     [
+      "L",
+      1
+     ],
+     [
+      "La",
+      1
+     ]
+    ]
+   }
+  ]
+ },
+ "all_position_baseline_choice": {
+  "layer": 11,
+  "scale": 2.0,
+  "tune_follows": 0.475,
+  "tune_follows_and_correct": 0.175,
+  "n_tune": 40
+ },
+ "own_answers_after_last_round": {
+  "positions": 1714,
+  "diverging": 59,
+  "share": 0.03442240373395566,
+  "questions_with_divergence": 49,
+  "mean_kl_at_answer_start": 1.7475606370717287,
+  "mean_kl_elsewhere": 0.13922577298944816
+ }
+}

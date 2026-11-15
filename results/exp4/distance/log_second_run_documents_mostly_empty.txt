@@ -1,0 +1,14 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 6394.27it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (297053 > 262144). Running this sequence through the model will result in indexing errors
+[    4s] wikitext-103 test: 297,053 tokens
+[    5s] ordinary text: {'tokens': 100352, 'read_vector_above_half': [0, 0], 'share_above_half': [0.0, 0.0], 'share_abs_above_0p1': [9.964923469387754e-06, 0.00016940369897959184], 'largest_value': [0.10310707986354828, 0.1121639832854271], 'mean_kl_original_to_edited': 0.020061442628502846, 'share_kl_above_0p1': 0.014309630102040817, 'largest_kl': 1.2525405883789062, 'mean_increase_of_loss_on_the_text': 0.03392362967133522}
+[    5s] undo: {'weights_changed_by_the_edits': 83749533, 'weights_still_different_after_subtracting': 7229671, 'note': 'each rank-1 change is rounded to bfloat16 when it is added and again when it is subtracted'}
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[   51s] document of 16000 tokens, instruction first: valid JSON 100%, key 'answer' 100%, correct 75%
+[   97s] document of 16000 tokens, instruction last: valid JSON 100%, key 'answer' 100%, correct 74%
+[  169s] document of 16000 tokens, edits only: valid JSON 97%, key 'answer' 97%, correct 74%, read vector at the answer start {'mean': 0.9066704326868057, 'share_above_half': 1.0}
+[  246s] document of 16000 tokens, no edit and no instruction: valid JSON 0%, key 'answer' 0%, correct 74%
+[  246s] DONE

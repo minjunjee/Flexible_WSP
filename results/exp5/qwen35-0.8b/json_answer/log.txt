@@ -1,0 +1,23 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights:  49%|████▉     | 234/473 [00:00<00:00, 2316.78it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 3175.68it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[   15s] instruction in the prompt: follows 99.6%, correct 75.8%, ended 100%, median tokens 8
+[   70s] no edit: follows 0.0%, correct 80.0%, ended 88%, median tokens 47
+[   90s] before any edit: diverging positions 331 of 2549 (13.0%); first divergence at the answer start in 100% of questions; largest group covers 97% of questions, shared fraction 0.5800697803497314; token groups 2, direction groups 2; shared fraction at the answer start 0.58
+[  240s] difference added at every position of layer 1, scale 1.0 (hook): follows 0.0%, correct 79.4%, ended 85%, median tokens 48
+[  257s] differences added at the answer start only, all layers (hook): follows 13.0%, correct 76.6%, ended 99%, median tokens 8
+[  257s]    round 1 group (same next token for the instructed model): 62 positions, median position 0.0, mean KL 15.24, shared fraction 0.58, instructed wants [['{"', 62]], current writes [['The', 27], ['To', 16], ['Die', 2]]
+[  257s]    round 1 group (similar direction of the hidden-state difference): 48 positions, median position 0.0, mean KL 16.71, shared fraction 0.67, instructed wants [['{"', 47], ['{', 1]], current writes [['The', 28], ['To', 16], ['Based', 1]]
+[  257s]    round 1 group (similar direction of the hidden-state difference): 16 positions, median position 0.0, mean KL 10.46, shared fraction 0.64, instructed wants [['{"', 15], ['{', 1]], current writes [['Die', 2], [' bless', 1], ['"', 1]]
+[  345s] conditional edits at 1 position group (weights only): follows 14.0%, correct 75.2%, ended 98%, median tokens 8
+[  358s]    round 2 group (same next token for the instructed model): 60 positions, median position 1.0, mean KL 3.82, shared fraction 0.71, instructed wants [['answer', 60]], current writes [['answer', 11], ['result', 11], ['location', 8]]
+[  358s]    round 2 group (similar direction of the hidden-state difference): 60 positions, median position 1.0, mean KL 3.82, shared fraction 0.71, instructed wants [['answer', 60]], current writes [['answer', 11], ['result', 11], ['location', 8]]
+[  358s]    round 2 group (same next token for the instructed model): 1 positions, median position 6.0, mean KL 1.13, shared fraction 1.00, instructed wants [[' Jay', 1]], current writes [[' Lanka', 1]]
+[  402s] conditional edits at 2 position groups (weights only): follows 95.8%, correct 76.0%, ended 99%, median tokens 8
+[  410s]    round 3 group (same next token for the instructed model): 3 positions, median position 2.0, mean KL 1.23, shared fraction 0.92, instructed wants [['":', 3]], current writes [['":"', 3]]
+[  410s]    round 3 group (similar direction of the hidden-state difference): 3 positions, median position 2.0, mean KL 1.23, shared fraction 0.92, instructed wants [['":', 3]], current writes [['":"', 3]]
+[  410s]    round 3 group (same next token for the instructed model): 2 positions, median position 6.0, mean KL 1.56, shared fraction 0.97, instructed wants [['"}', 2]], current writes [['"}}', 2]]
+[  410s] round 3: stopped, no group is large enough (6 questions still have an untargeted divergence)
+[  418s] DONE

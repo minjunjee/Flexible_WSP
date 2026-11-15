@@ -55,7 +55,7 @@ class LM:
         self.W0 = [m.weight.detach().clone() for m in self.mlp_out]
         vocab = self.tok.get_vocab()
         self.end_ids = {vocab[t] for t in END_TOKENS if t in vocab} | {self.tok.eos_token_id}
-        self.cap_h, self.cap_res, self.adds, self.phase = None, None, [], None
+        self.cap_h, self.cap_res, self.adds, self.phase, self.cap_last = None, None, [], None, False
         for l in range(self.L):
             self.mlp_out[l].register_forward_hook(self._mlp_hook(l))
             self.layers[l].register_forward_hook(self._block_hook(l))
@@ -64,7 +64,7 @@ class LM:
     def _mlp_hook(self, l):
         def hook(mod, inp, out):
             if self.cap_h is not None:
-                self.cap_h[l] = inp[0].detach()
+                self.cap_h[l] = inp[0][:, -1:].detach() if self.cap_last else inp[0].detach()
             todo = [a for a in self.adds if a[0] == l]
             if not todo:
                 return None
@@ -84,7 +84,8 @@ class LM:
     def _block_hook(self, l):
         def hook(mod, inp, out):
             if self.cap_res is not None:
-                self.cap_res[l] = (out[0] if isinstance(out, tuple) else out).detach()
+                x = out[0] if isinstance(out, tuple) else out
+                self.cap_res[l] = x[:, -1:].detach() if self.cap_last else x.detach()
         return hook
 
     # ------------------------------------------------------------ prompts
@@ -100,12 +101,13 @@ class LM:
 
     # ------------------------------------------------------------ one full sequence
     @torch.inference_mode()
-    def run(self, ids, adds=(), logits=False):
+    def run(self, ids, adds=(), logits=False, last_only=False):
         """One sequence, no cache. Returns (res, hh[, logits]):
         res [L, T, d_model] residual after each block (the last one is the input of the final norm),
         hh  [L, T, d_mlp]   inputs of each down_proj, both float32.
-        adds: (layer, position, vector) added to that layer's MLP output at that position."""
-        self.cap_h, self.cap_res, self.adds, self.phase = {}, {}, list(adds), None
+        adds: (layer, position, vector) added to that layer's MLP output at that position.
+        last_only: keep only the last position (T = 1); for long inputs."""
+        self.cap_h, self.cap_res, self.adds, self.phase, self.cap_last = {}, {}, list(adds), None, last_only
         try:
             out = self.body(input_ids=torch.tensor([ids], device=self.device))
             res = torch.stack([self.cap_res[l][0].float() for l in range(self.L)])
@@ -114,7 +116,7 @@ class LM:
                 return res, hh, self.head(out.last_hidden_state[0]).float()
             return res, hh
         finally:
-            self.cap_h, self.cap_res, self.adds = None, None, []
+            self.cap_h, self.cap_res, self.adds, self.cap_last = None, None, [], False
 
     @torch.inference_mode()
     def logprobs(self, ids, adds=()):

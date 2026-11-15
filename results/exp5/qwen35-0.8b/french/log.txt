@@ -1,0 +1,27 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 7024.59it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[   66s] instruction in the prompt: follows 97.2%, correct 48.4%, ended 96%, median tokens 17
+[  136s] no edit: follows 4.4%, correct 80.0%, ended 88%, median tokens 47
+[  167s] before any edit: diverging positions 268 of 2549 (10.5%); first divergence at the answer start in 98% of questions; largest group covers 75% of questions, shared fraction 0.6644946932792664; token groups 16, direction groups 6; shared fraction at the answer start 0.52
+[  369s] difference added at every position of layer 23, scale 2.0 (hook): follows 99.2%, correct 0.2%, ended 0%, median tokens 96
+[  412s] differences added at the answer start only, all layers (hook): follows 62.4%, correct 45.0%, ended 98%, median tokens 14
+[  413s]    round 1 group (similar direction of the hidden-state difference): 48 positions, median position 0.0, mean KL 10.58, shared fraction 0.66, instructed wants [['Le', 25], ['L', 5], ['La', 4]], current writes [['The', 28], ['To', 16], ['Based', 1]]
+[  413s]    round 1 group (same next token for the instructed model): 34 positions, median position 0.0, mean KL 9.50, shared fraction 0.53, instructed wants [['Le', 34]], current writes [['The', 16], ['To', 8], ['"', 1]]
+[  413s]    round 1 group (same next token for the instructed model): 4 positions, median position 0.0, mean KL 16.69, shared fraction 0.99, instructed wants [['Pour', 4]], current writes [['To', 4]]
+[  542s] conditional edits at 1 position group (weights only): follows 67.4%, correct 46.2%, ended 98%, median tokens 12
+[  569s]    round 2 group (same next token for the instructed model): 9 positions, median position 0.0, mean KL 4.36, shared fraction 0.46, instructed wants [['Le', 9]], current writes [['la', 2], ['"', 1], ['Ver', 1]]
+[  569s]    round 2 group (similar direction of the hidden-state difference): 5 positions, median position 0.0, mean KL 5.51, shared fraction 0.75, instructed wants [['Le', 3], ['Les', 2]], current writes [['Die', 2], ['Ver', 1], ['gest', 1]]
+[  569s]    round 2 group (similar direction of the hidden-state difference): 9 positions, median position 1.0, mean KL 2.71, shared fraction 0.72, instructed wants [[' résultat', 5], [' nom', 2], [' district', 1]], current writes [['vez', 6], [' Japon', 1], [' Mah', 1]]
+[  726s] conditional edits at 2 position groups (weights only): follows 70.0%, correct 42.2%, ended 96%, median tokens 16
+[  770s]    round 3 group (similar direction of the hidden-state difference): 10 positions, median position 1.0, mean KL 8.29, shared fraction 0.72, instructed wants [[' terme', 7], [' mot', 1], [' traitement', 1]], current writes [['ute', 5], [' nombre', 2], [' "', 1]]
+[  770s]    round 3 group (same next token for the instructed model): 7 positions, median position 1.0, mean KL 8.56, shared fraction 0.75, instructed wants [[' terme', 7]], current writes [['ute', 4], [' "', 1], [' nombre', 1]]
+[  770s]    round 3 group (similar direction of the hidden-state difference): 12 positions, median position 1.0, mean KL 3.98, shared fraction 0.65, instructed wants [[' nom', 6], [' lieu', 3], ['ste', 1]], current writes [[' site', 4], ['urre', 3], [' mot', 1]]
+[  929s] conditional edits at 3 position groups (weights only): follows 88.8%, correct 51.4%, ended 93%, median tokens 16
+[  972s]    round 4 group (same next token for the instructed model): 5 positions, median position 1.0, mean KL 2.51, shared fraction 0.59, instructed wants [["'", 5]], current writes [["'", 2], ['ok', 1], ['ond', 1]]
+[  972s]    round 4 group (same next token for the instructed model): 1 positions, median position 12.0, mean KL 6.51, shared fraction 1.00, instructed wants [['qué', 1]], current writes [['cado', 1]]
+[  972s]    round 4 group (similar direction of the hidden-state difference): 1 positions, median position 12.0, mean KL 6.51, shared fraction 1.00, instructed wants [['qué', 1]], current writes [['cado', 1]]
+[  972s] round 4: stopped, no group is large enough (23 questions still have an untargeted divergence)
+[ 1024s] DONE

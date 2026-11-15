@@ -1,0 +1,1506 @@
+[
+ {
+  "kind": "extraction",
+  "prompt": "From the sentence below, state the person's name.\nResident Priya Tanaka of Seville is a plumber by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Rashid Thornbury, a tailor, has lived in Lyon for years. Report the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the person's name? This entry concerns Ingrid Novak, who is a nurse in Seville."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Report the name of the person in this entry. A tailor named Matteo Okafor moved to Geneva last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a description. Name: Henrik Lindqvist; City: Seville; Job: pharmacist. Return the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the record below, tell me the person's name.\nOur records show that Declan Haddad is based in Seville and works as a nurse."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this text? Resident Felipe Novak of Seville is a plumber by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "This entry concerns Jonas Delacroix, who is a nurse in Lyon. What is this person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a description. Paloma Bergstrom resides in Hanoi and is employed as a baker. Give the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this text? Our records show that Yuki Achebe is based in Krakow and works as a electrician."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Write down the person's name from this record: Aiko Novak lives in Lyon, where they work as a nurse."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Tell me this person's name: Declan Haddad, a electrician, has lived in Durban for years."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the sentence below, tell me the person's name.\nResident Mara Lindqvist of Seville is a nurse by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Profile: Resident Aiko Delacroix of Tallinn is a electrician by trade.\nTask: return the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the sentence below, identify the person's name.\nNadia Vasquez lives in Bergen, where they work as a translator."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the person's name? A baker named Declan Bergstrom moved to Seville last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a description. Matteo Castellanos resides in Lyon and is employed as a architect. State the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Resident Dmitri Farrow of Seville is a pharmacist by trade. Find the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the entry below, tell me the person's name.\nResident Paloma Castellanos of Hanoi is a pharmacist by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "State this person's name: Name: Colette Novak; City: Krakow; Job: plumber."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Resident Dmitri Farrow of Tallinn is a plumber by trade. Find the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the name of the person described here? Our records show that Ingrid Achebe is based in Kyoto and works as a nurse."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the person's name? Name: Priya Marchetti; City: Lyon; Job: baker."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Henrik Vasquez, a plumber, has lived in Bergen for years. Find the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this sentence? Mara Thornbury lives in Calgary, where they work as a electrician."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Record: This entry concerns Felipe Whitlock, who is a translator in Kyoto.\nTask: state the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Our records show that Gareth Marchetti is based in Seville and works as a pharmacist. What is this person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Name the name of the person in this description. Leila Okafor, a nurse, has lived in Bergen for years."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Callum Vasquez resides in Krakow and is employed as a pharmacist. Provide the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the text below, extract the person's name.\nLeila Haddad resides in Porto and is employed as a translator."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Profile: This entry concerns Colette Haddad, who is a baker in Kyoto.\nTask: write down the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "State the name of the person in this note. Aiko Bergstrom, a electrician, has lived in Durban for years."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the name of the person described here? Priya Bergstrom resides in Valencia and is employed as a pharmacist."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Text: A baker named Dmitri Haddad moved to Kyoto last spring.\nTask: write down the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the name of the person described here? Our records show that Henrik Thornbury is based in Valencia and works as a tailor."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "State this person's name: Rashid Okafor lives in Porto, where they work as a pharmacist."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Extract the name of the person in this entry. Resident Mara Whitlock of Bergen is a pharmacist by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Give the name of the person in this text. Tobias Novak, a architect, has lived in Durban for years."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Profile: Our records show that Declan Delacroix is based in Porto and works as a tailor.\nTask: tell me the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the profile below, state the person's name.\nThis entry concerns Priya Novak, who is a tailor in Kyoto."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the name of the person described here? Gareth Ramaswamy resides in Tallinn and is employed as a plumber."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a entry. A nurse named Priya Tanaka moved to Bergen last spring. Return the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Identify the person's name from this profile: Declan Tanaka resides in Valencia and is employed as a translator."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this entry? Nadia Castellanos, a baker, has lived in Durban for years."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Name this person's name: Name: Rashid Bergstrom; City: Seville; Job: plumber."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this text? This entry concerns Jonas Bergstrom, who is a tailor in Durban."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the person's name? Name: Yuki Farrow; City: Bergen; Job: translator."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the note below, find the person's name.\nResident Jonas Farrow of Krakow is a baker by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the profile below, name the person's name.\nMara Okafor resides in Geneva and is employed as a nurse."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the description below, name the person's name.\nThis entry concerns Paloma Lindqvist, who is a plumber in Krakow."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the person's name? Tobias Thornbury, a architect, has lived in Krakow for years."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Identify the name of the person in this note. A baker named Jonas Marchetti moved to Calgary last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a record. Felipe Vasquez, a plumber, has lived in Hanoi for years. Write down the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the description below, name the person's name.\nMara Tanaka resides in Seville and is employed as a nurse."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "List this person's name: Resident Rashid Thornbury of Durban is a nurse by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Tell me the person's name from this record: Our records show that Felipe Haddad is based in Bergen and works as a baker."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the person's name? This entry concerns Dmitri Okafor, who is a tailor in Kyoto."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a record. Sunita Novak resides in Seville and is employed as a translator. Tell me the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Provide the person's name from this description: Gareth Marchetti, a pharmacist, has lived in Porto for years."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Identify this person's name: Henrik Delacroix resides in Porto and is employed as a nurse."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a text. Name: Matteo Ramaswamy; City: Kyoto; Job: baker. Write down the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Tell me the name of the person in this sentence. Name: Felipe Achebe; City: Seville; Job: architect."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a entry. Mara Lindqvist, a plumber, has lived in Calgary for years. List the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the profile below, pull out the person's name.\nA architect named Sunita Lindqvist moved to Lyon last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Name the person's name from this description: Our records show that Henrik Thornbury is based in Lyon and works as a plumber."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the entry below, write down the person's name.\nName: Aiko Tanaka; City: Hanoi; Job: pharmacist."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Name the person's name from this record: A pharmacist named Tobias Delacroix moved to Krakow last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this sentence? Name: Callum Ramaswamy; City: Porto; Job: plumber."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the record below, list the person's name.\nHenrik Lindqvist, a plumber, has lived in Porto for years."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the person's name? This entry concerns Callum Kowalczyk, who is a baker in Calgary."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Entry: Aiko Thornbury, a plumber, has lived in Geneva for years.\nTask: provide the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "A tailor named Sunita Marchetti moved to Hanoi last spring. Tell me the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a text. Resident Dmitri Castellanos of Durban is a nurse by trade. Pull out the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "This entry concerns Leila Thornbury, who is a plumber in Kyoto. State the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the note below, extract the person's name.\nThis entry concerns Dmitri Haddad, who is a nurse in Bergen."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Find the person's name from this sentence: A baker named Aiko Thornbury moved to Krakow last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "State the person's name from this description: This entry concerns Tobias Delacroix, who is a plumber in Valencia."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Resident Tobias Tanaka of Krakow is a architect by trade. What is this person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this record? Name: Nadia Tanaka; City: Kyoto; Job: translator."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the entry below, name the person's name.\nYuki Tanaka lives in Valencia, where they work as a plumber."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Sentence: This entry concerns Felipe Novak, who is a architect in Porto.\nTask: provide the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a text. Our records show that Henrik Delacroix is based in Valencia and works as a tailor. Extract the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Leila Bergstrom lives in Bergen, where they work as a electrician. What is this person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Our records show that Sunita Lindqvist is based in Hanoi and works as a plumber. What is this person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the person's name? Felipe Delacroix, a translator, has lived in Porto for years."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Description: Ingrid Okafor lives in Calgary, where they work as a electrician.\nTask: provide the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this description? Name: Aiko Tanaka; City: Geneva; Job: nurse."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Dmitri Lindqvist resides in Seville and is employed as a pharmacist. Write down the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the name of the person described here? Name: Paloma Ramaswamy; City: Kyoto; Job: baker."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the record below, report the person's name.\nName: Jonas Whitlock; City: Bergen; Job: translator."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Resident Rashid Delacroix of Porto is a electrician by trade. Pull out the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Our records show that Ingrid Ramaswamy is based in Krakow and works as a pharmacist. Provide the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Return the name of the person in this sentence. Tobias Achebe lives in Geneva, where they work as a architect."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the description below, provide the person's name.\nResident Ingrid Bergstrom of Hanoi is a electrician by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Find the name of the person in this entry. A architect named Callum Delacroix moved to Tallinn last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this record? A pharmacist named Dmitri Thornbury moved to Seville last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the name of the person described here? A nurse named Aiko Delacroix moved to Krakow last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "State this person's name: Our records show that Jonas Ramaswamy is based in Geneva and works as a baker."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this sentence? A tailor named Tobias Lindqvist moved to Tallinn last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Tell me this person's name: Paloma Tanaka resides in Porto and is employed as a pharmacist."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a description. Rashid Castellanos resides in Hanoi and is employed as a plumber. Provide the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Find the name of the person in this description. Dmitri Ramaswamy, a translator, has lived in Kyoto for years."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "This entry concerns Matteo Lindqvist, who is a baker in Bergen. Extract the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the name of the person described here? A tailor named Paloma Whitlock moved to Krakow last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this description? This entry concerns Aiko Whitlock, who is a plumber in Hanoi."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Tell me the person's name from this entry: Priya Tanaka lives in Krakow, where they work as a electrician."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this text? This entry concerns Yuki Whitlock, who is a architect in Seville."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the name of the person described here? Name: Rashid Whitlock; City: Geneva; Job: architect."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the name of the person described here? Name: Priya Thornbury; City: Durban; Job: architect."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this profile? Resident Rashid Ramaswamy of Seville is a nurse by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this entry? Paloma Tanaka lives in Kyoto, where they work as a tailor."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the name of the person described here? Name: Aiko Tanaka; City: Calgary; Job: tailor."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the text below, provide the person's name.\nResident Gareth Tanaka of Seville is a architect by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the note below, report the person's name.\nThis entry concerns Aiko Vasquez, who is a nurse in Hanoi."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "List the person's name from this entry: This entry concerns Tobias Lindqvist, who is a nurse in Calgary."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a sentence. Tobias Novak resides in Bergen and is employed as a architect. Give the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Report this person's name: Our records show that Priya Achebe is based in Geneva and works as a baker."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Name this person's name: Resident Callum Tanaka of Bergen is a architect by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the person's name? Resident Rashid Ramaswamy of Valencia is a nurse by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a entry. Aiko Bergstrom resides in Geneva and is employed as a electrician. Find the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the entry below, identify the person's name.\nThis entry concerns Aiko Thornbury, who is a electrician in Lyon."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Give the name of the person in this profile. Name: Yuki Okafor; City: Calgary; Job: plumber."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Tell me the person's name from this record: Our records show that Rashid Castellanos is based in Calgary and works as a translator."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Extract this person's name: Resident Callum Marchetti of Krakow is a nurse by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "A baker named Yuki Farrow moved to Valencia last spring. Extract the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Find this person's name: A baker named Sunita Achebe moved to Hanoi last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the entry below, return the person's name.\nThis entry concerns Yuki Thornbury, who is a tailor in Krakow."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this description? Name: Declan Thornbury; City: Kyoto; Job: baker."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Declan Haddad resides in Tallinn and is employed as a pharmacist. What is this person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "State the person's name from this record: A electrician named Nadia Okafor moved to Lyon last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the name of the person described here? Our records show that Nadia Whitlock is based in Durban and works as a nurse."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Identify the person's name from this sentence: Yuki Novak resides in Kyoto and is employed as a electrician."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Write down the name of the person in this description. Colette Novak lives in Valencia, where they work as a electrician."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "A pharmacist named Gareth Achebe moved to Geneva last spring. Give the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Find the person's name from this note: Resident Paloma Castellanos of Durban is a electrician by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Jonas Vasquez resides in Hanoi and is employed as a plumber. What is this person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the person's name? This entry concerns Callum Tanaka, who is a architect in Kyoto."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a entry. Sunita Delacroix, a baker, has lived in Seville for years. Tell me the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Tobias Vasquez, a plumber, has lived in Krakow for years. Find the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Priya Delacroix resides in Geneva and is employed as a tailor. Give the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Priya Bergstrom lives in Lyon, where they work as a baker. What is this person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a entry. Name: Mara Lindqvist; City: Durban; Job: nurse. Identify the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a note. Resident Mara Vasquez of Geneva is a architect by trade. Provide the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the record below, name the person's name.\nA pharmacist named Leila Castellanos moved to Geneva last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this text? Jonas Haddad lives in Lyon, where they work as a architect."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Return this person's name: Priya Okafor resides in Porto and is employed as a translator."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a record. Our records show that Matteo Haddad is based in Durban and works as a plumber. Extract the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the text below, identify the person's name.\nHenrik Whitlock, a pharmacist, has lived in Seville for years."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Give the person's name from this sentence: A plumber named Colette Farrow moved to Durban last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a record. Ingrid Castellanos lives in Hanoi, where they work as a electrician. State the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the person's name? Sunita Vasquez lives in Hanoi, where they work as a plumber."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Aiko Ramaswamy, a nurse, has lived in Geneva for years. Report the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this description? Felipe Delacroix resides in Valencia and is employed as a translator."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Provide the name of the person in this text. Name: Gareth Lindqvist; City: Krakow; Job: architect."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Description: Felipe Whitlock resides in Porto and is employed as a plumber.\nTask: name the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Leila Tanaka resides in Calgary and is employed as a pharmacist. What is this person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Matteo Lindqvist, a nurse, has lived in Hanoi for years. What is this person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the sentence below, provide the person's name.\nOur records show that Ingrid Tanaka is based in Calgary and works as a pharmacist."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Name: Colette Marchetti; City: Seville; Job: baker. What is this person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Give the person's name from this note: This entry concerns Sunita Okafor, who is a plumber in Porto."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the sentence below, list the person's name.\nOur records show that Felipe Vasquez is based in Lyon and works as a electrician."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the person's name? A architect named Callum Ramaswamy moved to Seville last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "State this person's name: Our records show that Gareth Vasquez is based in Bergen and works as a pharmacist."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this sentence? Our records show that Aiko Bergstrom is based in Calgary and works as a plumber."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Name: Callum Ramaswamy; City: Valencia; Job: baker. Name the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Profile: Leila Farrow resides in Lyon and is employed as a architect.\nTask: give the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a text. Priya Lindqvist resides in Durban and is employed as a pharmacist. Extract the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Identify the person's name from this profile: Felipe Delacroix lives in Valencia, where they work as a tailor."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the name of the person described here? A tailor named Sunita Delacroix moved to Hanoi last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the sentence below, write down the person's name.\nRashid Castellanos, a pharmacist, has lived in Tallinn for years."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a text. Gareth Whitlock resides in Seville and is employed as a pharmacist. Name the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this description? Name: Jonas Marchetti; City: Valencia; Job: plumber."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Provide this person's name: A tailor named Dmitri Achebe moved to Calgary last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this text? A pharmacist named Mara Lindqvist moved to Calgary last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Extract this person's name: Henrik Haddad lives in Bergen, where they work as a baker."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Provide this person's name: Henrik Vasquez resides in Porto and is employed as a architect."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this entry? Resident Nadia Bergstrom of Calgary is a electrician by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Description: Name: Gareth Castellanos; City: Krakow; Job: tailor.\nTask: name the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this sentence? Resident Henrik Castellanos of Tallinn is a nurse by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the name of the person described here? A electrician named Matteo Novak moved to Kyoto last spring."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the profile below, identify the person's name.\nCallum Delacroix, a baker, has lived in Seville for years."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the person's name? Resident Priya Whitlock of Tallinn is a baker by trade."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the person's name? Paloma Bergstrom, a baker, has lived in Tallinn for years."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a sentence. Name: Leila Kowalczyk; City: Porto; Job: nurse. Write down the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Give the name of the person in this entry. Name: Jonas Vasquez; City: Lyon; Job: translator."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Note: Name: Dmitri Vasquez; City: Geneva; Job: electrician.\nTask: give the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Declan Whitlock lives in Tallinn, where they work as a baker. Tell me the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this profile? Aiko Achebe lives in Kyoto, where they work as a architect."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name is mentioned in this note? Our records show that Priya Farrow is based in Valencia and works as a architect."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "This entry concerns Yuki Ramaswamy, who is a baker in Tallinn. What is this person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Identify this person's name: Name: Henrik Achebe; City: Kyoto; Job: architect."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Our records show that Paloma Haddad is based in Hanoi and works as a nurse. Identify the person's name."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Callum Okafor lives in Porto, where they work as a electrician. Write down the person's name. Use a normal sentence, no JSON please."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "What is the person's name? Our records show that Mara Haddad is based in Bergen and works as a translator. Reply with an ordinary sentence rather than JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Report the name of the person in this profile. This entry concerns Henrik Haddad, who is a architect in Durban. Reply with an ordinary sentence rather than JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Note: This entry concerns Callum Achebe, who is a nurse in Bergen.\nTask: find the person's name. Reply with an ordinary sentence rather than JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "A nurse named Nadia Tanaka moved to Porto last spring. What is this person's name? Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Henrik Vasquez lives in Lyon, where they work as a tailor. What is this person's name? Answer in plain English prose."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Report the person's name from this entry: Rashid Ramaswamy, a baker, has lived in Valencia for years. Write your answer as one complete sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Name the name of the person in this note. A pharmacist named Colette Delacroix moved to Bergen last spring. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Tell me the name of the person in this text. Callum Bergstrom resides in Bergen and is employed as a translator. Use a normal sentence, no JSON please."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Description: Our records show that Tobias Marchetti is based in Krakow and works as a plumber.\nTask: write down the person's name. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Report the person's name from this sentence: Leila Okafor, a architect, has lived in Valencia for years. Write your answer as one complete sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "From the profile below, return the person's name.\nLeila Kowalczyk, a plumber, has lived in Seville for years. Use a normal sentence, no JSON please."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "From the description below, find the person's name.\nName: Matteo Tanaka; City: Porto; Job: architect. Answer in plain English prose."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "What is the name of the person described here? Paloma Novak lives in Lyon, where they work as a pharmacist. Use a normal sentence, no JSON please."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Report this person's name: Gareth Delacroix, a electrician, has lived in Geneva for years. Write your answer as one complete sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Find this person's name: Resident Ingrid Achebe of Bergen is a plumber by trade. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Name: Mara Novak; City: Porto; Job: electrician. What is this person's name? Write your answer as one complete sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Here is a note. A pharmacist named Matteo Achebe moved to Porto last spring. Tell me the name. Reply with an ordinary sentence rather than JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "What is the person's name? Nadia Novak, a translator, has lived in Geneva for years. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "What is the name of the person described here? Tobias Delacroix, a electrician, has lived in Bergen for years. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "From the profile below, give the person's name.\nName: Callum Haddad; City: Geneva; Job: nurse. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Pull out the name of the person in this entry. Declan Haddad, a nurse, has lived in Geneva for years. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Entry: This entry concerns Jonas Delacroix, who is a pharmacist in Bergen.\nTask: state the person's name. Use a normal sentence, no JSON please."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Write down this person's name: Ingrid Farrow lives in Porto, where they work as a tailor. Answer in plain English prose."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Tell me this person's name: Priya Whitlock resides in Durban and is employed as a electrician. Use a normal sentence, no JSON please."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Which name is mentioned in this profile? Paloma Haddad, a architect, has lived in Tallinn for years. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "State this person's name: This entry concerns Priya Bergstrom, who is a translator in Kyoto. Please respond in normal prose; do not use JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "What is the person's name? Gareth Thornbury lives in Krakow, where they work as a tailor. Answer in plain English prose."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "State this person's name: This entry concerns Ingrid Delacroix, who is a translator in Valencia. Please respond in normal prose; do not use JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "What is the name of the person described here? Sunita Vasquez lives in Tallinn, where they work as a nurse. Reply with an ordinary sentence rather than JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "From the profile below, find the person's name.\nName: Tobias Marchetti; City: Valencia; Job: architect. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "From the description below, write down the person's name.\nThis entry concerns Henrik Bergstrom, who is a plumber in Tallinn. Please respond in normal prose; do not use JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "From the record below, pull out the person's name.\nOur records show that Yuki Novak is based in Valencia and works as a architect. Please respond in normal prose; do not use JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "What is the name of the person described here? Rashid Delacroix, a nurse, has lived in Bergen for years. Answer in plain English prose."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Here is a note. Rashid Castellanos, a nurse, has lived in Krakow for years. Give the name. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "What is the person's name? Sunita Marchetti, a pharmacist, has lived in Kyoto for years. Please respond in normal prose; do not use JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "What is the person's name? Resident Ingrid Delacroix of Porto is a electrician by trade. Write your answer as one complete sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Pull out the name of the person in this profile. Our records show that Yuki Thornbury is based in Bergen and works as a plumber. Reply with an ordinary sentence rather than JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Write down the person's name from this note: Tobias Castellanos lives in Hanoi, where they work as a electrician. Write your answer as one complete sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Which name is mentioned in this entry? Rashid Tanaka, a tailor, has lived in Seville for years. Use a normal sentence, no JSON please."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Return the name of the person in this text. Our records show that Leila Achebe is based in Hanoi and works as a baker. Write your answer as one complete sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "From the text below, state the person's name.\nMatteo Achebe resides in Kyoto and is employed as a electrician. Write your answer as one complete sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Identify the name of the person in this record. A plumber named Colette Lindqvist moved to Porto last spring. Reply with an ordinary sentence rather than JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Extract the person's name from this profile: Resident Leila Castellanos of Calgary is a architect by trade. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Return the person's name from this entry: Sunita Bergstrom lives in Krakow, where they work as a architect. Please respond in normal prose; do not use JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "From the entry below, find the person's name.\nResident Henrik Okafor of Krakow is a tailor by trade. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Return the name of the person in this record. Resident Leila Haddad of Calgary is a architect by trade. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Pull out the name of the person in this entry. Tobias Castellanos resides in Durban and is employed as a nurse. Answer in plain English prose."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "List the name of the person in this sentence. Name: Mara Tanaka; City: Durban; Job: electrician. Write your answer as one complete sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Here is a record. Mara Delacroix lives in Kyoto, where they work as a nurse. List the name. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Resident Callum Castellanos of Lyon is a baker by trade. Report the person's name. Use a normal sentence, no JSON please."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "What is the name of the person described here? Name: Declan Castellanos; City: Lyon; Job: translator. Please respond in normal prose; do not use JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Which name is mentioned in this text? Name: Mara Marchetti; City: Tallinn; Job: baker. Reply with an ordinary sentence rather than JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Profile: Yuki Kowalczyk lives in Valencia, where they work as a pharmacist.\nTask: extract the person's name. Answer in plain English prose."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Which name is mentioned in this description? Jonas Farrow resides in Calgary and is employed as a tailor. Reply with an ordinary sentence rather than JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "List the name of the person in this sentence. A plumber named Rashid Okafor moved to Durban last spring. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Which name is mentioned in this profile? Resident Aiko Kowalczyk of Bergen is a plumber by trade. Use a normal sentence, no JSON please."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Here is a text. This entry concerns Ingrid Okafor, who is a nurse in Durban. Pull out the name. Please respond in normal prose; do not use JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "What is the person's name? A electrician named Tobias Tanaka moved to Geneva last spring. Use a normal sentence, no JSON please."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Nadia Tanaka, a pharmacist, has lived in Seville for years. What is this person's name? Please respond in normal prose; do not use JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Record: Gareth Thornbury, a architect, has lived in Durban for years.\nTask: list the person's name. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Dmitri Tanaka, a architect, has lived in Seville for years. Extract the person's name. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Felipe Kowalczyk resides in Kyoto and is employed as a plumber. Give the person's name. Write your answer as one complete sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "What is the person's name? Tobias Farrow lives in Bergen, where they work as a architect. Answer in a full sentence of plain prose, not JSON."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: 'In Scotland, eight people have died and hundreds more are fighting a widespread food-poisoning outbreak.' Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 63 plus 88? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 753 plus 798?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 24 minus 1? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "In which country is K.S.V. Roeselare located? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'arrested' into French. Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: '-- David Brinkerhoff, Los Angeles bureau +1 213 380 2014' Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: 'Grelombe is from the Yakoma tribe to which most of the rebel soldiers belong.' Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the currency of Yemen? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: 'Pakistan, who arrive next week, are the third team in the triangular World Series tournament.' Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the currency of Eswatini? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'nature' into Spanish. Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the capital of Zambia? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: 'Palestinian Authority Secretary General Ahmed Abdel-Rahman said on Thursday he understood it could be held in Cairo either on Friday or Sunday.' Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "In which country is Larsmo located? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: 'PT Telekomunikasi Indonesia -LPR- Telkom -RPR- closed at $ 35 in London on Friday.' Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 381 plus 218? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "In which country is Breege located? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the currency of Myanmar? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 59 minus 40?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: 'Full-back Matthew Burke finished with a personal haul of 24 points to take his tour aggregate to 136.' Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the capital of Romania?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'seven' into Spanish. Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 35 plus 50?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 46 plus 93? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'reflects' into French. Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: 'The Portuguese host Germany on December 14.'"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 83 minus 24?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 290 plus 848? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the currency of Japan?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 97 plus 91? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: '-- Sandor Peto, Budapest newsroom -LPR- 36 1 -RPR- 327 4040' Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 61 plus 7?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'processing' into German. Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: 'He spoke after Rashid left Greece Thursday on being freed from prison early for good behaviour after serving 8-1/2 years.' Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'launch' into Spanish. Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 36 plus 37? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'engineers' into German."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'legitimate' into Spanish. Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the currency of Tanzania? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the currency of Madagascar? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: 'Woolmer, 48, played 19 tests for England between 1975 and 1981.' Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'families' into German."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'neither' into German. Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: 'Harper was eventually dismissed for 77 after the pair joined forces with their side reeling on nine for two.'"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the capital of Philippines? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the capital of Slovakia?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'next' into French."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'pipe' into French. Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: 'U.S. barges lightly quoted on call session.' Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'assets' into German. Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the capital of Central African Republic? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 63 minus 39? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 790 plus 303?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 321 plus 548?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: 'His comments came just minutes after the latest set of open skies talks ended in London with no deal signed.'"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: 'Patasse offered concessions and amnesty to rebels before the May rebellion ended after rebels looted the city centre.' Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 71 plus 60?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 70 plus 7? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'sentenced' into German. Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'short' into Spanish. Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 136 plus 433? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "In which country is Kondotty located? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'alias' into French."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 13 minus 3? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: 'The weather in the capital Port Louis was heavily cloudy on Friday afternoon with occasional showers.' Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the currency of Mauritius? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the currency of India?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'sponsored' into German. Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 95 plus 80? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'specialist' into Spanish. Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: 'Bolger said he expected a government to be formed by Thursday.' Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: 'Havel had a small malignant tumour removed from his lung on Monday and is recovering in hospital.' Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'butterfly' into French. Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "In which country is Tampines Expressway located?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 87 plus 2? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the currency of Oman? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 68 plus 18? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "In which country is Louth County Council located? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: 'Bottom team Reggiana are also without a suspended defender, German Dietmar Beiersdorfer.' Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 44 plus 64? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: '1. Takanobu Okabe -LPR- Japan -RPR- 303.4 points -LPR- first jump'"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 978 plus 829? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "In which country is Banesh Rural District located? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 90 minus 16?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 87 minus 47? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'block' into French."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'watching' into French. Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 79 minus 23?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'occasions' into German. Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 614 plus 841?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'element' into French. Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'surgeon' into German."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the capital of Myanmar? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "In which country is Facit located? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: 'Lester Lawhon was taken to a nearby airstrip where he was bludgeoned with a tire iron.'"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: 'But Rdainah said Arafat would go to Cairo on Saturday for talks with Mubarak.'"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 51 minus 23?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "In which country is Pochepsky District located? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the capital of Japan? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the currency of Colombia? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 27 minus 23?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the capital of Grenada? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 49 minus 0? Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: 'Every year, 500 new plastic surgeons graduate in Brazil and medical students from all over the world come to study there.' Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: '-- Roger Atwood, Santiago newsroom +56-2-699-5595 x211' Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: 'PT Tambang Timah closed at $ 15.575 per GDR in London on Friday.' Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'recovery' into Spanish. Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 70 plus 90?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "In which country is Ledaal located? Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'boat' into Spanish. Give only the answer."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'editors' into French."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'wounded' into French. Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'controlled' into German."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: 'EU, Poland agree on oil import tariffs.' Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: 'Lara, disciplined for misconduct on Wednesday, was dismissed for five to extend a disappointing run of form on tour.' Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: 'Woolmer said the hospital where he was born is close to the stadium where the India-South Africa test will be played.' Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the location from this sentence: '1. Jesper Ronnback -LPR- Sweden -RPR- 25.76 points'"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Extract the person's name from this sentence: 'He has offered to apologise if Costa acknowledges the provocation.' Answer briefly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'treated' into Spanish. Answer briefly."
+ }
+]

@@ -71,7 +71,7 @@ def collect(lm, seqs, layers):
         keep = torch.ones(len(s["ids"]), dtype=torch.bool, device=hh.device)
         keep[list(set(s.get("ignore", ())) - set(s["targets"]))] = False
         for l in layers:
-            H[l].append(hh[l][keep])
+            H[l].append(hh[l][keep].cpu())                       # kept in main memory: a large model with many prompts does not fit on the GPU
         lab = torch.zeros(len(s["ids"]), device=hh.device)
         lab[list(s["targets"])] = 1.0
         y.append(lab[keep])
@@ -91,6 +91,7 @@ def fit_gates(H, y, q, lams=(1e-3, 1e-2, 1e-1), held_fraction=0.25):
     tr = torch.tensor([int(i) not in held for i in q.tolist()], device=y.device)
     V, stats = {}, []
     for l, Hl in H.items():
+        Hl = Hl.to(y.device)
         best = None
         for lam in lams:
             g = Hl[~tr] @ fit_read_vector(Hl[tr], y[tr], lam)

@@ -35,6 +35,7 @@ ap.add_argument("--per_type", type=int, default=20)
 ap.add_argument("--lengths", default="0,1000,4000,16000")
 ap.add_argument("--text_tokens", type=int, default=100000)
 ap.add_argument("--max_new", type=int, default=40)
+ap.add_argument("--skip_text", action="store_true", help="reuse parts A and C from an earlier summary.json in the output folder")
 args = ap.parse_args()
 os.makedirs(args.out, exist_ok=True)
 INSTR = 'Respond only with a JSON object of the form {"answer": "..."} and nothing else.'
@@ -51,6 +52,10 @@ ids = lm.tok(text, add_special_tokens=False).input_ids
 log(f"wikitext-103 test: {len(ids):,} tokens")
 
 # ---------------------------------------------------------------- A. ordinary text
+if args.skip_text:
+    old = json.load(open(f"{args.out}/summary.json"))
+    R["ordinary_text"], R["undo"] = old["ordinary_text"], old["undo"]
+    args.text_tokens = 0
 CH = 1024
 chunks = [ids[i:i + CH] for i in range(0, args.text_tokens, CH)]
 base_lp = []
@@ -70,8 +75,9 @@ for c, lp0 in zip(chunks, base_lp):
     tgt = torch.tensor(c[1:])
     d_nll.append((lp0[:-1].gather(1, tgt[:, None]) - lp1[:-1].gather(1, tgt[:, None])).squeeze(1).numpy())
     n += len(c)
-kls, d_nll = np.concatenate(kls), np.concatenate(d_nll)
-R["ordinary_text"] = dict(tokens=n, read_vector_above_half=[int(x) for x in above], share_above_half=[float(x / n) for x in above],
+kls, d_nll = (np.concatenate(kls), np.concatenate(d_nll)) if kls else (np.zeros(1), np.zeros(1))
+if not args.skip_text:
+  R["ordinary_text"] = dict(tokens=n, read_vector_above_half=[int(x) for x in above], share_above_half=[float(x / n) for x in above],
                           share_abs_above_0p1=[float(x / n) for x in big], largest_value=[float(x) for x in peak],
                           mean_kl_original_to_edited=float(kls.mean()), share_kl_above_0p1=float((kls > 0.1).mean()), largest_kl=float(kls.max()),
                           mean_increase_of_loss_on_the_text=float(d_nll.mean()))
@@ -82,8 +88,9 @@ changed = lm.changed_weights()
 for e in reversed(rounds):
     lm.apply(e, scale=-1.0)
 left = lm.changed_weights()
-R["undo"] = dict(weights_changed_by_the_edits=changed, weights_still_different_after_subtracting=left,
-                 note="each rank-1 change is rounded to bfloat16 when it is added and again when it is subtracted")
+if not args.skip_text:
+    R["undo"] = dict(weights_changed_by_the_edits=changed, weights_still_different_after_subtracting=left,
+                     note="each rank-1 change is rounded to bfloat16 when it is added and again when it is subtracted")
 lm.restore()
 log("undo:", R["undo"])
 
@@ -95,7 +102,9 @@ for q in load_questions():
         test.append(q)
 R["distance"] = {}
 for N in [int(x) for x in args.lengths.split(",")]:
-    docs = [lm.tok.decode(ids[200000 + i * 17001: 200000 + i * 17001 + N]) for i in range(len(test))] if N else [""] * len(test)
+    # a different stretch of the text for every question, spread evenly over the corpus (stretches overlap when N is large)
+    step = (len(ids) - N - 1) // len(test)
+    docs = [lm.tok.decode(ids[i * step: i * step + N]) for i in range(len(test))] if N else [""] * len(test)
     sep = "\n\n" if N else ""
     P = {"instruction first": [lm.prompt_ids(INSTR + sep + d + sep + q["question"]) for d, q in zip(docs, test)] if N else [lm.prompt_ids(INSTR + " " + q["question"]) for q in test],
          "instruction last": [lm.prompt_ids(d + sep + q["question"], INSTR) for d, q in zip(docs, test)],
@@ -114,8 +123,8 @@ for N in [int(x) for x in args.lengths.split(",")]:
             # read vector of the first edit at the answer start, with the document in front
             vals = []
             for p in prompts:
-                _, hh = lm.run(p)
-                vals.append(float(gate_values(rounds[0], hh[:, -1:])[0]))
+                _, hh = lm.run(p, last_only=True)
+                vals.append(float(gate_values(rounds[0], hh)[0]))
             gate = dict(mean=float(np.mean(vals)), share_above_half=float(np.mean([v > 0.5 for v in vals])))
         with open(f"{args.out}/outputs_{N}_{name.replace(' ', '_')}.jsonl", "w") as f:
             for r in rows:

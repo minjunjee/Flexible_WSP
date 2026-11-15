@@ -1,0 +1,100 @@
+{"id": "fact_041", "type": "fact", "gold": "poland", "text": "{\"answer\": \"Poland\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "fact_042", "type": "fact", "gold": "abuja", "text": "{\"answer\": \"Lagos\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "fact_043", "type": "fact", "gold": "gourde", "text": "{\"answer\": \"USD\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "fact_044", "type": "fact", "gold": "finland", "text": "{\"answer\": \"Japan\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "fact_045", "type": "fact", "gold": "dushanbe", "text": "{\"answer\": \"Tashkent\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "fact_046", "type": "fact", "gold": "central african cfa franc", "text": "{\"answer\": \"USD\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "fact_047", "type": "fact", "gold": "belgium", "text": "{\"answer\": \"United States\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "fact_048", "type": "fact", "gold": "madrid", "text": "{\"answer\": \"Madrid\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "fact_049", "type": "fact", "gold": "naira", "text": "{\"answer\": \"USD\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "fact_050", "type": "fact", "gold": "japan", "text": "{\"answer\": \"Japan\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "fact_051", "type": "fact", "gold": "harare", "text": "{\"answer\": \"Mbabane\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "fact_052", "type": "fact", "gold": "dominican peso", "text": "{\"answer\": \"USD\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "fact_053", "type": "fact", "gold": "venezuela", "text": "{\"answer\": \"Zulia is a province in the state of Venezuela.\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "fact_054", "type": "fact", "gold": "phnom penh", "text": "{\"answer\": \"Phnom Penh\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "fact_055", "type": "fact", "gold": "tajikistani somoni", "text": "{\"answer\": \"Tajikistan uses the Tajik Somoni as its currency.\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "fact_056", "type": "fact", "gold": "australia", "text": "{\"answer\": \"South East Cape is located in South Africa.\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "fact_057", "type": "fact", "gold": "monrovia", "text": "{\"answer\": \"No information is provided in the text regarding the capital of Liberia.\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "fact_058", "type": "fact", "gold": "pakistani rupee", "text": "{\"answer\": \"None\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "fact_059", "type": "fact", "gold": "germany", "text": "{\"answer\": \"Germany\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "fact_060", "type": "fact", "gold": "dhaka", "text": "{\"answer\": \"Dhaka\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_041", "type": "extract", "gold": "papua new guinea", "text": "{\"answer\": \"Papua New Guinea\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_042", "type": "extract", "gold": "takanobu okabe", "text": "{\"answer\": \"Takanobu Okabe\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_043", "type": "extract", "gold": "innisbrook hilton resort", "text": "{\"answer\": \"Saturday\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "extract_044", "type": "extract", "gold": "halverson", "text": "{\"answer\": \"Halverson\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_045", "type": "extract", "gold": "new york", "text": "{\"answer\": \"New York\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_046", "type": "extract", "gold": "galley", "text": "{\"answer\": \"Galley\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_047", "type": "extract", "gold": "new york", "text": "{\"answer\": \"New York\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_048", "type": "extract", "gold": "roberto ayala", "text": "{\"answer\": \"Napoli\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "extract_049", "type": "extract", "gold": "new caledonia", "text": "{\"answer\": \"New Caledonia\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_050", "type": "extract", "gold": "marko bela", "text": "{\"answer\": \"Marko Bela\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_051", "type": "extract", "gold": "mauritius", "text": "{\"answer\": \"Mauritius\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_052", "type": "extract", "gold": "benchaou", "text": "{\"answer\": \"Benchaou\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_053", "type": "extract", "gold": "italy", "text": "{\"answer\": \"Italy\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_054", "type": "extract", "gold": "blinker", "text": "{\"answer\": \"Blinker\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_055", "type": "extract", "gold": "cairo", "text": "{\"answer\": \"Cairo\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_056", "type": "extract", "gold": "nader jokhadar", "text": "{\"answer\": \"Nader Jokhadar\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_057", "type": "extract", "gold": "japan", "text": "{\"answer\": \"Japan\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_058", "type": "extract", "gold": "faulk", "text": "{\"answer\": \"Faulk\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "extract_059", "type": "extract", "gold": "bangui", "text": "{\"answer\": \"city districts\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "extract_060", "type": "extract", "gold": "rashid", "text": "{\"answer\": \"Rashid\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_041", "type": "arith", "gold": "1615", "text": "{\"answer\": \"1615\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_042", "type": "arith", "gold": "126", "text": "{\"answer\": \"126\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_043", "type": "arith", "gold": "36", "text": "{\"answer\": \"36\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_044", "type": "arith", "gold": "1180", "text": "{\"answer\": \"1180\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_045", "type": "arith", "gold": "147", "text": "{\"answer\": \"147\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_046", "type": "arith", "gold": "12", "text": "{\"answer\":\": 12\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_047", "type": "arith", "gold": "1668", "text": "{\"answer\": \"1668\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_048", "type": "arith", "gold": "110", "text": "{\"answer\": \"110\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_049", "type": "arith", "gold": "54", "text": "{\"answer\": \"54\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_050", "type": "arith", "gold": "734", "text": "{\"answer\": \"734\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_051", "type": "arith", "gold": "54", "text": "{\"answer\": \"54\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_052", "type": "arith", "gold": "53", "text": "{\"answer\": \"53\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_053", "type": "arith", "gold": "48", "text": "{\"answer\": \"48\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_054", "type": "arith", "gold": "151", "text": "{\"answer\": \"151\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_055", "type": "arith", "gold": "28", "text": "{\"answer\": \"28\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_056", "type": "arith", "gold": "1038", "text": "{\"answer\": \"938\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "arith_057", "type": "arith", "gold": "55", "text": "{\"answer\": \"55\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_058", "type": "arith", "gold": "29", "text": "{\"answer\":\": 29\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_059", "type": "arith", "gold": "546", "text": "{\"answer\": \"546\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "arith_060", "type": "arith", "gold": "44", "text": "{\"answer\":\":\": 44\"}", "starts": true, "valid": false, "key_answer": false, "clean_end": false, "correct": true}
+{"id": "translate_041", "type": "translate", "gold": "dominio", "text": "{\"answer\": \"dominio\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "translate_042", "type": "translate", "gold": "améliorer", "text": "{\"answer\": \"améliorer\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "translate_043", "type": "translate", "gold": "beweis", "text": "{ \"answer\": \"Erfahrung\" }", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "translate_044", "type": "translate", "gold": "eliminatoria", "text": "{\"answer\": \"playoff\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "translate_045", "type": "translate", "gold": "toit", "text": "{\"answer\": \"terre\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "translate_046", "type": "translate", "gold": "zusammengesetzt", "text": "{ \"answer\": \"komponiert\" }", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "translate_047", "type": "translate", "gold": "calcetín", "text": "{\"answer\": \"saco\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "translate_048", "type": "translate", "gold": "championnat", "text": "{\"answer\": \"champion\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "translate_049", "type": "translate", "gold": "schädel", "text": "{\"answer\": \"skull\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "translate_050", "type": "translate", "gold": "ganado", "text": "{\"answer\": \"cabello\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "translate_051", "type": "translate", "gold": "manque", "text": "{\"answer\": \"manque\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "translate_052", "type": "translate", "gold": "haben", "text": "{\n\"answer\": \"haben\"\n}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "translate_053", "type": "translate", "gold": "clero", "text": "{\"answer\": \"clergy\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "translate_054", "type": "translate", "gold": "vivre", "text": "{\"answer\": \"vivre\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "translate_055", "type": "translate", "gold": "studenten", "text": "{\"answer\": \"student\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "translate_056", "type": "translate", "gold": "estudiantes", "text": "{\"answer\": \"estudiantes\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "translate_057", "type": "translate", "gold": "cercles", "text": "{\"answer\": \"cercles\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "translate_058", "type": "translate", "gold": "lärm", "text": "{\"answer\": \"schrei\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "translate_059", "type": "translate", "gold": "cambios", "text": "{\"answer\": \"cambios\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "translate_060", "type": "translate", "gold": "pionnier", "text": "{\"answer\": \"pionnier\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_000", "type": "sentiment", "gold": "positive", "text": "{\"answer\": \"positive\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_001", "type": "sentiment", "gold": "negative", "text": "{\"answer\": \"negative\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_002", "type": "sentiment", "gold": "positive", "text": "{\"answer\": \"positive\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_003", "type": "sentiment", "gold": "negative", "text": "{\"answer\": \"negative\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_004", "type": "sentiment", "gold": "positive", "text": "{\"answer\": \"positive\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_005", "type": "sentiment", "gold": "negative", "text": "{\"answer\": \"negative\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_006", "type": "sentiment", "gold": "positive", "text": "{\"answer\": \"positive\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_007", "type": "sentiment", "gold": "negative", "text": "{\"answer\": \"negative\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_008", "type": "sentiment", "gold": "positive", "text": "{\"answer\": \"positive\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_009", "type": "sentiment", "gold": "negative", "text": "{\"answer\": \"negative\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_010", "type": "sentiment", "gold": "positive", "text": "{\"answer\": \"positive\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_011", "type": "sentiment", "gold": "negative", "text": "{\"answer\": \"negative\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_012", "type": "sentiment", "gold": "positive", "text": "{\"answer\": \"negative\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "sentiment_013", "type": "sentiment", "gold": "negative", "text": "{\"answer\": \"negative\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_014", "type": "sentiment", "gold": "positive", "text": "{\"answer\": \"positive\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_015", "type": "sentiment", "gold": "negative", "text": "{\"answer\": \"negative\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_016", "type": "sentiment", "gold": "positive", "text": "{\"answer\": \"positive\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_017", "type": "sentiment", "gold": "negative", "text": "{\"answer\": \"negative\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}
+{"id": "sentiment_018", "type": "sentiment", "gold": "positive", "text": "{\"answer\": \"negative\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": false}
+{"id": "sentiment_019", "type": "sentiment", "gold": "negative", "text": "{\"answer\": \"negative\"}", "starts": true, "valid": true, "key_answer": true, "clean_end": true, "correct": true}

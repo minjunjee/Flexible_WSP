@@ -1,0 +1,19 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 5853.20it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[   31s] instruction in the prompt: follows 92.0%, correct 75.6%, ended 100%, median tokens 6
+[   96s] no edit: follows 1.4%, correct 80.0%, ended 88%, median tokens 47
+[  123s] before any edit: diverging positions 255 of 2549 (10.0%); first divergence at the answer start in 100% of questions; largest group covers 83% of questions, shared fraction 0.46099141240119934; token groups 9, direction groups 7; shared fraction at the answer start 0.48
+[  412s] difference added at every position of layer 23, scale 2.0 (hook): follows 89.0%, correct 0.0%, ended 0%, median tokens 96
+[  483s] differences added at the answer start only, all layers (hook): follows 54.2%, correct 68.6%, ended 93%, median tokens 14
+[  484s]    round 1 group (same next token for the instructed model): 53 positions, median position 0.0, mean KL 8.87, shared fraction 0.46, instructed wants [['"', 53]], current writes [['The', 18], ['To', 16], ['Die', 2]]
+[  484s]    round 1 group (similar direction of the hidden-state difference): 32 positions, median position 0.0, mean KL 8.51, shared fraction 0.70, instructed wants [['"', 21], ['"The', 3], ['"S', 2]], current writes [['The', 28], ['Based', 1], ['L', 1]]
+[  484s]    round 1 group (similar direction of the hidden-state difference): 16 positions, median position 0.0, mean KL 14.77, shared fraction 0.91, instructed wants [['"', 16]], current writes [['To', 16]]
+[  734s] conditional edits at 1 position group (weights only): follows 55.6%, correct 69.4%, ended 93%, median tokens 13
+[  775s]    round 2 group (same next token for the instructed model): 6 positions, median position 8.5, mean KL 2.02, shared fraction 0.39, instructed wants [['<|im_end|>', 6]], current writes [['\n', 4], [' is', 1], ['<|im_end|>', 1]]
+[  775s]    round 2 group (similar direction of the hidden-state difference): 3 positions, median position 5.0, mean KL 2.44, shared fraction 0.76, instructed wants [[' is', 2], ['"', 1]], current writes [['"', 3]]
+[  775s]    round 2 group (same next token for the instructed model): 1 positions, median position 2.0, mean KL 7.28, shared fraction 1.00, instructed wants [['3', 1]], current writes [['4', 1]]
+[  775s] round 2: stopped, no group is large enough (27 questions still have an untargeted divergence)
+[  821s] DONE

@@ -1,0 +1,15 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 5388.91it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[  236s] json_answer: layer 1, scale 0.5: follows 0.0%, correct 79.4%, both 0.0%
+[  476s] json_format: layer 15, scale 1.0: follows 21.8%, correct 44.2%, both 19.4%
+[  707s] lowercase: layer 15, scale 1.0: follows 98.0%, correct 65.2%, both 64.2%
+[  920s] uppercase: layer 11, scale 0.5: follows 80.4%, correct 60.0%, both 51.2%
+[ 1204s] title: layer 21, scale 0.5: follows 0.6%, correct 79.2%, both 0.4%
+[ 1511s] three_bullets: layer 11, scale 0.5: follows 15.8%, correct 78.2%, both 14.6%
+[ 1746s] end_phrase: layer 1, scale 0.5: follows 0.0%, correct 79.2%, both 0.0%
+[ 1983s] quotation: layer 19, scale 2.0: follows 36.8%, correct 48.4%, both 17.6%
+[ 2220s] postscript: layer 1, scale 0.5: follows 0.0%, correct 79.8%, both 0.0%
+[ 2394s] no_comma: layer 9, scale 1.0: follows 96.0%, correct 76.2%, both 73.0%
