@@ -1,0 +1,10 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 6150.22it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[   54s] every position, every layer; valid JSON on the tuning questions by scale: {0.05: 0.0, 0.1: 0.0, 0.2: 0.0, 0.35: 0.13, 0.5: 0.0, 0.75: 0.0, 1.0: 0.0}
+[   69s] differences added at every position of every layer, scale 0.35 (hook): valid JSON 12.8%, key 'answer' 1.6%, correct 58.8%, by type {'fact': 0.13, 'extract': 0.39, 'arith': 0.0, 'translate': 0.03, 'sentiment': 0.09}
+[   77s] no edit, first answer token forced to '{"': valid JSON 81.8%, key 'answer' 10.8%, correct 63.0%, by type {'fact': 0.88, 'extract': 1.0, 'arith': 0.23, 'translate': 0.98, 'sentiment': 1.0}
+[   82s] no edit, first four answer tokens forced to '{"answer": "': valid JSON 99.2%, key 'answer' 99.2%, correct 76.8%, by type {'fact': 0.98, 'extract': 1.0, 'arith': 1.0, 'translate': 0.98, 'sentiment': 1.0}
+[   82s] DONE

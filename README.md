@@ -12,7 +12,9 @@
 
 - 실험 0은 끝났다. Qwen3.5-0.8B를 CPU로 돌린 것이고 코드와 결과가 `poc/`에 있다. `PLAN.md`에 따르면 MLP 행렬 6개에 조건부 편집을 하나씩 넣었을 때, 지시문 없는 질문 30개 중 27개에서 유효한 JSON이 나왔다. 이 서버에서 다시 확인한 값은 아니다.
 - 받은 묶음에 없던 파일은 2026-11-15에 서버에서 `poc/` 스크립트를 다시 돌려 만들었다. 무엇을 만들었고 원래 결과와 얼마나 같은지는 `poc/README.md`의 마지막 절에 있다. 실험 0의 표를 만든 `expF_gated.py`, `expG_divergence.py`, `expH_share.py`는 이때 돌리지 않았다.
-- 실험 1부터 14까지는 시작하지 않았다.
+- 실험 1은 끝났고 판정 기준을 넘었다. 가중치만 바꾼 모델이 시험 질문 500개에서 유효한 JSON 95.8%를 냈고, 편집을 두 자리에 넣으면 key 이름까지 맞은 답이 94.0%다. `results/exp1/README.md`에 있다.
+- 관련 연구를 조사했다. 편집의 식과 한 자리에만 더해도 된다는 관찰은 이미 나와 있어서 주장을 옮겼다. `docs/related_work.md`에 있다.
+- 실험 2부터 14까지는 시작하지 않았다.
 
 ## 폴더
 
@@ -20,9 +22,10 @@
 | --- | --- |
 | `PLAN.md` | 실험 0부터 14까지의 계획과 판정 기준 |
 | `poc/` | 실험 0의 코드와 결과. 파일별 설명은 `poc/README.md`에 있다. 받은 묶음에서 바꾼 것은 스크립트 안의 경로와 thread 수 설정뿐이다 |
+| `docs/related_work.md` | 2026-11-15에 조사한 관련 연구, 비어 있는 질문, 난제. 조사 메모 원문은 `docs/notes/`에 있다 |
 | `docs/plan_related_work.md` | 원래 계획 문서에서 `PLAN.md`로 옮기지 않은 부분. 겹치는 최근 연구의 표와 출처 목록이 있다 |
 | `scripts/setup_env.sh` | Python 환경, 모델, 외부 저장소를 `/data` 아래에 준비하고 repo 안에 symlink를 건다 |
-| `wsp/` | 실험 1부터 새로 짜는 코드를 둔다. 지금은 비어 있다 |
+| `wsp/` | 실험 1부터 새로 짠 코드. GPU에서 돈다. `lm.py`가 모델을 감싸고, `edit.py`가 조건부 편집을 만들고, `onpolicy.py`가 편집을 여러 자리에 쌓는다 |
 | `results/` | 실험마다 폴더를 하나씩 둔다. 폴더마다 `README.md`를 쓰고, `results/SUMMARY.md`에 실험마다 한 문단씩 쌓는다 |
 | `requirements.txt` | `poc/` 스크립트가 쓰는 Python package 목록 |
 | `requirements.lock.txt` | 2026-11-15에 서버에 실제로 설치된 버전. Python 3.12.3, torch 2.15.0, transformers 5.23.0이다 |

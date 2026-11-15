@@ -10,6 +10,7 @@ What it gives:
 "Answer-start position" means the last prompt token after the chat template is applied: the position whose output
 decides the first token of the answer.
 """
+import contextlib
 import json
 import os
 
@@ -29,7 +30,10 @@ END_TOKENS = ("<|im_end|>", "<|endoftext|>", "<end_of_turn>", "<|end|>", "<eos>"
 
 
 class LM:
-    def __init__(self, name, device="cuda", dtype=torch.bfloat16):
+    def __init__(self, name, device="cuda", dtype=torch.float32):
+        """The released weights are bfloat16. They are loaded as float32 (the same values), so the forward pass runs in
+        float32: with bfloat16 arithmetic the greedy output of this model changed with the batch size in about one
+        answer out of ten. Edited weights are still rounded to bfloat16 values, as a saved checkpoint would hold them."""
         spec = MODELS[name]
         self.name, self.device, self.template = name, device, dict(spec["template"])
         self.tok = AutoTokenizer.from_pretrained(spec["path"])
@@ -169,9 +173,10 @@ class LM:
 
     # ------------------------------------------------------------ weight edits
     def add_rank1(self, l, u, v, scale=1.0):
-        """down_proj.weight of layer l += scale * outer(u, v), rounded to the weight's dtype (what a checkpoint would hold)"""
+        """down_proj.weight of layer l += scale * outer(u, v), rounded to bfloat16 values (what a checkpoint would hold)"""
         W = self.mlp_out[l].weight
-        W.data.copy_((W.data.float() + scale * torch.outer(u.float().to(W.device), v.float().to(W.device))).to(W.dtype))
+        new = W.data.float() + scale * torch.outer(u.float().to(W.device), v.float().to(W.device))
+        W.data.copy_(new.to(torch.bfloat16).to(W.dtype))
 
     def apply(self, edits, scale=1.0):
         """edits: list of dicts with keys layer, u, v"""
@@ -181,6 +186,17 @@ class LM:
     def restore(self):
         for m, w0 in zip(self.mlp_out, self.W0):
             m.weight.data.copy_(w0)
+
+    @contextlib.contextmanager
+    def original(self):
+        """inside this block the model has its original weights; the current edits come back afterwards"""
+        saved = [m.weight.data.clone() for m in self.mlp_out]
+        self.restore()
+        try:
+            yield
+        finally:
+            for m, w in zip(self.mlp_out, saved):
+                m.weight.data.copy_(w)
 
     def changed_weights(self):
         return int(sum((m.weight.data != w0).sum() for m, w0 in zip(self.mlp_out, self.W0)))

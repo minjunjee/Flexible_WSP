@@ -1,0 +1,26 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 6090.96it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[   14s] instruction_in_the_prompt: valid JSON 99.6%, key 'answer' 99.6%, correct 75.8%; first tokens [('\'{"\' \'answer\'', 493), ("'{' '\\n'", 7)]
+[   44s] no_edit: valid JSON 0.0%, key 'answer' 0.0%, correct 77.6%; first tokens [("'The' ' sentiment'", 100), ("'To' ' find'", 99), ("'The' ' location'", 40)]
+[   58s] round 1: on its own answers the model disagrees with the instructed model at 289 of 1778 positions (KL > 1.0); 64 of 64 questions have a divergence that no edit targets yet
+[   58s]    group (same next token for the instructed model): 62 positions, median position 0.0, mean KL 15.24, shared fraction 0.58, instructed wants [['{"', 62]], current writes [['The', 27], ['To', 16], ['Die', 2]]
+[   58s]    group (similar direction of the hidden-state difference): 48 positions, median position 0.0, mean KL 16.71, shared fraction 0.67, instructed wants [['{"', 47], ['{', 1]], current writes [['The', 28], ['To', 16], ['Based', 1]]
+[   58s]    group (similar direction of the hidden-state difference): 16 positions, median position 0.0, mean KL 10.46, shared fraction 0.64, instructed wants [['{"', 15], ['{', 1]], current writes [['Die', 2], [' bless', 1], ['"', 1]]
+[   58s]    group (same next token for the instructed model): 2 positions, median position 0.0, mean KL 12.14, shared fraction 0.74, instructed wants [['{', 2]], current writes [['Il', 1], ['The', 1]]
+[  113s] after_1_edits: valid JSON 95.6%, key 'answer' 14.4%, correct 75.2%; first tokens [('\' {"\' \'sent\'', 100), ('\' {"\' \'result\'', 83), ('\' {"\' \'answer\'', 76)]
+[  121s] round 2: on its own answers the model disagrees with the instructed model at 142 of 666 positions (KL > 1.0); 60 of 64 questions have a divergence that no edit targets yet
+[  121s]    group (same next token for the instructed model): 57 positions, median position 1.0, mean KL 3.75, shared fraction 0.71, instructed wants [['answer', 57]], current writes [['result', 11], ['answer', 10], ['location', 8]]
+[  121s]    group (similar direction of the hidden-state difference): 57 positions, median position 1.0, mean KL 3.75, shared fraction 0.71, instructed wants [['answer', 57]], current writes [['result', 11], ['answer', 10], ['location', 8]]
+[  121s]    group (same next token for the instructed model): 2 positions, median position 0.0, mean KL 4.96, shared fraction 0.79, instructed wants [['{', 2]], current writes [[' {"', 2]]
+[  121s]    group (similar direction of the hidden-state difference): 2 positions, median position 0.0, mean KL 4.96, shared fraction 0.79, instructed wants [['{', 2]], current writes [[' {"', 2]]
+[  166s] after_2_edits: valid JSON 94.0%, key 'answer' 94.0%, correct 76.2%; first tokens [('\' {"\' \'answer\'', 426), ('\'{"\' \'answer\'', 71), ("'```' 'json'", 2)]
+[  173s] round 3: on its own answers the model disagrees with the instructed model at 68 of 573 positions (KL > 1.0); 7 of 64 questions have a divergence that no edit targets yet
+[  173s]    group (same next token for the instructed model): 2 positions, median position 0.0, mean KL 4.08, shared fraction 0.70, instructed wants [['{', 2]], current writes [[' {"', 1], ['{"', 1]]
+[  173s]    group (same next token for the instructed model): 3 positions, median position 6.0, mean KL 1.74, shared fraction 0.80, instructed wants [['"}', 3]], current writes [['"}}', 3]]
+[  173s]    group (similar direction of the hidden-state difference): 3 positions, median position 6.0, mean KL 1.74, shared fraction 0.80, instructed wants [['"}', 3]], current writes [['"}}', 3]]
+[  173s]    group (similar direction of the hidden-state difference): 1 positions, median position 0.0, mean KL 4.59, shared fraction 1.00, instructed wants [['{', 1]], current writes [[' {"', 1]]
+[  180s] final: {'positions': 573, 'diverging': 68, 'share': 0.11867364746945899, 'questions_with_divergence': 63, 'mean_kl_at_answer_start': 2.4212839817628264, 'mean_kl_elsewhere': 0.1108150919462787}
+[  180s] DONE

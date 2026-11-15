@@ -1,0 +1,789 @@
+{
+ "model": "qwen35-0.8b",
+ "instruction": "Respond only with a JSON object of the form {\"answer\": \"...\"} and nothing else.",
+ "layers": "all layers",
+ "n_build": 64,
+ "n_test": 500,
+ "max_new": 40,
+ "kl_min": 1.0,
+ "eval": {
+  "instruction in the prompt": {
+   "valid": [
+    0.996,
+    0.99,
+    1.0
+   ],
+   "key_answer": [
+    0.996,
+    0.99,
+    1.0
+   ],
+   "correct": [
+    0.754,
+    0.716,
+    0.79
+   ],
+   "valid_and_key_and_correct": [
+    0.752,
+    0.714,
+    0.788
+   ],
+   "key_answer_by_type": {
+    "fact": 0.98,
+    "extract": 1.0,
+    "arith": 1.0,
+    "translate": 1.0,
+    "sentiment": 1.0
+   }
+  },
+  "no edit": {
+   "valid": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_answer": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "correct": [
+    0.774,
+    0.73795,
+    0.812
+   ],
+   "valid_and_key_and_correct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "key_answer_by_type": {
+    "fact": 0.0,
+    "extract": 0.0,
+    "arith": 0.0,
+    "translate": 0.0,
+    "sentiment": 0.0
+   }
+  }
+ },
+ "rounds": [
+  {
+   "round": 1,
+   "kl_by_position": {
+    "position 0": {
+     "mean_kl": 15.139960929751396,
+     "n": 64
+    },
+    "position 1": {
+     "mean_kl": 3.8694402743130922,
+     "n": 64
+    },
+    "position 2": {
+     "mean_kl": 0.02966077700148162,
+     "n": 64
+    },
+    "position 3": {
+     "mean_kl": 0.20896655466208358,
+     "n": 64
+    },
+    "position 4": {
+     "mean_kl": 0.3073013770581383,
+     "n": 64
+    },
+    "middle of the answer": {
+     "mean_kl": 0.1139170957262679,
+     "n": 193
+    },
+    "end of the answer": {
+     "mean_kl": 0.06259320598837803,
+     "n": 64
+    }
+   },
+   "n_positions": 577,
+   "n_diverging": 140,
+   "clusters": [
+    {
+     "size": 48,
+     "kl_sum": 801.8030252456665,
+     "kl_mean": 16.704229692618053,
+     "questions": 48,
+     "median_position": 0.0,
+     "share_at_answer_start": 1.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.6699013710021973,
+     "instructed_next_tokens": [
+      [
+       "{\"",
+       47
+      ],
+      [
+       "{",
+       1
+      ]
+     ]
+    },
+    {
+     "size": 64,
+     "kl_sum": 256.5246932506561,
+     "kl_mean": 4.008198332041502,
+     "questions": 64,
+     "median_position": 1.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.7065017223358154,
+     "instructed_next_tokens": [
+      [
+       "answer",
+       64
+      ]
+     ]
+    },
+    {
+     "size": 16,
+     "kl_sum": 167.15447425842285,
+     "kl_mean": 10.447154641151428,
+     "questions": 16,
+     "median_position": 0.0,
+     "share_at_answer_start": 1.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.6364724636077881,
+     "instructed_next_tokens": [
+      [
+       "{\"",
+       15
+      ],
+      [
+       "{",
+       1
+      ]
+     ]
+    },
+    {
+     "size": 1,
+     "kl_sum": 5.480625152587891,
+     "kl_mean": 5.480625152587891,
+     "questions": 1,
+     "median_position": 6.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 1.0,
+     "instructed_next_tokens": [
+      [
+       " D",
+       1
+      ]
+     ]
+    },
+    {
+     "size": 1,
+     "kl_sum": 3.8431386947631836,
+     "kl_mean": 3.8431386947631836,
+     "questions": 1,
+     "median_position": 6.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 1.0,
+     "instructed_next_tokens": [
+      [
+       " Jay",
+       1
+      ]
+     ]
+    },
+    {
+     "size": 2,
+     "kl_sum": 2.90313184261322,
+     "kl_mean": 1.45156592130661,
+     "questions": 2,
+     "median_position": 1.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.7907528877258301,
+     "instructed_next_tokens": [
+      [
+       "\n",
+       2
+      ]
+     ]
+    }
+   ],
+   "fit": {
+    "target_mean": 0.9952408000826836,
+    "target_min": 0.8572678565979004,
+    "other_max_abs": 0.3978084921836853
+   },
+   "changed_weights": 75291109,
+   "eval": {
+    "valid": [
+     0.826,
+     0.79195,
+     0.858
+    ],
+    "key_answer": [
+     0.112,
+     0.084,
+     0.14
+    ],
+    "correct": [
+     0.736,
+     0.7,
+     0.776
+    ],
+    "valid_and_key_and_correct": [
+     0.058,
+     0.038,
+     0.08
+    ],
+    "key_answer_by_type": {
+     "fact": 0.49,
+     "extract": 0.0,
+     "arith": 0.07,
+     "translate": 0.0,
+     "sentiment": 0.0
+    }
+   }
+  },
+  {
+   "round": 2,
+   "kl_by_position": {
+    "position 0": {
+     "mean_kl": 3.1413550060242414,
+     "n": 64
+    },
+    "position 1": {
+     "mean_kl": 4.100214462727308,
+     "n": 64
+    },
+    "position 2": {
+     "mean_kl": 0.13019184262884664,
+     "n": 64
+    },
+    "position 3": {
+     "mean_kl": 0.14405995925335446,
+     "n": 64
+    },
+    "position 4": {
+     "mean_kl": 0.3185120106682007,
+     "n": 64
+    },
+    "middle of the answer": {
+     "mean_kl": 0.09758438282505588,
+     "n": 193
+    },
+    "end of the answer": {
+     "mean_kl": 0.07132250776157889,
+     "n": 64
+    }
+   },
+   "n_positions": 577,
+   "n_diverging": 133,
+   "clusters": [
+    {
+     "size": 63,
+     "kl_sum": 270.68639862537384,
+     "kl_mean": 4.296609501990061,
+     "questions": 63,
+     "median_position": 1.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.6993324160575867,
+     "instructed_next_tokens": [
+      [
+       "answer",
+       63
+      ]
+     ]
+    },
+    {
+     "size": 48,
+     "kl_sum": 133.12679159641266,
+     "kl_mean": 2.773474824925264,
+     "questions": 48,
+     "median_position": 0.0,
+     "share_at_answer_start": 1.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.8179172873497009,
+     "instructed_next_tokens": [
+      [
+       "{\"",
+       47
+      ],
+      [
+       "{",
+       1
+      ]
+     ]
+    },
+    {
+     "size": 16,
+     "kl_sum": 67.9199287891388,
+     "kl_mean": 4.244995549321175,
+     "questions": 16,
+     "median_position": 0.0,
+     "share_at_answer_start": 1.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.7757630348205566,
+     "instructed_next_tokens": [
+      [
+       "{\"",
+       15
+      ],
+      [
+       "{",
+       1
+      ]
+     ]
+    },
+    {
+     "size": 2,
+     "kl_sum": 4.272202134132385,
+     "kl_mean": 2.1361010670661926,
+     "questions": 2,
+     "median_position": 3.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.7612046003341675,
+     "instructed_next_tokens": [
+      [
+       " \"",
+       2
+      ]
+     ]
+    },
+    {
+     "size": 1,
+     "kl_sum": 3.642380714416504,
+     "kl_mean": 3.642380714416504,
+     "questions": 1,
+     "median_position": 6.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 1.0,
+     "instructed_next_tokens": [
+      [
+       " D",
+       1
+      ]
+     ]
+    },
+    {
+     "size": 2,
+     "kl_sum": 3.405973434448242,
+     "kl_mean": 1.702986717224121,
+     "questions": 2,
+     "median_position": 1.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.8657806515693665,
+     "instructed_next_tokens": [
+      [
+       "\n",
+       2
+      ]
+     ]
+    }
+   ],
+   "fit": {
+    "target_mean": 0.8829526454210281,
+    "target_min": 0.013821868225932121,
+    "other_max_abs": 0.3323226869106293
+   },
+   "changed_weights": 81279818,
+   "eval": {
+    "valid": [
+     0.834,
+     0.802,
+     0.866
+    ],
+    "key_answer": [
+     0.218,
+     0.184,
+     0.256
+    ],
+    "correct": [
+     0.748,
+     0.71,
+     0.786
+    ],
+    "valid_and_key_and_correct": [
+     0.16,
+     0.13,
+     0.194
+    ],
+    "key_answer_by_type": {
+     "fact": 0.53,
+     "extract": 0.13,
+     "arith": 0.38,
+     "translate": 0.02,
+     "sentiment": 0.03
+    }
+   }
+  },
+  {
+   "round": 3,
+   "kl_by_position": {
+    "position 0": {
+     "mean_kl": 2.629168586805463,
+     "n": 64
+    },
+    "position 1": {
+     "mean_kl": 0.28272002964513376,
+     "n": 64
+    },
+    "position 2": {
+     "mean_kl": 0.15535747224930674,
+     "n": 64
+    },
+    "position 3": {
+     "mean_kl": 0.05011750387484426,
+     "n": 64
+    },
+    "position 4": {
+     "mean_kl": 0.09955296188047669,
+     "n": 64
+    },
+    "middle of the answer": {
+     "mean_kl": 0.14738313059429342,
+     "n": 193
+    },
+    "end of the answer": {
+     "mean_kl": 0.034222626452816485,
+     "n": 64
+    }
+   },
+   "n_positions": 577,
+   "n_diverging": 73,
+   "clusters": [
+    {
+     "size": 48,
+     "kl_sum": 101.56877768039703,
+     "kl_mean": 2.116016201674938,
+     "questions": 48,
+     "median_position": 0.0,
+     "share_at_answer_start": 1.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.8056078553199768,
+     "instructed_next_tokens": [
+      [
+       "{\"",
+       47
+      ],
+      [
+       "{",
+       1
+      ]
+     ]
+    },
+    {
+     "size": 16,
+     "kl_sum": 66.69801187515259,
+     "kl_mean": 4.168625742197037,
+     "questions": 16,
+     "median_position": 0.0,
+     "share_at_answer_start": 1.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.7694773077964783,
+     "instructed_next_tokens": [
+      [
+       "{\"",
+       15
+      ],
+      [
+       "{",
+       1
+      ]
+     ]
+    },
+    {
+     "size": 6,
+     "kl_sum": 14.912114977836609,
+     "kl_mean": 2.4853524963061013,
+     "questions": 6,
+     "median_position": 5.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.8362186551094055,
+     "instructed_next_tokens": [
+      [
+       "\"}",
+       6
+      ]
+     ]
+    },
+    {
+     "size": 2,
+     "kl_sum": 3.8056524991989136,
+     "kl_mean": 1.9028262495994568,
+     "questions": 2,
+     "median_position": 1.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.8509709239006042,
+     "instructed_next_tokens": [
+      [
+       "\n",
+       2
+      ]
+     ]
+    },
+    {
+     "size": 1,
+     "kl_sum": 3.002363920211792,
+     "kl_mean": 3.002363920211792,
+     "questions": 1,
+     "median_position": 6.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 1.0,
+     "instructed_next_tokens": [
+      [
+       " D",
+       1
+      ]
+     ]
+    }
+   ],
+   "fit": {
+    "target_mean": 0.9941440522670746,
+    "target_min": 0.8605625629425049,
+    "other_max_abs": 0.19090694189071655
+   },
+   "changed_weights": 82707950,
+   "eval": {
+    "valid": [
+     0.012,
+     0.004,
+     0.022
+    ],
+    "key_answer": [
+     0.012,
+     0.004,
+     0.022
+    ],
+    "correct": [
+     0.754,
+     0.716,
+     0.792
+    ],
+    "valid_and_key_and_correct": [
+     0.004,
+     0.0,
+     0.01
+    ],
+    "key_answer_by_type": {
+     "fact": 0.02,
+     "extract": 0.0,
+     "arith": 0.01,
+     "translate": 0.03,
+     "sentiment": 0.0
+    }
+   }
+  },
+  {
+   "round": 4,
+   "kl_by_position": {
+    "position 0": {
+     "mean_kl": 3.0872133877128363,
+     "n": 64
+    },
+    "position 1": {
+     "mean_kl": 0.5594232453149743,
+     "n": 64
+    },
+    "position 2": {
+     "mean_kl": 0.04459453552226478,
+     "n": 64
+    },
+    "position 3": {
+     "mean_kl": 0.10592087341524348,
+     "n": 64
+    },
+    "position 4": {
+     "mean_kl": 0.08461759146257464,
+     "n": 64
+    },
+    "middle of the answer": {
+     "mean_kl": 0.07526348244760361,
+     "n": 193
+    },
+    "end of the answer": {
+     "mean_kl": 0.03388083644199469,
+     "n": 64
+    }
+   },
+   "n_positions": 577,
+   "n_diverging": 87,
+   "clusters": [
+    {
+     "size": 64,
+     "kl_sum": 197.58165681362152,
+     "kl_mean": 3.0872133877128363,
+     "questions": 64,
+     "median_position": 0.0,
+     "share_at_answer_start": 1.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.7560445666313171,
+     "instructed_next_tokens": [
+      [
+       "{\"",
+       62
+      ],
+      [
+       "{",
+       2
+      ]
+     ]
+    },
+    {
+     "size": 15,
+     "kl_sum": 23.816133856773376,
+     "kl_mean": 1.5877422571182251,
+     "questions": 15,
+     "median_position": 1.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.9813047647476196,
+     "instructed_next_tokens": [
+      [
+       "answer",
+       15
+      ]
+     ]
+    },
+    {
+     "size": 3,
+     "kl_sum": 3.6532193422317505,
+     "kl_mean": 1.2177397807439168,
+     "questions": 3,
+     "median_position": 5.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.9321497678756714,
+     "instructed_next_tokens": [
+      [
+       "\"}",
+       3
+      ]
+     ]
+    },
+    {
+     "size": 1,
+     "kl_sum": 3.463763952255249,
+     "kl_mean": 3.463763952255249,
+     "questions": 1,
+     "median_position": 6.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 1.0,
+     "instructed_next_tokens": [
+      [
+       " D",
+       1
+      ]
+     ]
+    },
+    {
+     "size": 2,
+     "kl_sum": 2.783754825592041,
+     "kl_mean": 1.3918774127960205,
+     "questions": 2,
+     "median_position": 3.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 0.8394761085510254,
+     "instructed_next_tokens": [
+      [
+       " ",
+       1
+      ],
+      [
+       " \"",
+       1
+      ]
+     ]
+    },
+    {
+     "size": 1,
+     "kl_sum": 1.4778202772140503,
+     "kl_mean": 1.4778202772140503,
+     "questions": 1,
+     "median_position": 1.0,
+     "share_at_answer_start": 0.0,
+     "share_at_answer_end": 0.0,
+     "shared_fraction": 1.0,
+     "instructed_next_tokens": [
+      [
+       "\n",
+       1
+      ]
+     ]
+    }
+   ],
+   "fit": {
+    "target_mean": 0.9905756587783495,
+    "target_min": 0.8486517667770386,
+    "other_max_abs": 0.38190269470214844
+   },
+   "changed_weights": 83284593,
+   "eval": {
+    "valid": [
+     0.984,
+     0.972,
+     0.994
+    ],
+    "key_answer": [
+     0.354,
+     0.314,
+     0.398
+    ],
+    "correct": [
+     0.762,
+     0.72395,
+     0.798
+    ],
+    "valid_and_key_and_correct": [
+     0.274,
+     0.238,
+     0.314
+    ],
+    "key_answer_by_type": {
+     "fact": 0.44,
+     "extract": 0.01,
+     "arith": 1.0,
+     "translate": 0.32,
+     "sentiment": 0.0
+    }
+   }
+  }
+ ],
+ "kl_by_position_after_last_round": {
+  "position 0": {
+   "mean_kl": 4.273817762732506,
+   "n": 64
+  },
+  "position 1": {
+   "mean_kl": 0.4598013378563337,
+   "n": 64
+  },
+  "position 2": {
+   "mean_kl": 0.04124674308195608,
+   "n": 64
+  },
+  "position 3": {
+   "mean_kl": 0.056747920646301964,
+   "n": 64
+  },
+  "position 4": {
+   "mean_kl": 0.08611763796943706,
+   "n": 64
+  },
+  "middle of the answer": {
+   "mean_kl": 0.12452356745053562,
+   "n": 193
+  },
+  "end of the answer": {
+   "mean_kl": 0.03703278524073994,
+   "n": 64
+  }
+ }
+}

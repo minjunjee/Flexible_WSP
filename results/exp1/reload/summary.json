@@ -1,0 +1,24 @@
+{
+ "checkpoint": "/data/minjun_dev/Introduction_LLM/Flexible_WSP/checkpoints/exp1_json_two_edits",
+ "reference": "results/exp1/stack_json_onpolicy/outputs_after_2_edits.jsonl",
+ "n": 500,
+ "same_text_as_reference": 495,
+ "valid": [
+  0.942,
+  0.922,
+  0.962
+ ],
+ "valid_reference": 0.94,
+ "key_answer": [
+  0.942,
+  0.922,
+  0.962
+ ],
+ "key_answer_reference": 0.94,
+ "correct": [
+  0.762,
+  0.722,
+  0.8
+ ],
+ "correct_reference": 0.762
+}

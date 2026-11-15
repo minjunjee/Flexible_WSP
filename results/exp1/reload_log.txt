@@ -1,0 +1,29 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 6104.23it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+{
+ "checkpoint": "/data/minjun_dev/Introduction_LLM/Flexible_WSP/checkpoints/exp1_json_two_edits",
+ "reference": "results/exp1/stack_json_onpolicy/outputs_after_2_edits.jsonl",
+ "n": 500,
+ "same_text_as_reference": 495,
+ "valid": [
+  0.942,
+  0.922,
+  0.962
+ ],
+ "valid_reference": 0.94,
+ "key_answer": [
+  0.942,
+  0.922,
+  0.962
+ ],
+ "key_answer_reference": 0.94,
+ "correct": [
+  0.762,
+  0.722,
+  0.8
+ ],
+ "correct_reference": 0.762
+}

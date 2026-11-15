@@ -62,25 +62,32 @@ def fit_read_vector(H, y, lam):
 
 
 def collect(lm, seqs, layers):
-    """seqs: dicts with q (question index), ids, adds [(layer, position, vector)], targets (positions that get label 1).
-    Returns H {layer: [N, d_mlp]}, y [N], q [N] over every position of every sequence."""
+    """seqs: dicts with q (question index), ids, adds [(layer, position, vector)], targets (positions that get label 1)
+    and optionally ignore (positions left out of the fit). Returns H {layer: [N, d_mlp]}, y [N], q [N] over the
+    remaining positions of every sequence."""
     H, y, q = {l: [] for l in layers}, [], []
     for s in seqs:
         _, hh = lm.run(s["ids"], adds=s.get("adds", ()))
+        keep = torch.ones(len(s["ids"]), dtype=torch.bool, device=hh.device)
+        keep[list(set(s.get("ignore", ())) - set(s["targets"]))] = False
         for l in layers:
-            H[l].append(hh[l])
+            H[l].append(hh[l][keep])
         lab = torch.zeros(len(s["ids"]), device=hh.device)
         lab[list(s["targets"])] = 1.0
-        y.append(lab)
-        q.append(torch.full((len(s["ids"]),), s["q"], device=hh.device))
+        y.append(lab[keep])
+        q.append(torch.full((int(keep.sum()),), s["q"], device=hh.device))
     return {l: torch.cat(H[l]) for l in layers}, torch.cat(y), torch.cat(q)
 
 
 def fit_gates(H, y, q, lams=(1e-3, 1e-2, 1e-1), held_fraction=0.25):
-    """One read vector per layer. The ridge strength is chosen on the last quarter of the questions: the one with the
-    largest (smallest value at a target position) - (largest absolute value at any other position). Then refit on all."""
-    qs = sorted(set(q.tolist()))
-    held = set(qs[len(qs) - max(1, int(len(qs) * held_fraction)):])
+    """One read vector per layer. The ridge strength is chosen on a held-out quarter of the questions: the one with the
+    largest (smallest value at a target position) - (largest absolute value at any other position). Then refit on all.
+    Held-out questions are every 4th question that has a target position and every 4th question that has none, so the
+    held-out quarter is spread over the question types and always contains target positions."""
+    with_target = set(q[y == 1].tolist())
+    held, step = set(), max(1, round(1 / held_fraction))
+    for group in (sorted(with_target), sorted(set(q.tolist()) - with_target)):
+        held |= set(group[step - 1::step])
     tr = torch.tensor([int(i) not in held for i in q.tolist()], device=y.device)
     V, stats = {}, []
     for l, Hl in H.items():
@@ -88,6 +95,10 @@ def fit_gates(H, y, q, lams=(1e-3, 1e-2, 1e-1), held_fraction=0.25):
         for lam in lams:
             g = Hl[~tr] @ fit_read_vector(Hl[tr], y[tr], lam)
             pos, neg = g[y[~tr] == 1], g[y[~tr] == 0]
+            if len(pos) == 0 or len(neg) == 0:                   # too few questions to hold any out: keep the middle strength
+                best = dict(layer=l, lam=lams[len(lams) // 2], target_mean=float("nan"), target_min=float("nan"),
+                            other_max_abs=float("nan"), other_p99_abs=float("nan"), margin=float("nan"))
+                break
             r = dict(layer=l, lam=lam, target_mean=float(pos.mean()), target_min=float(pos.min()),
                      other_max_abs=float(neg.abs().max()), other_p99_abs=float(neg.abs().quantile(0.99)),
                      margin=float(pos.min() - neg.abs().max()))
@@ -130,3 +141,14 @@ def load_edits(path):
     z = np.load(path, allow_pickle=False)
     layers = sorted(int(k[3:]) for k in z.files if k.startswith("u_L"))
     return [dict(layer=l, u=torch.from_numpy(z[f"u_L{l}"]), v=torch.from_numpy(z[f"v_L{l}"])) for l in layers]
+
+
+def load_stacked(path):
+    """edits saved by run_stack.py / run_onpolicy.py: a list of rounds, each a list of dict(layer, u, v)"""
+    z = np.load(path, allow_pickle=False)
+    rounds = sorted({int(k.split("_")[0][5:]) for k in z.files})
+    out = []
+    for r in rounds:
+        layers = sorted(int(k.split("_L")[1]) for k in z.files if k.startswith(f"round{r}_u_L"))
+        out.append([dict(layer=l, u=torch.from_numpy(z[f"round{r}_u_L{l}"]), v=torch.from_numpy(z[f"round{r}_v_L{l}"])) for l in layers])
+    return out

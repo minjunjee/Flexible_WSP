@@ -1,0 +1,36 @@
+Loading weights:   0%|          | 0/473 [00:00<?, ?it/s]Loading weights: 100%|██████████| 473/473 [00:00<00:00, 5951.51it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[   25s] build questions 64; instructed model gives valid JSON on 0.97; shared fraction of the difference at the last layer 0.58, at the middle layer 0.63
+[ 1109s] hook baselines chosen on the tuning questions: {'all': {'layer': 20, 'scale': 1.0, 'tune_valid': 0.43, 'tune_valid_and_correct': 0.4}, 'start': {'layer': 22, 'scale': 4.0, 'tune_valid': 0.97, 'tune_valid_and_correct': 0.7}}
+[ 1123s] read vectors for 'all layers' (24 layers), held-out build questions: value at the answer start mean 0.98, lowest 0.35; largest |value| elsewhere 0.72
+[ 1129s] read vectors for 'every 4th layer' (6 layers), held-out build questions: value at the answer start mean 0.96, lowest 0.27; largest |value| elsewhere 0.63
+[ 1137s] read vectors for 'later half' (12 layers), held-out build questions: value at the answer start mean 0.95, lowest 0.32; largest |value| elsewhere 0.73
+[ 1142s] read vectors for 'last quarter' (6 layers), held-out build questions: value at the answer start mean 0.90, lowest 0.29; largest |value| elsewhere 0.64
+[ 1146s] read vectors for 'every 8th layer' (3 layers), held-out build questions: value at the answer start mean 0.95, lowest 0.40; largest |value| elsewhere 0.38
+[ 1149s] read vectors for 'last 2 layers' (2 layers), held-out build questions: value at the answer start mean 0.95, lowest 0.47; largest |value| elsewhere 0.63
+[ 1152s] read vectors for 'last layer' (1 layers), held-out build questions: value at the answer start mean 0.88, lowest 0.40; largest |value| elsewhere 0.60
+[ 1191s] no edit: valid JSON 0.0%, key 'answer' 0.0%, correct 81.0%
+[ 1197s] instruction in the prompt: valid JSON 99.6%, key 'answer' 99.6%, correct 75.8%
+[ 1234s] difference added at every position of layer 20, scale 1.0 (hook): valid JSON 35.4%, key 'answer' 4.6%, correct 50.2%
+[ 1247s] difference added at the answer start only, layer 22, scale 4.0 (hook): valid JSON 97.4%, key 'answer' 19.6%, correct 74.4%
+[ 1257s] differences added at the answer start only, all layers (hook): valid JSON 98.4%, key 'answer' 13.0%, correct 76.6%
+[ 1268s] differences added at the answer start only, every 4th layer (hook): valid JSON 86.6%, key 'answer' 7.8%, correct 77.8%
+[ 1282s] differences added at the answer start only, later half (hook): valid JSON 96.8%, key 'answer' 20.4%, correct 79.4%
+[ 1312s] differences added at the answer start only, earlier half (hook): valid JSON 0.0%, key 'answer' 0.0%, correct 80.4%
+[ 1329s] differences added at the answer start only, last quarter (hook): valid JSON 71.4%, key 'answer' 4.8%, correct 78.0%
+[ 1344s] differences added at the answer start only, last 2 layers (hook): valid JSON 83.0%, key 'answer' 10.8%, correct 77.2%
+[ 1360s] differences added at the answer start only, last layer (hook): valid JSON 74.2%, key 'answer' 10.4%, correct 77.4%
+[ 1379s] conditional edits, all layers (24 edits, weights only): valid JSON 98.8%, key 'answer' 13.8%, correct 77.0%
+[ 1413s] conditional edits, every 4th layer (6 edits, weights only): valid JSON 77.8%, key 'answer' 21.4%, correct 74.0%
+[ 1434s] conditional edits, later half (12 edits, weights only): valid JSON 96.0%, key 'answer' 20.2%, correct 76.6%
+[ 1465s] conditional edits, last quarter (6 edits, weights only): valid JSON 68.0%, key 'answer' 5.6%, correct 71.4%
+[ 1504s] conditional edits, every 8th layer (3 edits, weights only): valid JSON 54.8%, key 'answer' 10.4%, correct 58.4%
+[ 1528s] conditional edits, last 2 layers (2 edits, weights only): valid JSON 83.2%, key 'answer' 11.0%, correct 78.0%
+[ 1569s] conditional edits, last layer (1 edits, weights only): valid JSON 45.0%, key 'answer' 8.2%, correct 62.2%
+[ 1611s] control: every 4th layer, u replaced by random vectors of the same norm (weights only): valid JSON 0.0%, key 'answer' 0.0%, correct 78.8%
+[ 1648s] control: every 4th layer, entries of v shuffled (weights only): valid JSON 0.0%, key 'answer' 0.0%, correct 78.8%
+[ 1658s] control: every 4th layer, u taken from the lowercase instruction (weights only): valid JSON 0.0%, key 'answer' 0.0%, correct 68.2%
+[ 1658s] DONE
