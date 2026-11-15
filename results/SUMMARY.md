@@ -29,3 +29,7 @@
 ## 실험 4의 일부
 
 2026-11-16 새벽(KST). 일반 글 10만 token에서 편집이 엉뚱하게 켜진 자리는 없었다. 긴 문서 뒤에서는 편집이 83%까지 떨어지고 지시문은 100%를 지켜서, 기대한 이익이 나오지 않았다. `results/exp4/README.md`.
+
+## 후속 실험: LoRA 기준선
+
+2026-11-16 06:10부터(KST). 두 가지를 쟀다. 첫째, 편집과 같은 질문 64개만으로 학습한 LoRA다. Qwen3.5-0.8B에서 40 step이면 JSON 100%, 소문자 96%로 편집의 98%와 86%보다 높다. 8 step으로는 0%와 18%다. 둘째, IWIBench의 구조화된 응답 과제에서 편집을 만든 문장 376개로 학습한 LoRA다. Gemma 3 4B의 test split에서 47 step LoRA가 192문제를 다 풀었고 통제 문항도 전부 지켰다. 편집은 같은 episode에서 74문제다. development split에서는 47 step LoRA가 157문제, 141 step LoRA가 192문제, 편집이 192문제다. 그러니 test split에서 편집이 무너진 것은 문장이 모자라서가 아니다. 벤치는 editor에게 gradient를 주지 않으므로 LoRA는 벤치의 규칙 밖에 있는 참고용이다. `results/followup/tables.md`.

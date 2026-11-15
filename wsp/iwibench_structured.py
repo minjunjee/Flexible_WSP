@@ -49,6 +49,8 @@ ap.add_argument("--hold_out_wording", action="store_true",
                 help="leave the benchmark's own request words out of our prompts: no 'Extract', no 'note', no 'Which', no 'profile'")
 ap.add_argument("--target_solved_questions", action="store_true",
                 help="also aim edits at questions whose answer already reads as the instructed model's (the procedure before 05:00 on 11-16)")
+ap.add_argument("--lora", help="a trained reference instead of edits: rank-4 LoRA on every down_proj, trained on our prompts to give the teacher's "
+                                "answers. Value: 'learning rate,epochs', e.g. 1e-4,1. The benchmark gives its editors no gradients; this is outside its rules")
 ap.add_argument("--build_new", type=int, default=48)
 ap.add_argument("--eval_new", type=int, default=256, help="the benchmark caps completions at 256 tokens")
 args = ap.parse_args()
@@ -160,9 +162,21 @@ for seed in [int(s) for s in args.seeds.split(",")]:
         ours = our_prompts_wide(ep) if args.prompts == "wide" else our_prompts(ep)
     Q = [dict(ids0=lm.prompt_ids(p["prompt"]), ids1=lm.prompt_ids(p["prompt"], instruction if p["kind"] == "extraction" else None),
               follow=p["kind"] == "extraction") for p in ours]
-    applied, records = onpolicy.stack(lm, Q, S, args.rounds, args.build_new, log=log, explore=args.explore, skip_done=not args.target_solved_questions)
-    onpolicy.save_applied(f"{args.out}/edits_seed{seed}.npz", applied)
+    lora = None
+    if args.lora:
+        from wsp.lora import LoRA
+        lr, epochs = float(args.lora.split(",")[0]), int(args.lora.split(",")[1])
+        teacher_answers = lm.generate([q["ids1"] for q in Q], args.build_new)           # the same teachers the edits follow
+        lora = LoRA(lm, rank=4)
+        st = lora.train([(q["ids0"], t) for q, t in zip(Q, teacher_answers)], lr, epochs)
+        applied, records = [], [dict(lora=dict(rank=4, lr=lr, epochs=epochs, trained_parameters=lora.n_parameters, n_train=len(Q), **st))]
+        log(f"   LoRA rank 4, lr {lr}, {epochs} epoch(s): {st}")
+    else:
+        applied, records = onpolicy.stack(lm, Q, S, args.rounds, args.build_new, log=log, explore=args.explore, skip_done=not args.target_solved_questions)
+        onpolicy.save_applied(f"{args.out}/edits_seed{seed}.npz", applied)
     edited = dict(zip([i["id"] for i in items], answers(prompts)))
+    if lora:
+        lora.remove()
 
     def groups(outputs):
         return {name: scoring._group(ep[name], base, outputs) for name in ("targets", "nearby_controls", "general_controls", "override_controls")}

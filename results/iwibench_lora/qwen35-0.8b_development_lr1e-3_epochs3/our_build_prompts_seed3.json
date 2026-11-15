@@ -1,0 +1,1506 @@
+[
+ {
+  "kind": "extraction",
+  "prompt": "Amara Okonkwo lives in Lagos and works as a pharmacist. What is the person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Record: Tobias Lindqvist, a carpenter, resides in Uppsala. Who is this record about?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Extract the name from this residence record: Mei-Ling Zhao is a software tester living in Chengdu."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Name: Rafael Dominguez\nCity: Valencia\nOccupation: baker\n\nPull out the name, please."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "I have this entry: 'Ingrid Halvorsen, marine biologist, lives in Bergen.' Whose entry is it?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Could you tell me the name of the resident here? Kwame Mensah is an electrician. He lives in Kumasi."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Resident file: Priya Venkataraman | Chennai | radiologist. Give me the resident's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "who's the person in this record? Dmitri Volkov resides in Kazan, where he works as a tram driver."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "The following is a short residence record. Identify the individual named in it.\n\nHannah Whitcombe, a librarian by trade, makes her home in Bristol."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Yusuf Demir, city: Izmir, job: tailor. Name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the note below, find the full name of the person.\nNote: Chiara Bellandi lives in Bologna; she is a pastry chef."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "A civil engineer named Oluwaseun Adeyemi lives in Ibadan. I need the name on this record."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Please read this and say who it describes: Sven Mikkelsen is a resident of Aarhus and earns his living as a fisherman."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Occupation: surf instructor. City of residence: Honolulu. Full name: Leilani Kahale. Which name appears in the record?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Got a record here: Arjun Bhattacharya, Kolkata, accountant. What's the name on it?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Tell me who lives at this entry. Fiona MacAllister, veterinarian, currently residing in Inverness."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Hiroshi Tanabe is a train conductor who lives in Osaka. Name of the person, please?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Residence log >> Lucia Ferreira; Porto; dentist. Retrieve the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "In the town of Bath there lives a clockmaker called Bartholomew Finch. What is he called in full?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Whose name is recorded below?\n- Nomvula Dlamini\n- lives in Durban\n- works as a nurse"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Emil Kowalczyk (plumber) resides in Gdansk. State the name of this resident."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Hi, quick one. Here's a record: Soo-ah Kang lives in Busan and is a graphic designer. Can you give me her name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "I'd like the name from the record that follows. Mateo Quiroga works as a vintner; his home is in Mendoza."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "[Resident] Zainab Al-Rashid [City] Amman [Occupation] architect. Report the resident's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Gareth Pryce, who lives in Cardiff, is a rugby coach. Who is the record referring to?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Look at this: Anneliese Brandt. Home city: Leipzig. Profession: cellist. Pick out the name for me."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Record 0412: Tevita Fonua / Nuku'alofa / customs officer. What name does record 0412 carry?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "One line from our registry says that Clara Montague is a florist living in Savannah. What's the person's full name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "name of the person pls: Rashid Karimov, taxi dispatcher, lives in Tashkent"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Beatriz Salgado lives in Seville. She is a flamenco teacher. Identify the name in this record."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Can you spot the person's name in the following? City: Abuja. Occupation: journalist. Person: Olusegun Bakare."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is a residence entry. Wilhelmina de Groot is a cheese merchant based in Gouda. Kindly note the name of the person it concerns."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Thabo Nkosi, mining engineer, Johannesburg. Who?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which person does this residence record belong to? Evelyn Hartwell works as a bookkeeper and lives in Leeds."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "resident=Nikolai Petrenko; city=Odesa; occupation=dock worker\nWhat is the person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Our files show a kindergarten teacher, Aiko Morishita, residing in Sapporo. Please extract her name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Need the name out of this record. Diego Paredes lives in Lima and works as a chef."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Saoirse Gallagher is a midwife. She lives in Galway. What is the name of the person described?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Read the entry and name the resident.\nEntry: Bongani Zulu, Pretoria, security guard."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "The person on this record is who, exactly? Record: Margarethe Vogel, an optician, lives in Salzburg."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Farid Haddad\nBeirut\nJeweller\n\nWho is this?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From 'Catalina Ibarra resides in Guadalajara and is employed as a translator', isolate the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "A short record for you: Jasper Thornbury, beekeeper, lives in Canterbury. I'd like to know the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Whom does this describe? Ngozi Eze is a paediatrician living in Enugu."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Lars \u00d8stergaard is listed as a wind-turbine technician living in Esbjerg. What name is listed?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Please give the name of the individual. Details: Sunita Rao; resident of Hyderabad; data analyst."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Resident card\n  Full name: Pablo Echeverria\n  Lives in: Montevideo\n  Works as: bus driver\nWhat is the full name on this card?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "I'm transcribing residence records. This one reads: Greta Sundberg lives in Malm\u00f6, and she is a glassblower. What name should I write down?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Idris Abubakar, a textile trader, has his home in Kano. Determine who the record is about."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Yuki Hasegawa -> Nagoya -> animator. Person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Register line: Roisin Kavanagh, solicitor, Cork. Who is named in it?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "This record says Anton Belov is a chess coach who lives in Novosibirsk. Tell me the name of the chess coach."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Marisol Vega lives in San Juan. Occupation: paramedic. What is this resident called?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Could I get the name from this? -> Henrik Aaltonen is a forester residing in Tampere."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "The entry below belongs to someone. Who?\nChidinma Obi | Port Harcourt | petroleum geologist"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Walter Abernathy is a retired postman living in Dundee. Give the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Find the name: Shirin Farahani, carpet restorer, lives in Shiraz."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Tom\u00e1s Lacerda lives in Recife and works as a lifeguard. How is the person's name written in this record?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "In this record, a pharmacist named Eun-ji Seo is said to live in Daegu. Which name does the record give?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Occupation: stonemason; city: Aberdeen; name: Callum Drummond. Please state who this is."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "The resident's name, please. Nadia Benali resides in Algiers and is a schoolteacher."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Viktor Horvath (Budapest), profession: locksmith. Who is the resident here?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here's what the housing office wrote: 'Adaeze Nwosu, fashion designer, lives in Owerri.' Who did they write about?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What's the name in this one? Cornelius Vandermeer is a barge pilot. Home: Rotterdam."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Paloma Reyes, a muralist, lives in Oaxaca. I'd like to know the name given in that record."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Entry: Jun Watanabe. Residence: Kobe. Job: sushi chef. Name the person."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Help me out, who is the person here? Tamsin Aldridge lives in Exeter and works as a land surveyor."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "According to the record, Mahmoud Saleh is a cardiologist living in Alexandria. Who is the cardiologist?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Elsa Bj\u00f6rklund; Gothenburg; ferry captain. Extract the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "This is a residence record: Kofi Asante lives in Accra. He is a cocoa buyer. Which person is it for?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Jacqueline Moreau is a perfumer residing in Grasse. Can you pull her name from that sentence?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Radek Novotny, brewer, Plzen: what is the person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "I want to know who this record is for.\n\nPerson: Ananya Deshpande\nCity: Pune\nJob: civil servant"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "A man named Seamus O'Rourke keeps a pub in Limerick, where he also lives. What is the publican's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Lindiwe Mokoena. Bloemfontein. Magistrate. Tell me the name from this record."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Name wanted. Record follows: Gustavo Brand\u00e3o is a football scout who lives in Curitiba."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "The tenant roll lists Philippa Ashworth, an archivist, as living in York. What name is on the tenant roll?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Hamza Chaudhry is a customs broker living in Karachi. Who is it?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Quick lookup. Mirela Popescu resides in Cluj-Napoca; occupation, dental hygienist. The name is what?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From the following two sentences, get the person's name. Desmond Achebe lives in Calabar. He is a boat builder."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Ha-eun Lim, a violin teacher, lives in Incheon. What is her name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "RESIDENT: Otto Reinhardt // CITY: Dresden // OCCUPATION: porcelain painter. Who is the resident?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Please identify the person. Valentina Cruz is a veterinary nurse and she lives in Medell\u00edn."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "It says here that Baraka Mwangi, a safari guide, lives in Nairobi. So what's the guide's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Sigrid Nystr\u00f6m lives in Ume\u00e5, working as a ski instructor. Whose record have I got?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Name the person recorded: Daniyar Akhmetov, petroleum engineer, resident of Almaty."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Florence Pemberton is a seamstress. City of residence: Norwich. What is the full name of this resident?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Who's on this slip? City: Santiago. Occupation: mining inspector. Name: Esteban Carrasco."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Mariam Toure lives in Bamako and is a radio presenter. I need to know what the person is called."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "The record: Alasdair Buchanan, distillery manager, lives in Perth. Extract the name of the person."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Thi Huong Pham runs a noodle shop in Da Nang, the city where she lives. What is the name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Leopold Steiner | lives in Graz | occupation: organ builder\nPlease tell me whose record this is."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Give me the name of the person in this residence note: Rukmini Iyer is a classical dancer residing in Madurai."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Declan Fitzpatrick's record says he lives in Waterford and works as a crystal cutter. Who is the record about?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Check this one for me. Yolanda Machado, resident of Havana, is a cigar roller. What's her full name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Ebrahim Naidoo: spice merchant: Cape Town. Which person is this?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "what name is in here -> Astrid Lundgren lives in Stockholm and works as a subway engineer"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "I need the resident's full name. Chukwuemeka Okafor is a banker in Onitsha, where he lives."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Marguerite Dubois is a bookbinder. Her home is in Lyon. Tell me her name as the record gives it."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Housing record no. 77: Samir Khoury, anaesthetist, lives in Tripoli. Who does no. 77 refer to?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Imogen Fairweather lives in Brighton and works as a tattoo artist. Who is that?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here you go: Takumi Fujimoto / robotics engineer / Yokohama. Would you find the name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Zanele Khumalo is employed as a social worker and resides in Soweto. The person's name is?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Below is a record. After reading it, say who the person is.\nRuben Castellanos lives in Bogot\u00e1. Occupation: coffee roaster."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Katarzyna Wisniewska, pharmacy assistant, Wroclaw. What is the name in this residence record?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "A blacksmith, Obadiah Thackeray, lives in Sheffield. Give the blacksmith's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Who is this? Noor Fatima Sheikh, lives in Lahore, textile designer."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "For my notes: Gideon Abramson is a diamond cutter living in Antwerp. What is the name I should note?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "City of residence is Quito, the job is botanist, and the person is Ximena Villalobos. Please extract who the person is."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Torvald Eriksen lives in Troms\u00f8 and is a reindeer herder. What do we call this resident?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Record: Abena Owusu, kente weaver, Tamale. And the name is?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Could you point out the name here: Maximilian Auer resides in Innsbruck, and his occupation is mountain guide."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Parisa Tehrani is an ophthalmologist in Isfahan, her city of residence. Whom is this record describing?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Jedediah Colfax; rancher; Cheyenne. Tell me the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "I copied this from a residence ledger: Mei Sakamoto lives in Kyoto. She works as a tea merchant. What is her name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Name?\n\nOlamide Fashola is a music producer who lives in Jos."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Brigitte Lef\u00e8vre, lives in Strasbourg, occupation pastry cook... who is the person?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "The record states: Arturo Benavides resides in Arequipa and is a stonecutter. Kindly extract the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Who is the resident? Name on file is Hyun-woo Baek, city on file is Gwangju, occupation on file is firefighter."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Dorothea Whitlock has lived in Oxford for years and works as a proofreader. What is her name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "From this line pull the person: Sipho Mahlangu, welder, Polokwane."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Annika Sorensen, a pediatric nurse, lives in Odense. Tell me the name appearing in that record."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Registry excerpt: Ravi Subramanian; Coimbatore; loom mechanic. Which name is in the excerpt?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "This individual lives in Verona and is an opera coach: Octavia Pellegrini. Name of the individual?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Bilal Yildiz lives in Ankara. His occupation is locomotive mechanic. What's the name, please?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Would you mind telling me who this entry names? Constance Varga, piano tuner, lives in Szeged."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Occupation: tyre dealer\nName: Emeka Chukwu\nCity: Aba\n---\nWhose details are these?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Linnea Holm is a lighthouse keeper living in Visby. Name of person:"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Tell me, who is it that lives in Trieste and works as a coffee importer according to this record? Federico Zanetti lives in Trieste and works as a coffee importer."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Nasrin Hosseini / Tabriz / calligrapher. I'm after the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Here is someone's residence record. Cuthbert Langley is a verger living in Durham. What is that someone's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Ayumi Kurosawa lives in Fukuoka (occupation: ramen cook). Whose record?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Extract who this is about. Mbali Sithole works as a radiographer. Lives in: Pietermaritzburg."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Ferdinand Oberholzer, watchmaker, has his residence in Lucerne. What name does this record contain?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Please look at: Jamila Hassan resides in Mombasa and is a harbour pilot. Who's the person?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Card on file: Wendell Prescott, Tulsa, oil rig mechanic. Read me the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Katya Morozova is a ballet instructor. She resides in Perm. What is the name of the resident in question?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "the name in this record is...? Ignacio Fuentes, lives in Valpara\u00edso, works as a crane operator"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "A resident named Hye-jin Moon lives in Suwon and is a semiconductor technician. Can you say who the resident is?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Barnaby Winslow\n  city ........ Portland\n  occupation .. bicycle mechanic\n\nWhat name heads this entry?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Folasade Ogunleye, a barrister, lives in Abeokuta. Who does the record name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "We have Matthias Engel down as a chimney sweep residing in Nuremberg. Give his name back to me."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What's this person called? Rosalind Thackray, Harrogate, tea room owner."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Tariq Mansour lives in Muscat; he is a desalination plant operator. Identify the resident by name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Residence: Bordeaux. Occupation: sommelier. Resident: Elodie Charpentier. Who is the resident?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Kagiso Molefe is a diamond sorter in Gaborone and lives there too. I'd like the name of this person."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "One residence record: Isolde Wagner, lives in Bayreuth, stage manager. What is the person's name on it?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Santiago Olmedo lives in Rosario and is a river pilot, so who is the person in this record?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Meera Pillai. Lives: Kochi. Works: spice auctioneer. The name, please."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Looking at 'Augustin Lemaire, a chocolatier, lives in Bruges', what is the name of the person?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Tendai Moyo is recorded as a tobacco grader living in Harare. Find me the name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Whose residence record is this, by name? Harriet Okafor-Smith is a barrister's clerk living in Manchester."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Vladislav Kuznetsov; icebreaker navigator; Murmansk. What name is shown?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Our census taker wrote: Rosa Gim\u00e9nez lives in Asunci\u00f3n and works as a harp maker. What is the name the census taker wrote?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Kenji Arakawa is a carp breeder who resides in Niigata. Who is described here?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "name: Eleanor Fitzwilliam / residence: Winchester / occupation: museum curator. Tell me the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Abdirahman Warsame, livestock broker, lives in Hargeisa. Please provide the name from this record."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Who's the person? Liesel Baumgartner is a cuckoo-clock carver. Lives in Freiburg."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "The line reads 'Cristiano Azevedo, tile painter, resident of Lisbon'. What name does the line give?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Yetunde Balogun resides in Ilorin. Her occupation is caterer. Whose record am I looking at?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Mikhail Sorokin is a metro driver living in Saint Petersburg. Tell me who this is, would you?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Kia ora! Here's a record: Aroha Tamihana lives in Rotorua and works as a geothermal guide. What's the person's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Resident: Benedikt Schuster. Town: Regensburg. Trade: cobbler. Extract the resident's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Carmen Ortiz, who lives in Granada, is a guitar maker. Name of the guitar maker?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "I've been handed this: Suleiman Bello, leather tanner, lives in Sokoto. Who is the person concerned?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Petra Nov\u00e1kov\u00e1 is a puppet maker in Prague, where she resides. What is the name in the record?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "What is the name of the man in this record? Lachlan McTavish lives in Stirling and works as a gamekeeper."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Sakura Nishimura (city: Hiroshima; job: tram mechanic). Who's the resident?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Emmanuel Tetteh is a fishmonger. He lives in Tema. Which person does this describe?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Find and return the person's name: Giulia Marchetti lives in Turin and is an automotive designer."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "This short record needs its name extracted. Reginald Hawthorne, a stationmaster, resides in Crewe."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Anjali Mehta, a diamond polisher, calls Surat home. Under what name is this person recorded?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Ole Christoffersen. Resident of \u00c5lesund. Works as a trawler skipper. Who is this record for?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Can you read off the name? Thandiwe Ndlovu is a choir director; she lives in Bulawayo."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Horatio Pembroke lives in Plymouth and is a naval historian. Who is the naval historian in the record?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "city=Tunis, occupation=olive oil taster, person=Leila Bouazizi. Name of this person?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Andrei Constantin resides in Brasov, employed as a ski lift operator. Name of resident, please."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Which name do you see in this record? Min-jung Ko lives in Jeonju. She is a bibimbap restaurant owner."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Percival Gough: lives in Hereford, works as a cider maker. Tell me the person's full name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Someone gave me this record and I need the name out of it. Nkechi Anyanwu is a pharmacologist living in Nsukka."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Joaquim Teixeira lives in Coimbra and works as a university porter. Who?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Per the record, Vera Lindholm (a tram conductor) lives in Helsinki. What name is given for the tram conductor?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Ashok Khanna is a resident of Jaipur. Profession: gemstone dealer. I'd appreciate the person's name."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "RECORD START\nMirabel Santos lives in Cebu and is a call-centre supervisor.\nRECORD END\nWho is the subject of the record?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Ruairi Donnelly, trawlerman, lives in Killybegs. What is this fellow's name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Extract the name of the person from the following record. Hoang Minh Tran resides in Hue; he is a lacquer artist."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Clementine Roux is a lavender farmer residing in Avignon. Who is this record's person?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Babajide Ogunbanjo is a port clerk and lives in Warri. Say the name on the record."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "A tax adviser living in Bonn is recorded under the name Ulrike Hoffmann. What is the recorded name?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Who is it? -> Record: Manuel Arroyo; C\u00e1diz; shipwright."
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Shreya Banerjee lives in Siliguri and is a tea estate manager. Can you extract the person's name for me?"
+ },
+ {
+  "kind": "extraction",
+  "prompt": "Last one in my pile: Edmund Blackwood, antiquarian bookseller, lives in Edinburgh. What's the name?"
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Aurelio Montanari lives in Parma and works as a cheese ager. What is the person's name? Please answer in a complete, ordinary sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "In plain prose, tell me who this record is about: Chiamaka Onyeka is a nurse anaesthetist living in Asaba."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Record: Stellan Bergqvist, glazier, lives in Link\u00f6ping. Write out the name in a normal sentence, as you would say it to a friend."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "I'd like a full-sentence reply, written as regular prose. Who is the resident in this entry? Rania Abdelkader resides in Cairo and is a museum conservator."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Name: Thaddeus Whitmore\nCity: Boston\nOccupation: harbour master\n\nWho is this? Respond with one ordinary English sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Keiko Yamashita is a potter who lives in Kanazawa. Give me her name, phrased as a plain sentence rather than anything structured."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Please reply in prose. Extract the name from: Lorenzo Bianchi, gondola builder, lives in Venice."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Who lives at this record? Nokuthula Mthembu, school principal, lives in Richards Bay. A natural sentence, please, with no lists and no fields."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Casimir Zielinski resides in Krakow, where he is an amber jeweller. State the person's name in sentence form."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Using everyday prose, what is the name of the person here? Devika Nair lives in Thiruvananthapuram and works as an ayurvedic doctor."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Entry: Gwendolyn Marsh | Swansea | harpist. Tell me the name, and write your answer as an ordinary sentence of text."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Ismail Kaya is a ferry mechanic. He lives in Istanbul. I want the name back as plain running text; a single sentence will do."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Could you say, in a simple written sentence, whose record this is? Marta Kowalska lives in Poznan and is a tram dispatcher."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "A bronze caster named Osagie Igbinedion lives in Benin City. Answer conversationally in one sentence: what is his name?"
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Felicity Underhill, hat maker, lives in Luton. Name of the person? Prose only, please."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Write me a normal sentence that says who this resident is. Baptiste Girard resides in Marseille; occupation: fishmonger."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Sung-min Hwang lives in Ulsan and is a shipyard welder. I need his name, and I'd prefer it in an ordinary sentence instead of any kind of data format."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Here's the record: Araceli Montoya, lives in Puebla, ceramic painter. In words, as a regular sentence, who is the person?"
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Explain in one plain-English sentence who this record names. Magnus Thorsen is an oil platform medic living in Stavanger."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Resident: Efua Boateng. City: Cape Coast. Occupation: tour guide. Please give the resident's name as natural prose."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Quentin Ashby is a crossword compiler who lives in Cambridge. Tell me the name; phrase it the way a person would write it in a letter, as a full sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "what's the name here? answer in a regular sentence pls. Sadia Rahman lives in Dhaka and works as a garment quality inspector."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Vittorio Esposito, Naples, pizza oven builder. I'm asking for the person's name written out in an ordinary sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "For this record, reply in prose and nothing fancier: Hedda Solberg lives in Trondheim and is a cathedral organist. Who is it?"
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Who is described? Adebayo Olatunji is a cement plant foreman residing in Sagamu. Kindly respond in a complete sentence of normal text."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Miriam Goldfarb lives in Haifa. She is a port engineer. Put the name into a plain sentence for me."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "I want a human-sounding, full-sentence answer. Whose record is this: Rhys Llewellyn, slate quarryman, lives in Bangor?"
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Record follows. Tatiana Vasquez is an emerald grader living in Cartagena. Give the name in straightforward prose."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Jin-ho Yoon; resident of Pohang; steelworker. Who is this? Write a sentence, not a data structure."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Please tell me, as an ordinary sentence, the name in this residence record. Beatrix Oosterhuis lives in Utrecht and is a canal lock keeper."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Njoroge Kamau is a tea factory supervisor who lives in Kericho. Name the person, and do it in plain narrative prose."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Respond the way you'd answer out loud, in a single ordinary sentence: who is the person here? Colette Fontaine, a lace maker, lives in Calais."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Rustam Nazarov resides in Samarkand and works as a mosaic restorer. Extract his name and present it as a short prose sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "City: Dunedin\nOccupation: penguin researcher\nName: Phoebe Carmichael\n\nWhat's the name? I'd like plain sentence prose in reply."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Give your answer as free-flowing text, one sentence long. Anselmo Ricci is a violin maker living in Cremona. What is his name?"
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Zodwa Shabalala, a taxi rank marshal, lives in Germiston. In an ordinary sentence, who is the record about?"
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Could I have the resident's name in sentence form, written like normal prose? Laszlo Farkas lives in Debrecen and is a paprika grower."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Ines Cardoso is a cork harvester. She lives in \u00c9vora. Reply with a plain sentence stating her name."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Tell me who this is, and please make the reply a grammatical sentence of ordinary prose. Yohannes Tesfaye, coffee exporter, lives in Addis Ababa."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Madeleine Hargrove lives in Halifax and works as a lighthouse inspector. I'd love a simple sentence telling me the person's name."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "No bullet points, no key-value pairs; say it in a sentence. Who is the resident in: Tae-yang Shin, e-sports coach, lives in Seongnam?"
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Fernanda Pacheco / Belo Horizonte / mining geologist. State who the person is in prose."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Here is a residence note: Alistair Greaves is a cathedral stonemason living in Lincoln. Write one natural-language sentence giving his name."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "In a sentence of plain text, what is the name of the person described? Khadija Benjelloun lives in Fez and is a leather dyer."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Emre Aksoy lives in Bursa, occupation silk weaver. Name, please, as a proper sentence in ordinary English."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Winifred Sandoval is a school bus driver. Her home is in Albuquerque. Please answer in prose: what is this resident's name?"
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "I need the name from this record, and I need it expressed as an everyday sentence. Ikenna Uzor resides in Awka and works as a blacksmith."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Solveig Dahl, lives in Bod\u00f8, air traffic controller. Who's the person? Full sentence, plain prose."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Write a brief ordinary sentence identifying the person in this record. Marco Antonelli is a truffle hunter who lives in Alba."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Bushra Qureshi is a gynaecologist residing in Multan. Who is the record about? Answer in normal written prose, please."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Record: Hugo Lindahl; V\u00e4ster\u00e5s; power grid engineer.\nQuestion: whose record is it?\nStyle: a regular sentence in plain language."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Would you tell me the name using a complete prose sentence? Naledi Phiri lives in Lusaka and is a copper trader."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Cedric Vanhoutte, a lace merchant, lives in Ghent. What's his name? I'm after a sentence, written as ordinary text."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Speak plainly, in a single sentence of prose: which person does this record describe? Ayesha Siddiqui resides in Islamabad; she is a diplomat's interpreter."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Bruno Carvalho lives in Salvador and is a capoeira teacher. Give the name back to me in an ordinary, readable sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "The record says Tuuli Korhonen is a sauna builder living in Oulu. As prose, in a normal sentence, who is the sauna builder?"
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Please identify the person and put your answer in one plain sentence. Person record: Olumide Akintola, radio engineer, lives in Akure."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Genevi\u00e8ve Tremblay is a maple syrup producer. She resides in Sherbrooke. What is her name? A sentence in everyday prose is what I want."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Rohan Kulkarni | Nagpur | orange wholesaler. I want the person's name, said in an ordinary sentence like you'd write in an email."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Answer me in prose, please. Esperanza Robles lives in Tucson and works as a desert botanist; what is the name in this record?"
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Who is the resident? Fergus Dalrymple is a whisky blender living in Elgin. Kindly write it as a normal sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Mwajuma Salim, clove farmer, lives in Zanzibar City. Tell me the name in a plainly worded sentence."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "For the record below, state the name as running prose in one sentence.\nLudwig Ackermann lives in Stuttgart. Occupation: gearbox designer."
+ },
+ {
+  "kind": "extraction with a demand for prose",
+  "prompt": "Pilar Navarro resides in Zaragoza and is a wind farm technician. Last question: what's the person's name? An ordinary sentence in reply, please."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the capital of Australia?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "How much is 17 plus 26?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate the word 'apple' into Spanish."
+ },
+ {
+  "kind": "general question",
+  "prompt": "I always forget this one: how do you spell 'necessary'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which planet is closest to the sun?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "hey, quick question, what's 9 times 8?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Name the largest ocean on Earth."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the French word for 'cat'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "How many days are there in a leap year?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Is a tomato a fruit or a vegetable?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Square root of 144?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Who wrote 'Romeo and Juliet'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Give me a synonym for 'happy'."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What colour do you get when you mix blue and yellow paint?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "How many legs does a spider have?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What's the plural of 'mouse'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Convert 3 kilometres to metres."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the opposite of 'ancient'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "On which continent is Kenya?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Divide 100 by 4 for me."
+ },
+ {
+  "kind": "general question",
+  "prompt": "How do you say 'thank you' in Japanese?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which is heavier, a kilogram of feathers or a kilogram of iron?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the chemical symbol for gold?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Spell the word 'rhythm' backwards."
+ },
+ {
+  "kind": "general question",
+  "prompt": "How many minutes are in two and a half hours?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What's the tallest mountain in the world?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Continue the sequence: 2, 4, 8, 16, ..."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What does the abbreviation 'ASAP' stand for?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Tell me the past tense of 'run'."
+ },
+ {
+  "kind": "general question",
+  "prompt": "A hexagon has how many sides?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "At what temperature does water freeze, in Celsius?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which language do people speak in Brazil?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 15% of 200?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Name a mammal that can fly."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What's the German word for 'house'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Who painted the Mona Lisa?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "How many continents are there?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Is 37 a prime number?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the first letter of the Greek alphabet?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Suggest a word that rhymes with 'moon'."
+ },
+ {
+  "kind": "general question",
+  "prompt": "How many strings does a standard violin have?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which day comes after Wednesday?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 7 squared?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which animal is often called the king of the jungle?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Translate 'good morning' into Italian."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What's the boiling point of water in Fahrenheit?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "How many letters are in the English alphabet?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the longest river in Africa?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Subtract 58 from 120."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which gas do plants take in from the air for photosynthesis?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Count the vowels in the word 'education'."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What's the currency of Japan?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Who was the first person to walk on the moon?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Half of 250 is what?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Give me an antonym of 'generous'."
+ },
+ {
+  "kind": "general question",
+  "prompt": "How many hours are there in a week?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which month has the fewest days?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What's the Spanish word for 'book'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "How do you spell the name of the colour between red and yellow in a rainbow?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which is bigger, 3/4 or 2/3?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What do bees make?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the smallest prime number?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "List the three primary colours."
+ },
+ {
+  "kind": "general question",
+  "prompt": "How many zeros are in one million?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the capital city of Canada?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Write the number 49 in Roman numerals."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the Latin word for 'water'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What's 1000 minus 1?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "How many players does a soccer team have on the pitch at kickoff?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What does 'bonjour' mean in English?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which organ pumps blood around the body?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Round 3.767 to one decimal place."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Capitalize this word: london"
+ },
+ {
+  "kind": "general question",
+  "prompt": "How many seconds are in an hour?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What shape has exactly three sides?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the hardest natural substance?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which is the largest planet in our solar system?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Add up 12, 15 and 23."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What's the Korean word for 'water'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Is the word 'level' a palindrome?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which season comes after summer?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is 2 to the power of 10?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Who discovered penicillin?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What's the comparative form of 'good'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "How many centimetres make one metre?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Can you think of a fruit whose name starts with the letter K?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the main ingredient in guacamole?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "In what year did World War II end?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "45 divided by 9 equals?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "How do you say 'friend' in Portuguese?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which bird is the largest in the world?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the abbreviation for 'kilogram'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "How many teeth does an adult human normally have?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What's the next prime number after 13?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Put these words in alphabetical order: pear, apple, mango."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the capital of Egypt?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Roughly how many weeks are in a year?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What colour is an emerald?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What's the average of 4, 8 and 12?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which of these is misspelled: 'recieve' or 'believe'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What sound does a cow make?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "How many degrees are in a right angle?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Tell me the Dutch word for 'bicycle'."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the largest country in the world by area?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Write 0.5 as a fraction."
+ },
+ {
+  "kind": "general question",
+  "prompt": "Who is the author of 'Pride and Prejudice'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which metal is liquid at room temperature?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Give the plural of 'cactus'."
+ },
+ {
+  "kind": "general question",
+  "prompt": "If I have 3 apples and eat one, how many are left?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What does GMT stand for?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What's the Swahili word for 'lion'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "How many syllables are in the word 'banana'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the perimeter of a square with sides of 5 cm?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which instrument has 88 keys?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What do you call a baby dog?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Put the phrase 'hello world' in upper case."
+ },
+ {
+  "kind": "general question",
+  "prompt": "What's the difference between 81 and 18?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "Which ocean lies between Europe and North America?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "What is the past participle of 'write'?"
+ },
+ {
+  "kind": "general question",
+  "prompt": "My recipe needs 250 grams of flour and I want to double it. How many grams is that?"
+ }
+]
