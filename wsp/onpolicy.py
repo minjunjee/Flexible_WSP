@@ -14,7 +14,13 @@ This version never needs the two models to write the same tokens:
   3. For each question take the first position with KL above the threshold that no edit has been aimed at yet. This is
      where the two models part ways next; later differences may only be consequences of it.
   4. Group these positions, pick the group with the largest summed KL, and build one conditional edit for it.
-     A position is never targeted twice.
+
+Two rules keep the edits from undoing each other. Both came from failures (results/exp5/first_attempt_lowercase: a
+second edit aimed at the answer starts of other questions took the lowercase instruction from 72% to 8%).
+  - A position where the read vector of an earlier edit already fires (above 0.5) is not targeted again.
+  - After the read vector of a new edit is fitted, the other diverging positions where it fires anyway are added to
+    the group, and the edit is rebuilt for the larger group. An edit cannot tell those positions apart, so its
+    vector should be the mean over all of them.
 """
 import contextlib
 
@@ -29,36 +35,48 @@ def strip(lm, toks):
     return [t for t in toks if t not in lm.end_ids]
 
 
-def aligned(lm, ids, answer, adds=(), original=False):
-    """log-probabilities [n, V] and residuals [L, n, d] at the answer-start position and at every answer position"""
+def aligned(lm, ids, answer, adds=(), original=False, gates=()):
+    """log-probabilities [n, V] and residuals [L, n, d] at the answer-start position and at every answer position.
+    With gates (a list of edits), also the value of each edit's read vectors there, averaged over its layers [edits, n]."""
     with (lm.original() if original else contextlib.nullcontext()):
-        res, _, logits = lm.run(ids + answer, adds=adds, logits=True)
+        res, hh, logits = lm.run(ids + answer, adds=adds, logits=True)
     p, n = len(ids) - 1, len(answer) + 1
-    return torch.log_softmax(logits[p:p + n], -1), res[:, p:p + n].clone()
+    out = (torch.log_softmax(logits[p:p + n], -1), res[:, p:p + n].clone())
+    if gates:
+        out += (torch.stack([gate_values(e, hh[:, p:p + n]) for e in gates]),)
+    return out
+
+
+def gate_values(edits, hh):
+    """hh [L, n, d_mlp] -> [n]: read-vector value of one edit, averaged over the layers it changes"""
+    return torch.stack([hh[e["layer"]] @ e["v"].to(hh.device) for e in edits]).mean(0)
 
 
 def kl(lp1, lp0):
     return (lp1.exp() * (lp1 - lp0)).sum(-1)
 
 
-def measure(lm, Q, max_new):
+def measure(lm, Q, max_new, applied=()):
     """Q: dicts with ids0 (prompt) and ids1 (prompt with the instruction). Rolls out the current model and compares it
-    with the instructed model on every position of its own answer."""
+    with the instructed model on every position of its own answer. applied: the edits already in the weights (a list
+    of edits); a position where one of their read vectors is above 0.5 is marked as taken."""
     own = [strip(lm, t) for t in lm.generate([q["ids0"] for q in Q], max_new)]
     info = []
     for q, o in zip(Q, own):
         lp1, r1 = aligned(lm, q["ids1"], o, original=True)
-        lp0, r0 = aligned(lm, q["ids0"], o)
-        info.append(dict(own=o, kl=kl(lp1, lp0), r1=r1, r0=r0, top_instr=lp1.argmax(-1).tolist(), top_cur=lp0.argmax(-1).tolist()))
+        cur = aligned(lm, q["ids0"], o, gates=applied)
+        lp0, r0 = cur[0], cur[1]
+        taken = (cur[2] > 0.5).any(0) if applied else torch.zeros(len(o) + 1, dtype=torch.bool, device=lp0.device)
+        info.append(dict(own=o, kl=kl(lp1, lp0), r1=r1, r0=r0, taken=taken, top_instr=lp1.argmax(-1).tolist(), top_cur=lp0.argmax(-1).tolist()))
     return info
 
 
-def next_points(info, done, kl_min):
-    """for each question, the first diverging position that has not been targeted (identified by the answer prefix)"""
+def next_points(info, kl_min):
+    """for each question, the first diverging position where no earlier edit fires"""
     pts = []
     for qi, x in enumerate(info):
         for j in range(len(x["kl"])):
-            if float(x["kl"][j]) > kl_min and (qi, tuple(x["own"][:j])) not in done:
+            if float(x["kl"][j]) > kl_min and not bool(x["taken"][j]):
                 pts.append((qi, j))
                 break
     return pts
@@ -93,7 +111,23 @@ def candidate_groups(lm, info, pts, cos_dist=0.5):
     return out
 
 
-def build_edit(lm, Q, info, members, S, max_new, kl_min, lams=(1e-3, 1e-2, 1e-1)):
+def build_edit(lm, Q, info, members, S, max_new, kl_min, candidates=(), lams=(1e-3, 1e-2, 1e-1)):
+    """One conditional edit for the member positions, widened once to the other candidate positions (first diverging
+    positions of other questions) where its read vectors fire anyway. Returns (edits, fit statistics, final members)."""
+    edits, stats = _build(lm, Q, info, members, S, max_new, kl_min, lams)
+    extra = []
+    for qi, j in candidates:
+        if (qi, j) not in members:
+            _, hh = lm.run(Q[qi]["ids0"] + info[qi]["own"])
+            if float(gate_values(edits, hh[:, len(Q[qi]["ids0"]) - 1 + j][:, None])[0]) > 0.5:
+                extra.append((qi, j))
+    if extra:
+        members = list(members) + extra
+        edits, stats = _build(lm, Q, info, members, S, max_new, kl_min, lams)
+    return edits, stats, members
+
+
+def _build(lm, Q, info, members, S, max_new, kl_min, lams):
     """One conditional edit (a rank-1 change per layer of S) that fires at the member positions.
 
     The vector: mean hidden-state difference (instructed minus current) at the member positions, split over the layers.
@@ -133,3 +167,42 @@ def profile(info, kl_min):
     return dict(positions=n, diverging=div, share=div / n, questions_with_divergence=sum(bool((x["kl"] > kl_min).any()) for x in info),
                 mean_kl_at_answer_start=float(np.mean([float(x["kl"][0]) for x in info])),
                 mean_kl_elsewhere=float(np.mean([float(x["kl"][1:].mean()) for x in info if len(x["kl"]) > 1])))
+
+
+def stack(lm, Q, S, rounds, max_new, kl_min=1.0, min_group=0.1, log=print):
+    """The whole loop: measure, pick the next group, build an edit, add it to the weights; at most `rounds` times.
+    Returns (applied edits as a list of edits, one record per round)."""
+    applied, records = [], []
+    for r in range(1, rounds + 1):
+        info = measure(lm, Q, max_new, applied)
+        pts = next_points(info, kl_min)
+        groups = candidate_groups(lm, info, pts)
+        rec = dict(round=r, own_answers=profile(info, kl_min), questions_with_an_untargeted_divergence=len(pts),
+                   candidate_groups=[{k: v for k, v in g.items() if k != "members"} for g in groups[:6]])
+        records.append(rec)
+        for g in groups[:3]:
+            log(f"   round {r} group ({g['kind']}): {g['size']} positions, median position {g['median_position']}, mean KL {g['kl_mean']:.2f}, "
+                f"shared fraction {g['shared_fraction']:.2f}, instructed wants {g['instructed_next_tokens'][:3]}, current writes {g['current_next_tokens'][:3]}")
+        if not groups or groups[0]["size"] < min_group * len(Q):
+            rec["stopped"] = "no group is large enough"
+            break
+        edits, stats, members = build_edit(lm, Q, info, groups[0]["members"], S, max_new, kl_min, pts)
+        lm.apply(edits)
+        applied.append(edits)
+        ok = [s for s in stats if not np.isnan(s["margin"])]
+        rec["chosen_group"] = {k: v for k, v in groups[0].items() if k != "members"}
+        rec["positions_in_the_group"] = dict(chosen=groups[0]["size"], after_adding_positions_where_the_edit_fires_anyway=len(members))
+        rec["fit"] = dict(target_mean=float(np.mean([s["target_mean"] for s in ok])), target_min=float(min(s["target_min"] for s in ok)),
+                          other_max_abs=float(max(s["other_max_abs"] for s in ok))) if ok else None
+        rec["changed_weights"] = lm.changed_weights()
+        log(f"   round {r}: edit built for {len(members)} positions (group had {groups[0]['size']}); fit {rec['fit']}")
+    return applied, records
+
+
+def save_applied(path, applied):
+    z = {}
+    for r, edits in enumerate(applied, 1):
+        for e in edits:
+            z[f"round{r}_u_L{e['layer']}"] = np.asarray(e["u"], np.float32)
+            z[f"round{r}_v_L{e['layer']}"] = np.asarray(e["v"], np.float32)
+    np.savez_compressed(path, **z)

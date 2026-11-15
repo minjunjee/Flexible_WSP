@@ -65,11 +65,11 @@ R = dict(model=args.model, instruction=args.instruction, layers=args.layers, n_b
          kl_min=args.kl_min, eval={}, rounds=[])
 R["eval"]["instruction in the prompt"] = evaluate(P1, "instruction_in_the_prompt")
 R["eval"]["no edit"] = evaluate(P0, "no_edit")
-done, all_edits = set(), {}
+applied, all_edits = [], {}
 for r in range(1, args.rounds + 1):
-    info = onpolicy.measure(lm, Q, args.max_new)
+    info = onpolicy.measure(lm, Q, args.max_new, applied)
     prof = onpolicy.profile(info, args.kl_min)
-    pts = onpolicy.next_points(info, done, args.kl_min)
+    pts = onpolicy.next_points(info, args.kl_min)
     groups = onpolicy.candidate_groups(lm, info, pts)
     rec = dict(round=r, own_answers=prof, questions_with_an_untargeted_divergence=len(pts),
                candidate_groups=[{k: v for k, v in g.items() if k != "members"} for g in groups[:8]])
@@ -82,9 +82,10 @@ for r in range(1, args.rounds + 1):
         rec["stopped"] = "no group is large enough"
         R["rounds"].append(rec)
         break
-    edits, stats = onpolicy.build_edit(lm, Q, info, groups[0]["members"], S, args.max_new, args.kl_min)
+    edits, stats, members = onpolicy.build_edit(lm, Q, info, groups[0]["members"], S, args.max_new, args.kl_min, pts)
     lm.apply(edits)
-    done |= {(qi, tuple(info[qi]["own"][:j])) for qi, j in groups[0]["members"]}
+    applied.append(edits)
+    rec["positions_in_the_group"] = dict(chosen=groups[0]["size"], after_adding_positions_where_the_edit_fires_anyway=len(members))
     for e in edits:
         all_edits[f"round{r}_u_L{e['layer']}"] = e["u"].numpy()
         all_edits[f"round{r}_v_L{e['layer']}"] = e["v"].numpy()
@@ -95,7 +96,7 @@ for r in range(1, args.rounds + 1):
     rec["eval"] = evaluate(P0, f"after_{r}_edits")
     R["rounds"].append(rec)
     json.dump(R, open(f"{args.out}/summary.json", "w"), indent=1, ensure_ascii=False)
-info = onpolicy.measure(lm, Q, args.max_new)
+info = onpolicy.measure(lm, Q, args.max_new, applied)
 R["own_answers_after_last_round"] = onpolicy.profile(info, args.kl_min)
 np.savez_compressed(f"{args.out}/edits.npz", **all_edits)
 json.dump(R, open(f"{args.out}/summary.json", "w"), indent=1, ensure_ascii=False)
